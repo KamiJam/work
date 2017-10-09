@@ -1,0 +1,7 @@
+创建圈子
+cd D:\Documents\HBuilderProject\zzl\wx\scss\pages
+sass --watch createcircle.scss:..\..\css\createcircle.css  --style nested
+
+话题详情
+cd D:\Documents\HBuilderProject\zzl\wx\scss\pages
+sass --watch topic.scss:..\..\css\topic.css  --style nested

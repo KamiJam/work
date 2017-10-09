@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+
+    <!--
+     width=device-width：让文档的宽度与设备的宽度保持一致，且文档最大的宽度比例是1.0
+     initial-scale=1：初始的缩放比例
+     maximum-scale=1：允许用户缩放到的最大比例（对应还有个minimum-scale）
+     user-scalable=no：不允许用户手动缩放
+     -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <!--
+     telephone=no：禁止自动将页面中的数字识别为电话号码
+     address=no：禁止自动地址转为链接
+     email=no：禁止自动将email转为链接
+     -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no" />
+    <!-- 强制将页面布局为一列 -->
+    <meta name="mobileOptimized" content="width" />
+    <!-- 申明页面是移动友好的 -->
+    <meta name="handheldFriendly" content="true" />
+    <!-- 允许用户使用全屏模式浏览 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- 当用户使用全屏浏览时，将状态条设置为黑色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    
+    <link rel="stylesheet" type="text/css" href="post.css?100" />
+
+	<title>产品详情</title>
+    
+    <link rel="stylesheet" href="product.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+
+</head>
+<body>
+	<div class="main-content">
+		<!--上方信息-->
+		<ul class="pro-list detail-ul">
+			<li class="pro-item" id="topinfo" style="display: none;">
+				<div class="pi-left">
+					<img id="pimg" class="listimg" src="images/placeholder.png" />
+				</div>
+				<div class="pi-center">
+					<div class="c-title">
+						<span class="ct" id="pname"></span>
+					</div>
+					<div class="c-brand" id="pbrand">
+						<span class="i-brand">品牌</span>
+						
+					</div>
+					<div class="c-circle" id="pcircle">
+						<span class="i-circle">圈子</span>
+						
+					</div>
+				</div>
+			</li>
+		</ul>
+		<!--富文本-->
+		<section class="richtext" style="display: none;" id="richItem">
+
+		</section>
+		<!--其他产品-->
+		<section class="other-product" style="display: none;">
+			<div class="op-title">
+				<span class="opt-l">其他产品</span>
+				<span class="opt-r" id="lookall">查看全部</span>
+			</div>
+			<ul class="other-ul">
+
+			</ul>
+		</section>
+	</div>
+	<script src="jquery.min.js"></script>
+	<script>
+		window.onerror = function(err) {
+//			log(err)
+		}
+	
+		function connectWebViewJavascriptBridge(callback) {
+			if(window.WebViewJavascriptBridge) {
+				callback(WebViewJavascriptBridge)
+			} else {
+				document.addEventListener('WebViewJavascriptBridgeReady', function() {
+					callback(WebViewJavascriptBridge)
+				}, false)
+			}
+		}
+	
+		function log(data) {
+
+			//上方信息栏
+			$("#pimg").attr("src",data.banner);
+			$("#pname").html(data.title);
+			$("#pbrand").html('<span class="i-brand">品牌</span>'+data.brand);
+			$("#pbrand").html('<span class="i-circle">圈子</span>'+data.circleName);
+			$("#topinfo").fadeIn();
+			//详情区
+			$(".richtext").html(data.content).fadeIn();
+			
+			var responseData = "Javascript Says Right back aka!";
+			responseCallback(responseData);
+			
+			//其他产品
+			if(data.relate_product && data.relate_product.length){
+				var listhtml = "";
+				$.each(data.relate_product, function(listindex,listitem) {
+					if(listindex >= 3){
+						return false;
+					}
+					listhtml += '<li data-pid="'+listitem._id+'">'+
+									'<div class="imgc">'+
+										'<img class="li-img" src="'+listitem.banner+'"/>'+
+									'</div>'+
+									'<p class="ou-title">'+listitem.title+'</p>'+	
+								'</li>';
+				});
+				$(".other-ul").html(listhtml);
+				$(".other-product").fadeIn();
+			}
+			$("a").bind("click", function() {
+			
+				var link = $(this).attr("link");
+				var title = $(this).html();
+			
+				jump(link, title);
+			
+			});
+			
+			$("#richItem img").bind("click", function() {
+			
+				var url = $(this).attr("src");
+			
+				viewurl(url);
+			
+			});
+			
+			$("#lookall").bind("click", function() {
+				lookAll();
+			
+			});
+			$(".other-ul li").bind("click", function() {
+				var id = $(this).attr("data-pid");
+				jumpDetail(id);
+			
+			});
+		}
+
+		var obj = {
+		username:"123",
+			circlename: "123",
+			time: "123",
+			avatar: "1231231231"
+		}
+	
+		//log(obj);
+	
+		var objbridge;
+	
+		function jump(url, title) {
+			//alert(url);
+			//alert(title);
+	
+			var obj = {
+				title: title,
+				url: url
+			};
+	
+			objbridge.callHandler('jumpurlCallback', obj, function(response) {});
+	
+		}
+	
+		function viewurl(url) {
+			//alert(url);
+			//alert(title);
+	
+			var obj = {
+				url: url
+			};
+	
+			objbridge.callHandler('jumppicCallback', obj, function(response) {});
+	
+		}
+		
+		function lookAll() {
+	
+			objbridge.callHandler('lookallCallback', obj, function(response) {});
+	
+		}
+		function jumpDetail(id) {
+			var obj = {
+				id: id
+			};
+			objbridge.callHandler('jumpdetailCallback', obj, function(response) {});
+	
+		}
+	
+		connectWebViewJavascriptBridge(function(bridge) {
+			//初始化bridge
+			bridge.init(function(message, responseCallback) {})
+	
+			objbridge = bridge;
+	
+			//注册响应方法
+			bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
+				log(data)
+			})
+	
+	
+			var l = document.getElementById("detail").offsetHeight;
+			//alert(l);
+			bridge.callHandler('initCallback', l, function(response) {});
+	
+			var x = 0;
+	
+			function geth() {
+	
+				var l1 = document.getElementById("detail").offsetHeight;
+	
+				if(l1 == l) {
+					x++;
+	
+					if(x == 3)
+						clearInterval(t1);
+	
+					return;
+	
+				}
+	
+				x = 0;
+	
+				l = l1;
+	
+				//alert(l1);
+				bridge.callHandler('testObjcCallback', l1, function(response) {});
+	
+			}
+			var t1 = window.setInterval(geth, 500);
+	
+		})
+	</script>
+</body>
+</html>

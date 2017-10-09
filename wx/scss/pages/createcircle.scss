@@ -1,0 +1,349 @@
+@charset "utf-8";
+@import "../reset";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+@import "../common";
+
+.top-load{
+    @include flexbox;
+//  padding: 0 5%;
+    height: 3rem;
+    position: relative;
+    .line-outter{
+        position: absolute;
+        top: 1rem;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: #b3b3b3;
+        .line-inner{
+            width: 12.5%;
+            height: 100%;
+            background-color: #0FB98A;
+            transition: width 1000ms;
+            -webkit-transition: width 1000ms;
+            &.step1{
+                width: 12.5%;
+            }
+            &.step2{
+                width: 37.5%;
+            }
+            &.step3{
+                width: 62.5%;
+            }
+            &.step4{
+                width: 100%;
+            }
+        }
+    }
+    
+    .tl-item{
+        z-index: 0;
+        @include flexitem;
+        padding-top: 1rem;
+        text-align: center;
+        font-size: 0;
+        color: #b3b3b3;
+        >div{
+            font-size: 10px;
+        }
+        &.passed{
+            color: #0FB98A;
+            .tli-circle{
+                background-color: #0FB98A;
+            }
+        }
+        .tli-circle{
+            display: inline-block;
+            position: relative;
+            top: -3px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50px;
+            background-color: #b3b3b3;
+        }
+    }
+}
+
+//上传头像
+.top-block{
+    background-color: white;
+    height: prem(320);
+}
+.headimg{
+    display: block;
+    width: prem(140);
+    height: prem(140);
+    margin: prem(60) auto prem(20) auto;
+    &.round{
+        border-radius: 999px;
+    }
+}
+.upload-line{
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    >span{
+        color: #666;
+    }
+}
+.hiddenfile{
+    position: absolute;
+    opacity: 0;
+    width: prem(200);
+    height: prem(60);
+}
+.infos-block{
+    background-color: white;
+    margin: prem(30) 0 ;
+    
+}
+.info-line{
+    position: relative;
+    margin: 0 10px;
+    line-height: prem(100); 
+    @include flexbox;
+    align-items: center;
+    &:after{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: 0;
+        background-color: #E9EAEA;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+    }
+    &:last-child:after{
+        height: 0;
+    }
+    .il-label{
+        font-size: 14px;
+        color: #808080;
+        &:filled{
+            color: #000;
+        }
+        font{
+            color: red;
+        }
+    }
+    .il-input{
+        border: none;
+        @include flexitem;
+        text-align: right;
+        color: #666;
+        font-size: 14px;
+    }
+    .il-value{
+        padding-right: 14px;
+        @include flexitem;
+        text-align: right;
+        font-size: 14px;
+        color: #666;
+        background: url(../images/createcircle/i-more.png) no-repeat;
+        background-size: auto 14px;;
+        background-position: right center;
+    }
+    .il-textarea{
+        margin: -1px auto prem(20) auto;
+        font-size: 14px;
+        padding: 10px;
+        height: prem(100);
+        @include flexitem;
+        background-color: #E9EAEA;
+        border: none;
+        resize: none;
+        color: #666;
+        
+    }
+}
+.submit-btn{
+    @include blockbutton(prem(650),prem(90),#0ac48f);
+    font-size: prem(32);
+    margin: prem(250) auto 0 auto;
+}
+
+//选择标签
+.tags-block{
+    padding: 15px;
+    margin: prem(60) 10px 0 10px;
+//  background-color: white;
+}
+.tb-title{
+    font-size: 14px;
+    color: #666;
+}
+.tags-container{
+    font-size: 0;
+    padding-top: 10px;
+
+    .add-tag{
+        box-sizing: border-box;
+        display: inline-block;
+//      width: 22%;
+        padding: 0 8px;
+        margin: 0 3% prem(20) 0;
+        line-height: prem(50);
+        font-size: 12px;
+        color: #666;
+        text-align: center;
+        background-color: rgba(204, 204, 204, 0.63);
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    .tag-itemn{
+        box-sizing: border-box;
+        display: inline-block;
+//      width: 22%;
+        margin: 0 3% prem(20) 0;
+        padding: 0 8px;
+        line-height: prem(50);
+        font-size: 12px;
+        color: #5ec1f2;
+        text-align: center;
+        background-color: white;
+        border-radius: 3px;
+        border: 1px solid  #5ec1f2;
+        @include ellipsis;
+        &.selected{
+            border-color: #5ec1f2;
+            color: white;
+            background-color: #5ec1f2;
+        }
+    }
+    
+}
+//设置圈子
+.custswitch{
+    width: 40px;
+    .switch{
+        display:none;
+    }
+    label{
+        box-sizing: content-box;
+        position:relative;
+        display: block;
+        padding: 1px;
+        border-radius: 24px;
+        height: 22px;
+        background-color: #eee;
+        cursor: pointer;
+        vertical-align: top;
+        -webkit-user-select: none;
+    }
+    label:before{
+        content: '';
+        display: block;
+        border-radius: 24px;
+        height: 22px;
+        background-color: white;
+        
+        -webkit-transform: scale(1, 1);
+        -webkit-transition: all 0.3s ease;
+    }
+    label:after{
+        content: '';
+        position: absolute;
+        top: 50%;  
+        left: 50%;  
+        margin-top: -11px;  
+        margin-left: -11px;
+        width: 22px;
+        height: 22px;
+        border-radius: 22px;
+        background-color: white;
+        box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.08);
+        -webkit-transform: translateX(-9px);
+        -webkit-transition: all 0.3s ease;
+    }
+    .switch:checked~label:after{
+        -webkit-transform: translateX(9px);
+    }
+    
+    .switch:checked~label:before{
+        background-color: #0FB98A;
+    }
+}
+
+.set-line{
+    height: prem(130);
+    @include flexbox;
+    background-color: white;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 1px;
+    .sl-left{
+        @include flexitem;
+        .sll-top{
+            color: #000;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        .sll-btm{
+            color: #999;
+            font-size: 12px;
+        }
+    }
+}
+.mart10{
+    margin-top: 10px;
+}
+.mart0{
+    margin-top: 0;
+}
+.btm-tips{
+    margin: prem(100) 0 prem(20) 0;
+    color: #999;
+    text-align: center;
+    font-size: 12px;
+}
+//创建成功
+.succ-logo{
+    display: block;
+    margin: prem(80) auto prem(60);
+    width: prem(200);
+    height: prem(200);
+    border-radius: prem(140);
+}
+.succ-info{
+    text-align: center;
+    color: #4d4d4d;
+    padding: 0 20px;
+    font-size: 14px;
+}
+.operbtn{
+    line-height: prem(80);
+    width: prem(260);
+    border-radius: prem(240);
+    border: 1px solid #0FB98A;
+    background-color: white;
+    color: #0FB98A;
+    font-size: 14px;
+    text-align: center;
+    margin: 0 auto;
+}
+.btm-btns{
+    font-size: 0;
+    margin: prem(80) 0;
+}
+.btm-btn{
+    display: inline-block;
+    width: 50%;
+}
+.ob-icon{
+    display: inline-block;
+    vertical-align: middle;
+    width: prem(60);
+    height: prem(60);
+    &.invite{
+        background-image: url(../images/createcircle/icon-invite.png);
+    }
+    &.enter{
+        background-image: url(../images/createcircle/icon-enter.png);
+        margin-top: -4px;
+    }
+    background:  no-repeat center center/contain;
+}

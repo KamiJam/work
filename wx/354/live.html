@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>话题详情</title>
+    
+    <link rel="stylesheet" href="../css/topic.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body>
+	<div class="main-content">
+		
+		<div class="live-title">
+			<span class="lt-left active">直播详情</span>
+			<span class="lt-left">讨论</span>
+			<span class="lt-right">
+				<span>参与人数890人</span>
+				<div class="cm-zan active">
+					<i class="cmicon-zan"></i>3
+				</div>
+			</span>
+		</div>
+		<!--直播列表-->
+		
+		<!--<div class="live-detail">
+			
+			<div class="live-list">
+				<div class="live-item">
+					<div class="item-time">12:00</div>
+					<div class="item-text">
+						<div class="arrow-left"></div>
+						<div class="lite-top"><i class="liveicon"></i>[直播员]</div>
+						asdasdasd
+					</div>
+				</div>
+				<div class="live-item">
+					<div class="item-time">12:00</div>
+					<div class="item-text">
+						<div class="arrow-left"></div>
+						<div class="lite-top"><i class="liveicon"></i>[直播员]</div>
+						asdasdasd
+						<div class="con-squared con-two">
+							<div class="squared-item">
+								<img class="lazy" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" >
+							</div>
+							<div class="squared-item"><img class="lazy" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.1.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.1.jpg!squareprod" ></div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="live-item">
+					<div class="item-time">12:00</div>
+					<div class="item-text">
+						<div class="arrow-left"></div>
+						<div class="lite-top"><i class="liveicon"></i>[直播员]</div>
+						asdasdasd
+
+						<img class="lazy con-fullimg" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" >
+
+					</div>
+				</div>
+				<div class="live-item">
+					<div class="item-time">12:00</div>
+					<div class="item-text">
+						<div class="arrow-left"></div>
+						<div class="lite-top"><i class="liveicon"></i>[直播员]</div>
+						asdasdasd
+						<div class="con-squared">
+							<div class="squared-item">
+								<img class="lazy" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" >
+							</div>
+							<div class="squared-item"><img class="lazy" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.1.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.1.jpg!squareprod" ></div>
+							<div class="squared-item"><img class="lazy" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.2.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.2.jpg!squareprod" ></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>-->
+		
+		<div class="cl-list live-talk bg-white " >
+			<div class="comment-item">
+				<div class="ci-left">
+					<img class="ci-headimg" src="../images/3.jpg" />
+					<img class="v-icon" src="http://jq.flyzz.net/weixin/supply/images/v.png">
+				</div>
+				<div class="ci-right">
+					<div class="cir-one">
+						<div class="cm-name">评论评论名称评论名称评论名称评论名称名称</div>
+						<span class="cm-time">02-23&nbsp;13:45</span>
+					</div>
+					<div class="cm-content">
+						评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+					</div>
+					<div class="oldreply">
+						<div class="or-user">用户名用户名用户名用户名用户名用户名用户名用户名</div>
+						<img class="lazy con-fullimg" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" >
+						<div class="or-text">
+							内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+						</div>
+					</div>
+					<div class="cm-btm">
+						<a class="del" href="javascript:;">删除</a>
+						<div class="cm-reply"><i class="cmicon-reply"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="comment-item">
+				<div class="ci-left">
+					<img class="ci-headimg" src="../images/3.jpg" />
+					<img class="v-icon" src="http://jq.flyzz.net/weixin/supply/images/v.png">
+				</div>
+				<div class="ci-right">
+					<div class="cir-one">
+						<div class="cm-name">评论评论名称评论名称评论名称评论名称名称</div>
+						<span class="cm-time">02-23&nbsp;13:45</span>
+					</div>
+					<div class="cm-content">
+						评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+					</div>
+					<div class="oldreply">
+						<div class="or-user">用户名用户名用户名用户名用户名用户名用户名用户名</div>
+						<div class="con-squared con-two">
+							<div class="squared-item">
+								<img class="lazy" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" >
+							</div>
+							<div class="squared-item"><img class="lazy" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.1.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.1.jpg!squareprod" ></div>
+							
+						</div>
+						<div class="or-text">
+							内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+						</div>
+					</div>
+					<div class="cm-btm">
+						<a class="del" href="javascript:;">删除</a>
+						<div class="cm-reply"><i class="cmicon-reply"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="comment-item">
+				<div class="ci-left">
+					<img class="ci-headimg" src="../images/3.jpg" />
+					<img class="v-icon" src="http://jq.flyzz.net/weixin/supply/images/v.png">
+				</div>
+				<div class="ci-right">
+					<div class="cir-one">
+						<div class="cm-name">评论评论名称评论名称评论名称评论名称名称</div>
+						<span class="cm-time">02-23&nbsp;13:45</span>
+					</div>
+					<div class="cm-content">
+						评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+					</div>
+					<div class="oldreply">
+						<div class="or-user">用户名用户名用户名用户名用户名用户名用户名用户名</div>
+						<div class="or-text">
+							内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+						</div>
+					</div>
+					<div class="cm-btm">
+						<a class="del" href="javascript:;">删除</a>
+						<div class="cm-reply"><i class="cmicon-reply"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="comment-item">
+				<div class="ci-left">
+					<img class="ci-headimg" src="../images/3.jpg" />
+					<img class="v-icon" src="http://jq.flyzz.net/weixin/supply/images/v.png">
+				</div>
+				<div class="ci-right">
+					<div class="cir-one">
+						<div class="cm-name">评论评论名称评论名称评论名称评论名称名称</div>
+						<span class="cm-time">02-23&nbsp;13:45</span>
+					</div>
+					<div class="cm-content">
+						评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+					</div>
+					<div class="oldreply">
+						<div class="or-user">用户名用户名用户名用户名用户名用户名用户名用户名</div>
+						<div class="con-squared">
+							<div class="squared-item">
+								<img class="lazy" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.0.jpg!squareprod" >
+							</div>
+							<div class="squared-item"><img class="lazy" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.1.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.1.jpg!squareprod" ></div>
+							<div class="squared-item"><img class="lazy" src="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.2.jpg!squareprod" data-original="http://jiuquandata.b0.upaiyun.com/2017/08/24/upload_4219d38eb6e761a45515250dcee6e43f.2.jpg!squareprod" ></div>
+						</div>
+						<div class="or-text">
+							内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+						</div>
+					</div>
+					<div class="cm-btm">
+						<a class="del" href="javascript:;">删除</a>
+						<div class="cm-reply"><i class="cmicon-reply"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

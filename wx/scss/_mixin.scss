@@ -1,0 +1,74 @@
+@charset "utf-8";
+@mixin max-screen($res){
+  @media only screen and ( max-width: $res )
+  {
+    @content;
+  }
+}
+//flex兼容写法
+@mixin flexbox(){
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+@mixin flexitem($s:1){
+    -webkit-box-flex: $s;
+    -webkit-flex: $s;
+    flex: $s;
+}
+//多行文字超出隐藏加省略号
+@mixin overflowemp($lines:1){
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+}
+
+
+// 清除浮动
+@mixin clearfix(){
+    &:after{
+        content:"";
+        display:table;
+        clear:both;
+    }
+}
+// 单行文字超出隐藏加省略号
+@mixin ellipsis(){
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+// padding比例缩放
+// .padding-propor(2/3);
+@mixin padding-propor($value:1){
+    position: relative;
+    &:after{
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: percentage($value);
+    }
+}
+
+@mixin select-none(){
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+@mixin blockbutton($width: 12.11733rem,$height: 1.728rem,$color: #37CDA3){
+    display: block;
+    width: $width;
+    line-height: $height;
+    border-radius: 2px;
+    color: #fff;
+    text-align: center;
+    border: none;
+    background-color: $color;
+}

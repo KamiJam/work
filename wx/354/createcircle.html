@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>创建圈子</title>
+    
+    <link rel="stylesheet" href="../css/createcircle.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body>
+	<div class="main-content">
+		<div class="top-load">
+			<div class="line-outter">
+				<div class="line-inner step1"></div>
+			</div>
+			<div class="tl-item passed">
+				<span class="tli-circle"></span>
+				<div>完善圈子信息</div>
+			</div>
+			<div class="tl-item">
+				<span class="tli-circle"></span>
+				<div>添加圈子标签</div>
+			</div>
+			<div class="tl-item">
+				<span class="tli-circle"></span>
+				<div>设定圈子设置</div>
+			</div>
+			<div class="tl-item">
+				<span class="tli-circle"></span>
+				<div>创建成功</div>
+			</div>
+		</div>
+		<!--完善信息-->
+		<div class="step-c" id="step1" style="">
+			<section class="top-block ovh">
+				<img class="headimg" src="../images/createcircle/uplogo.png" onclick="document.getElementById('uploadimg').click()"/>
+				<div class="upload-line">
+					<input class="hiddenfile" type="file" accept="image/jpeg,image/jpg,image/png"  capture="camera" id="uploadimg"/>
+					<span>上传圈子logo</span>
+				</div>
+			</section>
+			<section class="infos-block">
+				<div class="info-line">
+					<label class="il-label">请输入圈子名称</label>
+					<span class="il-value">&nbsp</span>
+				</div>
+			</section>
+			<section class="infos-block">
+				<div class="info-line">
+					<label class="il-label">请选择加入条件</label>
+					<span class="il-value">&nbsp</span>
+				</div>
+				<div class="info-line">
+					<label class="il-label">请选择圈子地点</label>
+					<span class="il-value">&nbsp</span>
+				</div>
+			</section>
+			<input class="submit-btn" type="button" value="下一步" onclick="stepTo(2)">
+		</div>
+		<!--添加标签-->
+		<div class="step-c" id="step2" style="display: none;">
+			<section class="tags-block">
+				<div class="tb-title">请选择圈子标签（最少1个，最多5个）</div>
+				<div class="tags-container" id="seltags">
+					<span class="tag-itemn selected">老实人老实人</span>
+					<span class="tag-itemn selected">老实人</span>
+					<span class="tag-itemn selected">老实人老实人</span>
+					<span class="tag-itemn selected">老实人</span>
+					<span class="tag-itemn">老实人</span>
+					<span class="tag-itemn">老实人老实人</span>
+					<span class="tag-itemn">老实人</span>
+					<span class="tag-itemn">老实人老实人</span>
+					<span class="tag-itemn">老实人</span>
+					<span class="tag-itemn">老实人</span>
+					<span class="tag-itemn">老实人老实人</span>
+					<span class="tag-itemn">老实人</span>
+					<span class="tag-itemn">老实人老实人</span>
+					<span class="tag-itemn">老实人</span>
+					<span class="tag-itemn">老实人</span>
+					<span class="add-tag" onclick="addtag()">添加标签</span>
+				</div>
+			</section>
+			<input class="submit-btn" type="button" value="下一步" onclick="stepTo(3)">
+		</div>
+		<!--设定圈子设置-->
+		<div class="step-c" id="step3" style="display: none;">
+			<div class="set-line">
+				<div class="sl-left">
+					<p class="sll-top">允许公开该圈子</p>
+					<p class="sll-btm">关闭后，圈子不可以被搜到及推荐</p>
+				</div>
+				<div class="sl-right">
+			        <div class="custswitch">
+			            <input id="checked_1" type="checkbox" class="switch" />
+			            <label for="checked_1"></label>
+			        </div>
+				</div>
+			</div>
+			<div class="set-line">
+				<div class="sl-left">
+					<p class="sll-top">允许圈子内容被分享</p>
+					<p class="sll-btm">关闭后，圈子内容不可以被圈子成员分享</p>
+				</div>
+				<div class="sl-right">
+			        <div class="custswitch">
+			            <input id="checked_2" type="checkbox" class="switch" />
+			            <label for="checked_2"></label>
+			        </div>
+				</div>
+			</div>
+			<div class="set-line mart10">
+				<div class="sl-left">
+					<p class="sll-top">圈子成员显示列表</p>
+					<p class="sll-btm">关闭后，圈子成员列表不可以被圈子成员查看</p>
+				</div>
+				<div class="sl-right">
+			        <div class="custswitch">
+			            <input id="checked_3" type="checkbox" class="switch" />
+			            <label for="checked_3"></label>
+			        </div>
+				</div>
+			</div>
+			<div class="set-line">
+				<div class="sl-left">
+					<p class="sll-top">圈子成员信息公开</p>
+					<p class="sll-btm">关闭后，圈子成员不可以查看其它成员信息</p>
+				</div>
+				<div class="sl-right">
+			        <div class="custswitch">
+			            <input id="checked_4" type="checkbox" class="switch" />
+			            <label for="checked_4"></label>
+			        </div>
+				</div>
+			</div>
+			<p class="btm-tips">您可以前往酒圈APP更改您的圈子设置</p>
+			<input class="submit-btn mart0" type="button" value="下一步" onclick="stepTo(4)">
+		</div>
+		<!--创建成功-->
+		<div class="step-c" id="step4" style="display: none;">
+			<img class="succ-logo" src="../images/3.jpg"/>
+			<p class="succ-info">恭喜你成功创建<span>xxxx惺惺惜惺惺想寻圈子</span></p>
+			<div class="btm-btns">
+				<div class="btm-btn">
+					<div class="operbtn">
+						<i class="ob-icon invite"></i>
+						<span>拉取成员</span>
+					</div>
+				</div>
+				<div class="btm-btn">
+					<div class="operbtn">
+						<i class="ob-icon enter"></i>
+						<span>进入圈子</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/layer_mobile/layer.js"></script>
+	<script src="../js/public.js"></script>
+	<script src="../js/createcircle.js"></script>
+</body>
+</html>

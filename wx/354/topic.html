@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>话题详情</title>
+    
+    <link rel="stylesheet" href="../css/topic.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body>
+	<div class="main-content" style="padding-bottom: 2.13333rem;">
+		<div class="article">
+			<div class="user-info">
+				<div class="headimg-c">
+					<img class="headimg lazy" data-cardid="12172" onclick="jumpCard(this)" src="../images/3.jpg">
+					<img class="v-icon" src="http://jq.flyzz.net/weixin/supply/images/v.png">
+				</div>
+				<div class="u-info">
+					<p class="u-name" data-cardid="12172" onclick="jumpCard(this)">是大是大非</p>
+					<p class="u-time patch-nkname">2017-08-22 12:00 <span class="u-circle">发布于 中国酒业论坛</span></p>
+				</div>
+			</div>
+			<div class="topic-content">
+				<h3>标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</h3>
+				<div class="main">
+					内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				</div>
+				
+				<!--图文贴图片-->
+				<div class="topicimg-c">
+					<img class="lazy" src="../../iosh5/jq.png"/>
+					<!--<img class="lazy" src="../../iosh5/jq.png"/>
+					<img class="lazy" src="../../iosh5/jq.png"/>
+					<img class="lazy" src="../../iosh5/jq.png"/>-->
+				</div>
+				
+				<!--直播链接-->
+				<a class="live-link">直播链接直播链接直播链接直播链接直播链接直播链接直播链接</a>
+			</div>
+			
+			<!--话题转发-->
+			<div class="inner-topic">
+				<div class="it-left">
+					<img src="../images/3.jpg"/>
+				</div>
+				<div class="it-right">
+					<div class="itr-user">名称名称名</div>
+					<!--<div class="itr-title">标题标题标题标题标题标题标题标题标题标题</div>-->
+					<div class="itr-text twoline">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>
+					<div class="itr-circle">中国酒业论坛</div>
+				</div>
+			</div>
+			
+			<!--产品-->
+			<div class="inner-topic">
+				<div class="it-left">
+					<img src="../images/3.jpg"/>
+				</div>
+				<div class="it-right">
+					<div class="product-name">产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</div>
+				</div>
+			</div>
+			
+			<div class="zanimg"></div>
+		</div>
+		
+		<!--评论列表-->
+		<div class="comment-list">
+			<div class="cl-title">
+				<span class="clt-l active">评论13</span>
+				<span class="clt-r">赞3</span>
+			</div>
+			<div class="cl-list">
+				<div class="comment-item">
+					<div class="ci-left">
+						<img class="ci-headimg" src="../images/3.jpg" />
+						<img class="v-icon" src="http://jq.flyzz.net/weixin/supply/images/v.png">
+					</div>
+					<div class="ci-right">
+						<div class="cir-one">
+							<div class="cm-name">评论评论名称评论名称评论名称评论名称名称</div>
+							<div class="cm-zan active"><i class="cmicon-zan"></i>3</div>
+						</div>
+						<div class="cm-content">
+							评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+						</div>
+						<div class="cm-btm">
+							<span>02-23&nbsp;13:45</span>
+							<span class="replynum">20条回复</span>
+						</div>
+					</div>
+				</div>
+				<div class="comment-item">
+					<div class="ci-left">
+						<img class="ci-headimg" src="../images/3.jpg" />
+					</div>
+					<div class="ci-right">
+						<div class="cir-one">
+							<div class="cm-name">评论评论名称评论名称评论名称评论名称名称</div>
+							<div class="cm-zan active"><i class="cmicon-zan"></i>3</div>
+						</div>
+						<div class="cm-content">
+							评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+						</div>
+						<div class="cm-btm">
+							<span>02-23&nbsp;13:45</span>
+							<span class="replynum">20条回复</span>
+						</div>
+					</div>
+				</div>
+				<div class="comment-item">
+					<div class="ci-left">
+						<img class="ci-headimg" src="../images/3.jpg" />
+					</div>
+					<div class="ci-right">
+						<div class="cir-one">
+							<div class="cm-name">评论评论名称评论名称评论名称评论名称名称</div>
+							<div class="cm-zan active"><i class="cmicon-zan"></i>3</div>
+						</div>
+						<div class="cm-content">
+							评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+						</div>
+						<div class="cm-btm">
+							<span>02-23&nbsp;13:45</span>
+							<span class="replynum">20条回复</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--底部栏-->
+		<section class="btm-reply">
+			<input class="reply-input" type="text" placeholder="我来说几句..." disabled="disabled"/>
+			<span class="btm-zan active">
+				<div class="cmicon-zan"></div>
+				点赞
+			</span>
+		</section>
+	</div>
+</body>
+</html>

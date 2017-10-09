@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>酒圈</title>
+		<link rel="stylesheet" href="css/downloadindex.css"/>
+	</head>
+	<body>
+		<header class="top-bar">
+			<img class="tb-logo"  src="images/logo-jq.png"/>
+		</header>
+		<section class="main">
+			<img class="floatapp" src="images/app.png" />
+			<div class="floattag">
+				<p class="line1">酒业社交在酒圈</p>
+				<p class="line2">产品客户全都有</p>
+				<div class="qrcode-container">
+					<img class="app-qrcode" src="images/qrcode.png" />
+					<div class="codelabel">扫码下载酒圈APP</div>
+				</div>
+			</div>
+		</section>
+		<script>
+			var h=window.innerHeight
+				|| document.documentElement.clientHeight
+				|| document.body.clientHeight;
+			if(h>720){
+				console.log(document.querySelectorAll(".main"));
+				document.querySelectorAll(".main")[0].style.height = h+"px";
+			}
+		</script>
+	</body>
+</html>

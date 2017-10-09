@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>产品详情</title>
+    
+    <link rel="stylesheet" href="css/product.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+	    
+	    var phpdata = {
+        	productId: 9, 
+        	token: "eyJpdiI6InkyRmNrbmZrZStzem1BWHpuRVwvbVl3PT0iLCJ2YWx1ZSI6ImdkZGJqbjh2ZklYeU1cL05uZ1wvMVVqTzNobXhkNXlERzc0UVdwQ0VXRWlITTVQaXM5QVZNSVNPUWtwMVpCWEh1eFdcL0FKYWhoSzZOcVBRRjl0REZKVmZRPT0iLCJtYWMiOiI1YmRlYzc3MmI0ZmY5MTQ2YThlNzk0NGFjY2FhNTQ3MDg3ZmJlMjU3YTczZmExZWFhNGU3ZTcyMzdiZTQzYWE4In0="
+        }
+    </script>
+</head>
+<body>
+	<div class="main-content padding-patch">
+		<!--上方信息-->
+		<ul class="pro-list detail-ul">
+			<li class="pro-item" id="topinfo" style="display: none;">
+				<div class="pi-left">
+					<img id="pimg" class="listimg" src="images/placeholder.png" />
+				</div>
+				<div class="pi-center">
+					<div class="c-title">
+						<span class="ct" id="pname"></span>
+					</div>
+					<div class="c-brand" id="pbrand">
+						<span class="i-brand">品牌</span>
+						
+					</div>
+					<div class="c-circle" id="pcircle">
+						<span class="i-circle">圈子</span>
+						
+					</div>
+				</div>
+			</li>
+		</ul>
+		<!--富文本-->
+		<section class="richtext" style="display: none;">
+
+		</section>
+		<!--其他产品-->
+		<section class="other-product" style="display: none;">
+			<div class="op-title">
+				<span class="opt-l">其他产品</span>
+				<span class="opt-r">查看全部</span>
+			</div>
+			<ul class="other-ul">
+				<li>
+					<div class="imgc">
+						<img class="li-img" src="images/3.jpg"/>
+					</div>
+					<p class="ou-title">是的发送到发送到</p>	
+				</li>
+				<li>
+					<div class="imgc">
+						<img class="li-img" src="images/3.jpg"/>
+					</div>
+					<p class="ou-title">是的发送到发送到</p>	
+				</li>
+				<li>
+					<div class="imgc">
+						<img class="li-img" src="images/3.jpg"/>
+					</div>
+					<p class="ou-title">是的发送到发送到</p>	
+				</li>
+			</ul>
+		</section>
+	</div>
+	<section class="bottom-block" id="otherbtm" style="display: none;" >
+		<a class="onlinechat">
+			<span class="icon-call"></span>拨打电话
+		</a>
+		<div class="btn-coll" onclick="collect(this)"></div>
+	</section>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery.lazyload.min.js"></script>
+	<script src="js/layer_mobile/layer.js"></script>
+	<script>
+		//详情接口地址
+		var detailUrl = "http://jq.flyzz.net/m/circleproduct/productDetail";
+		//收藏接口
+		var collUrl = "http://jq.flyzz.net/m/circleproduct/collectProduct";
+		$(function(){
+			$.ajax({
+				type:"get",
+				url:detailUrl,
+				data:{
+					productId:phpdata.productId,
+					token:phpdata.token
+				},
+				dataType:"json",
+				success:function(data){
+					if(data.code == 0){
+						//上方信息栏
+						$("#pimg").attr("src",data.object.banner);
+						$("#pname").html(data.object.title);
+						$("#pbrand").html('<span class="i-brand">品牌</span>'+data.object.brand);
+						$("#pcircle").html('<span class="i-circle">圈子</span>'+data.object.circleName);
+						$("#topinfo").fadeIn();
+						//详情区
+						$(".richtext").html(data.object.content).fadeIn();
+						//其他产品
+						if(data.object.relate_product && data.object.relate_product.length){
+							var listhtml = "";
+							$.each(data.object.relate_product, function(listindex,listitem) {
+								if(listindex >= 3){
+									return false;
+								}
+								listhtml += '<li data-pid="'+listitem._id+'">'+
+												'<div class="imgc">'+
+													'<img class="li-img" src="'+listitem.banner+'"/>'+
+												'</div>'+
+												'<p class="ou-title">'+listitem.title+'</p>'+	
+											'</li>';
+							});
+							$(".other-ul").html(listhtml);
+							$(".other-product").fadeIn();
+						}
+						//底部信息
+						$(".onlinechat").attr("href","tel:"+data.object.contact_user.mobile);
+						if(data.object.is_collect){
+							$(".btn-coll").addClass("class");
+						}
+						$("#otherbtm").fadeIn();
+						
+					}else{
+						layer.open({
+							content: data.msg || "请求数据失败"
+							,skin: 'msg'
+							,time: 2 //2秒后自动关闭
+						});
+					}
+				},
+				error:function(){
+					alert('网络错误!');
+				}
+			});
+		});
+		
+		function collect(th){
+			$.ajax({
+				type:"post",
+				url:collUrl,
+				data:{
+					productId:phpdata.productId,
+					token: phpdata.token
+				},
+				dataType:"json",
+				success:function(data){
+					if(data.code == 0){
+						$(th).toggleClass("active");
+						var msg = "成功";
+						if(data.object.act == "collect"){
+							msg = "收藏成功";
+						}else if(data.object.act == "cancel"){
+							msg = "取消收藏成功";
+						}
+						layer.open({
+							content: msg
+							,skin: 'msg'
+							,time: 2 //2秒后自动关闭
+						});
+					}else{
+						layer.open({
+							content: data.msg || "请求数据失败"
+							,skin: 'msg'
+							,time: 2 //2秒后自动关闭
+						});
+					}
+				},
+				error:function(){
+					alert('网络错误!');
+				}
+			});
+		}
+	</script>
+</body>
+</html>

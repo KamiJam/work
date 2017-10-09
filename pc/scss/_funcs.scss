@@ -1,0 +1,6 @@
+@charset "utf-8";
+@import "constants";
+@function prem($px){
+    //$px为需要转换的字号
+    @return $px / $rem * 1rem;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>账号密码登录</title>
+    
+    <link rel="stylesheet" href="css/login.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body style="background-color: white;">
+	<div class="main-content">
+		<img class="top-logo" src="images/login/toplogo.png"/>
+		<section class="input-group nm">
+			<div class="input-line">
+				<span class="inputicon mobile"></span>
+				<input type="text" placeholder="请输入手机号码" maxlength="11" oninput="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
+				<span class="clear-icon"></span>
+			</div>
+			<div class="input-line">
+				<span class="inputicon pass"></span>
+				<input type="password" placeholder="请输入密码"  />
+				<span class="clear-icon"></span>
+			</div>
+		</section>
+		<input class="submit-btn" type="button" value="登录">
+		<a class="normallogin color999">忘记密码？</a>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$(".input-line input[type='text'],.input-line input[type='password']").bind("focus input",function(){
+				if($(this).val()){
+					$(this).next(".clear-icon").show();
+				}else{
+					$(this).next(".clear-icon").hide();
+				}
+			});
+			
+			$(".clear-icon").click(function(){
+				$(this).prev("input").val("").focus();
+			});
+			
+//			$(".input-line input[type='text'],.input-line input[type='password']").focus(function(){
+//				setTimeout(function(){
+//					document.querySelector(".submit-btn").scrollIntoViewIfNeeded(false); 
+//				},500);
+//				 
+//			});
+		});
+	</script>
+</body>
+</html>

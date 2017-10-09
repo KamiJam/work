@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>产品列表</title>
+    
+    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/dropload.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+	    
+	    
+	    var phpdata = {
+        	circleId: 276, 
+        	topicId: "", 
+        	token: "eyJpdiI6InkyRmNrbmZrZStzem1BWHpuRVwvbVl3PT0iLCJ2YWx1ZSI6ImdkZGJqbjh2ZklYeU1cL05uZ1wvMVVqTzNobXhkNXlERzc0UVdwQ0VXRWlITTVQaXM5QVZNSVNPUWtwMVpCWEh1eFdcL0FKYWhoSzZOcVBRRjl0REZKVmZRPT0iLCJtYWMiOiI1YmRlYzc3MmI0ZmY5MTQ2YThlNzk0NGFjY2FhNTQ3MDg3ZmJlMjU3YTczZmExZWFhNGU3ZTcyMzdiZTQzYWE4In0="
+        }
+	        
+    </script>
+</head>
+<body>
+	<div class="main-content">
+		<ul class="pro-list infinitelist">
+		</ul>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/dropload.min.js"></script>
+	<script src="js/jquery.lazyload.min.js"></script>
+	<script>
+		//列表接口地址
+		var listUrl = "http://jq.flyzz.net/m/circleproduct/productList";
+		//产品详情地址
+		var detailUrl = "";
+		$(function(){
+			// 页码
+		    var page = 0;
+			
+			
+		    $('.main-content').dropload({
+		        scrollArea : window,
+		        loadDownFn : function(me){
+		            page++;
+		            // 拼接HTML
+		            var result = '';
+		            $.ajax({
+		                type: 'GET',
+		                url: listUrl,
+		                data:{
+		                	circleId: phpdata.circleId,
+		                	topicId: phpdata.topicId,
+		                	page: page,
+		                	token: phpdata.token
+		                },
+		                dataType: 'json',
+		                success: function(data){
+		                	console.log(data);
+		                	if(data.code == 0){
+		                		if(data.list && data.list.length){
+		                			$.each(data.list, function(listindex,listitem) {
+		                				var tophtml = '';
+		                				if(listitem.istop){
+		                					tophtml = '<span class="top-icon">置顶</span>';
+		                				}
+		                				result +=   '<li class="pro-item" onclick="jumpDetail(this)" data-pid="'+listitem._id+'">'+
+														'<div class="pi-left">'+
+															'<img class="listimg lazy" src="images/placeholder.png" data-original="'+listitem.banner+'" />'+
+														'</div>'+
+														'<div class="pi-center">'+
+															'<div class="c-title">'+
+																tophtml+
+																'<span class="ct">'+listitem.title+'</span>'+
+															'</div>'+
+															'<div class="c-brand">'+
+																'<span class="i-brand">品牌</span>'+
+																listitem.brand+
+															'</div>'+
+															'<div class="c-circle">'+
+																'<span class="i-circle">圈子</span>'+
+																listitem.circleName+
+															'</div>'+
+														'</div>'+
+													'</li>';
+		                			});
+		                		}else{
+		                			//锁定
+		                       		me.lock();
+			                        // 无数据
+			                        me.noData();
+		                		}
+		                	}else{
+//		                		alert("请求数据失败");
+		                	}
+		                    setTimeout(function(){
+		                        // 插入数据到页面，放到最后面
+		                        $('.infinitelist').append(result);
+		                        $("img.lazy").lazyload();
+		                        // 每次数据插入，必须重置
+		                        me.resetload();
+		                    },0);
+		                },
+		                error: function(xhr, type){
+//		                    alert('网络错误!');
+		                    // 即使加载出错，也得重置
+		                    me.resetload();
+		                }
+		            });
+		        }
+		    });
+		    
+		    
+		    
+
+		});
+		
+		function jumpDetail(th){
+			if(!isNaN($(th).attr("data-pid"))){
+		    	window.location.href = detailUrl + "?id=" + $(th).attr("data-pid");
+		    }
+		}
+	</script>
+</body>
+</html>

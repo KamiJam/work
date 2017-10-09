@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>话题详情</title>
+     <!--<link rel="stylesheet" href="../css/activity.css">-->
+    <link rel="stylesheet" href="../css/topic.css">
+   
+
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body>
+		<div class="post" style="padding-bottom: 2.55rem;">
+			<div class="user-info pd10">
+				<div class="headimg-c">
+					<img class="headimg lazy" data-cardid="12172" onclick="jumpCard(this)" src="../images/3.jpg">
+					<img class="v-icon" src="http://jq.flyzz.net/weixin/supply/images/v.png">
+				</div>
+				<div class="u-info">
+					<p class="u-name" data-cardid="12172" onclick="jumpCard(this)">是大是大非</p>
+					<p class="u-time patch-nkname">2017-08-22 12:00 <span class="u-circle">发布于 中国酒业论坛</span></p>
+				</div>
+			</div>
+			<div class="activity-indeximg-c">
+				<img class="activity-indeximg" src="../images/placeholder.png" />
+			</div>
+			
+			<div class="activity-title">
+				标题标题标题标题标题标题标题标题标题标题标题标题标题
+			</div>
+			<div class="infoD">
+				<div class="imgicon"><img src="start_time.png"></div>
+				<div class="contentInfo" id="startDate">8月23日 12:00 ~ 8月23日 12:00</div>
+			</div>
+			<div class="infoD">
+				<div class="imgicon"><img src="ac_address.png"></div>
+
+				<div class="contentInfo" id="ac_addr">地址地址地址地址地址地址地址地址地址地址地址地址地址地址</div>
+			</div>
+			<div class="infoD">
+				<div class="imgicon"><img src="ac_mobile.png"></div>
+
+				<a class="contentInfo ac_mobile" >12345678901</a>
+			</div>
+			<div class="infoD">
+				<div class="imgicon"><img src="ac_master.png"></div>
+				<div class="contentInfo" id="ac_master">公司名称公司名称公司名称公司名称公司名称</div>
+			</div>
+
+				<div class="company-info">
+					公司信息公司信息公司信息公司信息公司信息公司信息公司信息公司信息
+				</div>
+
+				<div class="infoT" id="ac_member">
+
+					<div class="titleInfo" id="id_apply_num">已报名34</div>
+
+					<div class="viewAll">查看全部<i class="more-icon"></i></div>
+
+				</div>
+
+				<div class="imgdiv">
+
+					<span class="img-head">
+						<div class="imgcontainer">
+							<img  class="head-img"  src="../images/placeholder.png" alt="">
+							<img class="vip-icon" src="../images/v.png" alt="" style="">
+						</div>
+						<span></span>
+					</span>
+					<span class="img-head">
+						<div class="imgcontainer">
+							<img  class="head-img"  src="../images/placeholder.png" alt="">
+							<img class="vip-icon" src="../images/v.png" alt="" style="display: none;">
+						</div>
+						<span></span>
+					</span>
+					<span class="img-head">
+						<div class="imgcontainer">
+							<img  class="head-img"  src="../images/placeholder.png" alt="">
+							<img class="vip-icon" src="../images/v.png" alt="" style="display: none;">
+						</div>
+						<span></span>
+					</span>
+					<span class="img-head">
+						<div class="imgcontainer">
+							<img  class="head-img"  src="../images/placeholder.png" alt="">
+							<img class="vip-icon" src="../images/v.png" alt="" style="display: none;">
+						</div>
+						<span></span>
+					</span>
+					<span class="img-head">
+						<div class="imgcontainer">
+							<img  class="head-img"  src="../images/placeholder.png" alt="">
+							<img class="vip-icon" src="../images/v.png" alt="" style="display: none;">
+						</div>
+						<span></span>
+					</span>
+					
+
+				</div>
+				
+				
+				<div class="infoT" id="ac_block">
+
+					<div class="titleInfo">活动公告</div>
+					<!--<div class="viewAll">查看全部</div>-->
+				</div>
+
+				<div class="noticeC" id="ac_block_content">
+					活动公告活动公告活动公告活动公告活动公告活动公告活动公告活动公告活动公告
+				</div>
+				<!--<div class="noticeT" id="ac_block_time">
+					
+				</div>-->
+				
+				<!--直播-->
+				<div class="infoT" id="ac_live">
+					<div class="titleInfo">活动直播</div>
+				</div>
+				<div class="infoAlive ov-h">
+					<div class="liveimg-c">
+						<img  class="liveimg" src="../images/placeholder.png"/>
+						<img  class="liveicon2" src="live2.png"/>
+					</div>
+					<div class="livetitle">直播标题直播标题直播标题直播标题直播标题直播标题直播标题直播标题直播标题直播标题直播标题直播标题直播标题直播标题直播标题直播标题</div>
+					<div class="fr" id="enterlive">进入直播<i class="more-icon"></i></div>
+				</div>
+				<div style="height: 10px;background-color: white;margin-bottom: 10px;"></div>
+				<!--<div class="dline"></div>-->
+				<!--活动详情-->
+				<div class="infoDetail">
+					<div class="tName">活动详情</div>
+					<!--<div class="flag"></div>-->
+				</div>
+				<div class="noticeC" >
+					活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情活动详情
+				</div>
+
+				<!--<div class="bbbottom">
+					<div class="block-btn">
+						<span h class="btn-apply">我要报名</span>
+						<div class="divop">
+
+							<img id="btn-phone" src="电话咨询@3x.png">&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<img id="btn-share" src="分享活动@3x.png">
+						</div>
+
+					</div>
+
+				</div>-->
+				
+				<!--底部按键-->
+				<div class="bottom-btns">
+					
+					<div class="btn-apply">
+						我要报名
+						<p class="ba-tips">(一小时后开始报名)</p>
+					</div>
+					<div class="bb-btn btn-zan"></div>
+			
+				</div>
+		</div>
+
+		
+	</body>
+
+</html>

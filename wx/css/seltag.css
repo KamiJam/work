@@ -1,0 +1,176 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "微软雅黑","黑体","宋体"; }
+
+html {
+  font-size: 10px; }
+
+body {
+  font-size: 0.875rem;
+  font-family: sans-serif;
+  /* background: #d0d0d0;*/
+  -webkit-tap-highlight-color: transparent; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+strong {
+  font-weight: bold; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+img {
+  border: 0;
+  max-width: 100%; }
+
+a {
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none; }
+
+input[type=button], input[type=submit], input[type=file], button {
+  cursor: pointer;
+  -webkit-appearance: none; }
+
+input {
+  -webkit-tap-highlight-color: transparent; }
+
+a, button, input, optgroup, select, textarea {
+  -webkit-tap-highlight-color: transparent; }
+
+* {
+  -webkit-touch-callout: none;
+  /*系统默认菜单被禁用*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  -moz-user-select: none;
+  /*火狐*/
+  -ms-user-select: none;
+  /*IE10*/
+  user-select: none; }
+
+input, textarea {
+  -webkit-user-select: auto;
+  /*webkit浏览器*/
+  margin: 0px;
+  padding: 0px;
+  outline: none; }
+
+body {
+  background-color: #eeeef3; }
+
+a {
+  text-decoration: none;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent; }
+
+.tags-block {
+  padding: 15px;
+  margin: 1.28rem 10px 0 10px;
+  background-color: white; }
+
+.tb-title {
+  font-size: 14px;
+  color: #000; }
+
+.tags-container {
+  font-size: 0;
+  padding-top: 10px; }
+  .tags-container .tag-item {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 22%;
+    margin: 0 3% 0.42667rem 0;
+    line-height: 1.06667rem;
+    font-size: 12px;
+    color: white;
+    text-align: center;
+    background-color: #0ac48f;
+    border-radius: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  .tags-container .add-tag {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 22%;
+    margin: 0 3% 0.42667rem 0;
+    line-height: 1.06667rem;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    background-color: #E9EAEA;
+    border-radius: 3px;
+    overflow: hidden; }
+  .tags-container .tag-itemn {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 22%;
+    margin: 0 3% 0.42667rem 0;
+    line-height: 1.06667rem;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid  #C8C8C9;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+    .tags-container .tag-itemn.selected {
+      border-color: #0ac48f;
+      color: white;
+      background-color: #0ac48f; }
+
+.notags {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.49333rem; }
+
+.submit-btn {
+  display: block;
+  width: 13.86667rem;
+  line-height: 1.92rem;
+  border-radius: 2px;
+  color: #fff;
+  text-align: center;
+  border: none;
+  background-color: #0ac48f;
+  font-size: 0.68267rem;
+  margin: 1.70667rem auto 0 auto; }
+
+.layer-input {
+  width: 100%;
+  border: 0;
+  resize: none; }
+
+.layui-m-layerchild:not(.layui-m-layer-msg) .layui-m-layercont {
+  padding: 20px 10px !important; }
+
+.layui-m-layerbtn span[yes] {
+  color: #0ac48f !important; }
+
+/*# sourceMappingURL=seltag.css.map */

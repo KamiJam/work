@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>标题</title>
+    
+    <link rel="stylesheet" href="../css/coverpinfo.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body>
+	<div style="height: 1000px;"></div>
+
+	<script type="text/template" id="pinfo">
+		<div class="pinfo-page">
+			<p class="pp-tipline">您暂未完善信息，请完善</p>
+			<div class="pp-box">
+				<div class="pp-line">
+					<span class="ppl-l">
+						<i class="required-tag"></i>姓名
+					</span>
+					<input class="ppl-rinput" type="text" placeholder="请输入用户姓名"/>
+				</div>
+				<div class="pp-line">
+					<span class="ppl-l">
+						<i class="required-tag"></i>公司
+					</span>
+					<input class="ppl-rinput" type="text" placeholder="请输入公司信息"/>
+				</div>
+				<div class="pp-line">
+					<span class="ppl-l">
+						<i class="required-tag"></i>职位
+					</span>
+					<input class="ppl-rinput" type="text" placeholder="请输入职位信息"/>
+				</div>
+			</div>
+			<p class="pp-tipline"><i class="required-tag"></i>请验证手机号码</p>
+			<div class="pp-box pd5">
+				<div class="pp-line">
+					<span class="ppl-l ppll-br">
+						+86
+					</span>
+					<span class="ppl-split"></span>
+					<input class="ppl-linput" type="text" placeholder="请输入手机号码" maxlength="11"/>
+					<input class="ppl-btn" type="button" value="发送验证码" onclick="getCode(this)"/>
+				</div>
+				<div class="pp-line">
+					<span class="ppl-l">
+						验证码
+					</span>
+					<input class="ppl-linput" type="text" placeholder="请输入验证码" maxlength="8"/>
+				</div>
+			</div>
+			
+			<div class="pp-btns">
+				<div class="pp-btn ppb-cancel">
+					取消
+				</div>
+				<div class="pp-btn ppb-confirm">
+					确认
+				</div>
+			</div>
+		</div>
+	</script>
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/layer_mobile/layer.js"></script>
+	<script>
+
+		layer.open({
+		  type: 1
+		  ,content: document.getElementById("pinfo").innerHTML
+		  ,anim: 'up'
+		  ,style: 'position:fixed; left:0; top:0; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+		  ,end:function(){
+		  	ModalHelper.beforeClose();
+		  }
+		});
+		$(".layui-m-layerchild").css("background-color","#eeeef3");
+		$(".ppl-linput").focus(function(){
+			var _this = this;
+			setTimeout(function(){
+				_this.scrollIntoViewIfNeeded(true);
+			},500);
+		});
+		function getCode(th){
+			countdown(th);
+		}
+		
+		//倒计时
+		function countdown(th){
+			var secs = 40;
+			$(th).attr("disabled","true");
+			var timer = setInterval(function(){
+				if(secs<0){
+					$(th).removeAttr("disabled");
+					clearInterval(timer);
+					$(th).val("发送验证码");
+					return;
+				}
+				$(th).val("重新获取("+secs+")");
+				secs--;
+			},1000);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>酒圈</title>
+    
+    <link rel="stylesheet" href="../css/homepage.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+    <style>
+    	.twoline{
+    		max-height: 8.434rem;
+    	}
+    </style>
+</head>
+<body>
+	<div class="main-content pb213">
+		<!--菜单-->
+		<div class="top-menus twoline" style="overflow: hidden;">
+			<a class="tm-item">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">其他圈子</span>
+			</a>
+			<a class="tm-item more">
+				<img class="tmi-icon" src="../images/home/menu-more.png"/>
+				<span class="tmi-name">更多</span>
+			</a>
+			<a class="tm-item" style="">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item" style="">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item" style="">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item" style="display: none;">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item" style="display: none;">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+			<a class="tm-item" style="display: none;">
+				<img class="tmi-icon" src="../images/home/menu-default.png"/>
+				<span class="tmi-name">公司圈</span>
+			</a>
+		</div>
+		
+		<!--列表-->
+		<section class="" style="height: 1000px;">
+			
+		</section>
+				
+		<!--更多按钮-->
+		<img class="fixed-tag" id="moreaction" src="../images/home/moreoperation.png"/>
+		<section class="memu-page" style="display: none;">
+			<div class="top-menus action-menu">
+				<a class="tm-item">
+					<img class="tmi-icon" src="../images/home/oper-topic.png"/>
+					<span class="tmi-name">发话题</span>
+				</a>
+				<a class="tm-item">
+					<img class="tmi-icon" src="../images/home/oper-ask.png"/>
+					<span class="tmi-name">发求购</span>
+				</a>
+				<a class="tm-item">
+					<img class="tmi-icon" src="../images/home/oper-supply.png"/>
+					<span class="tmi-name">发供应</span>
+				</a>
+				<a class="tm-item">
+					<img class="tmi-icon" src="../images/home/oper-circle.png"/>
+					<span class="tmi-name">建圈子</span>
+				</a>
+			</div>
+			<div class="split-line"></div>
+			<img class="oper-close" src="../images/home/operpage-close.png"/>
+		</section>
+		
+		<!--底部导航-->
+		<section class="fixed-btm">
+			<a class="fb-item jq active">酒圈</a>
+			<a class="fb-item zj">找酒</a>
+			<a class="fb-item me">我的</a>
+		</section>
+	</div>
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$(".top-menus").on('click','.more',function(){
+				$(this).find(".tmi-icon").toggleClass('trans180');
+				$(".top-menus").toggleClass("twoline");		
+			});
+			$("#moreaction").on('click',function(){
+				$(".memu-page").fadeIn();	
+			});
+			$(".memu-page").on('click','.oper-close',function(){
+				$(".memu-page").fadeOut();		
+			});
+		});
+	</script>
+</body>
+</html>

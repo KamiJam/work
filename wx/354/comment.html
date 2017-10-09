@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>评论</title>
+    
+    <link rel="stylesheet" href="../css/topic.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body>
+	<div class="main-content" style="padding-bottom: 2.13333rem;">
+		<!--评论列表-->
+		<div class="comment-list nomart bgpatch">
+			<div class="comment-item com-main">
+				<div class="ci-left">
+					<img class="ci-headimg" src="../images/3.jpg" />
+					<img class="v-icon" src="http://jq.flyzz.net/weixin/supply/images/v.png">
+				</div>
+				<div class="ci-right">
+					<div class="cir-one">
+						<div class="cm-name">评论评论名称评论名称评论名称评论名称名称</div>
+						
+					</div>
+					<div class="cm-content">
+						评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+					</div>
+					<div class="cm-btm">
+						<span>02-23&nbsp;13:45</span>
+					</div>
+					<div class="cm-btm zanerlist" id="zanerlist">	
+						<span class="replynum">
+							<div class="zaner">
+								<img class="z-headimg" src="../images/3.jpg"/>
+								<img class="z-vicon" src="http://jq.flyzz.net/weixin/supply/images/v.png"/>
+							</div>
+							<div class="zaner">
+								<img class="z-headimg" src="../images/3.jpg"/>
+								<img class="z-vicon" src="http://jq.flyzz.net/weixin/supply/images/v.png"/>
+							</div>
+							<div class="zaner">
+								<img class="z-headimg" src="../images/3.jpg"/>
+								<img class="z-vicon" src="http://jq.flyzz.net/weixin/supply/images/v.png"/>
+							</div>
+							<div class="zaner">
+								<img class="z-headimg" src="../images/3.jpg"/>
+								<img class="z-vicon" src="http://jq.flyzz.net/weixin/supply/images/v.png"/>
+							</div>
+							<div class="zaner">
+								<img class="z-headimg" src="../images/3.jpg"/>
+								<img class="z-vicon" src="http://jq.flyzz.net/weixin/supply/images/v.png"/>
+							</div>
+							等12人点赞
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="cl-list padpatch borderpatch">
+				<div class="comment-item">
+					<div class="ci-left">
+						<img class="ci-headimg" src="../images/3.jpg" />
+						<img class="v-icon" src="http://jq.flyzz.net/weixin/supply/images/v.png">
+					</div>
+					<div class="ci-right">
+						<div class="cir-one">
+							<div class="cm-name">评论评论名称评论名称评论名称评论名称名称</div>
+							
+						</div>
+						<div class="cm-content">
+							评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+						</div>
+						<div class="cm-btm">
+							<span>02-23&nbsp;13:45</span>
+							<div class="cm-reply"><i class="cmicon-reply"></i>回复</div>
+							<div class="cm-zan active"><i class="cmicon-zan"></i>3</div>
+						</div>
+					</div>
+				</div>
+				<div class="comment-item">
+					<div class="ci-left">
+						<img class="ci-headimg" src="../images/3.jpg" />
+					</div>
+					<div class="ci-right">
+						<div class="cir-one">
+							<div class="cm-name">评论评论名称评论名称评论名称评论名称名称</div>
+							
+						</div>
+						<div class="cm-content">
+							评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+						</div>
+						<div class="cm-btm">
+							<span>02-23&nbsp;13:45</span>
+							<div class="cm-reply"><i class="cmicon-reply"></i>回复</div>
+							<div class="cm-zan active"><i class="cmicon-zan"></i>3</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!--底部栏-->
+		<section class="btm-reply">
+			<input class="reply-input" type="text" placeholder="我来说几句..." disabled="disabled"/>
+			<span class="btm-zan active">
+				<div class="cmicon-zan"></div>
+				点赞
+			</span>
+		</section>
+	</div>
+</body>
+</html>

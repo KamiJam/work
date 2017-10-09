@@ -1,0 +1,148 @@
+@charset "utf-8";
+@import "../reset";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+
+.top-logo{
+    display: block;
+    margin: prem(100) auto;
+    width: prem(300);
+}
+.input-group{
+    background-color: white;
+}
+.input-line{
+    position: relative;
+    @include flexbox;
+    height: prem(100);
+    align-items: center;
+    font-size: prem(32);
+    >label{
+//      padding-left: 10px;
+        width: prem(120);
+        line-height: prem(60);
+        text-align: center;
+        &.mobilelable{
+            box-sizing: border-box;
+            border-right: 1px solid #E9EAEA;
+        } 
+    }
+    >input{
+        border: none;
+        width: prem(380);
+        padding-left: 15px;
+        font-size: prem(32);
+//      @include flexitem;
+    }
+    .clear-icon{
+        display: none;
+        position: absolute;
+        left: prem(450);
+        top: prem(50-20);
+        background: url(../images/login/clear.png) no-repeat;
+        width: prem(40);
+        height: prem(40);
+//      margin: 0 prem(10);
+        background-size: 100% 100%;
+    }
+    .codebtn{
+        padding: 0;
+        margin-right: 10px;
+        text-align: center;
+        width: prem(180);
+        word-break: keep-all;
+        background-color: white;
+        height: prem(60);
+        line-height: prem(60);
+        color: #0ac48f;
+        border: 1px solid #0ac48f;
+        border-radius: 3px;
+        &:disabled{
+            border-color: #999;
+            color: #999;
+        }
+    }
+    &.btmline:after{
+        content: "";
+        border-bottom: 2px solid #E9EAEA;
+        transform: scaleY(0.5);
+        position: absolute;
+        bottom: -2px;
+        left: 10px;
+        right: 10px;
+    }
+    &.btmall:after{
+        content: "";
+        border-bottom: 2px solid #E9EAEA;
+        transform: scaleY(0.5);
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+    }
+}
+
+.login-tips{
+    margin-top: 4px;
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+}
+.submit-btn{
+    @include blockbutton(prem(700),prem(90),#0ac48f);
+    font-size: prem(32);
+    margin: prem(90) auto 0 auto;
+}
+.normallogin{
+    margin: 8px 15px 0 0;
+    color: #333;
+    font-size: 14px;
+    float: right;
+}
+.protocol{
+//  display: none;
+    width: 100%;
+    position: absolute;
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    bottom: prem(50);
+    a{
+        color: #4775a3;
+    }
+}
+
+.inputicon{
+    display: inline-block;
+    width: prem(55);
+    height: prem(55);
+    margin: 0 5px 0 10px;
+    &.mobile{
+        background: url(../images/login/mob.png) no-repeat;
+        background-size: contain;
+    }
+    &.pass{
+        background: url(../images/login/pass.png) no-repeat;
+        background-size: contain;
+    }
+}
+
+.nm .input-line{
+    input{
+        width: 100%;
+        padding-left: 0;
+        margin-right: prem(25);
+        border-bottom: 1px solid #E9EAEA;
+        line-height: prem(50);
+        font-size: prem(32);
+    }
+    .clear-icon{
+        right: prem(25);
+        left: initial;
+        top: initial;
+    }
+}
+.color999{
+    color: #999;
+}

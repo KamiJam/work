@@ -1,0 +1,8 @@
+.post .post-top img {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 2rem;
+    position: absolute;
+    top: 0.4rem;
+    left: 0.4rem;
+}

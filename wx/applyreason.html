@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>标题</title>
+    
+    
+    <style>
+    	.top-tips{
+    		font-size: 14px;
+    		color: #999;
+    		margin-left: 5px;
+    	}
+    	.reason-box{
+    		
+    	}
+    	.reason-box textarea{
+    		display:block;
+    		margin: 10px auto;
+    		border: 1px solid #ccc;
+    		width: 94%;
+    		resize: none;
+    		height: 150px;
+    	}
+    	.btn-submit{
+    		margin: 0 auto;
+    		display: block;
+    		border: none;
+    		background: url(images/join-bg.png) no-repeat center center/contain;
+    		color: white;
+    		width: 5.09867rem;
+	    	height: 1.64267rem;
+	        text-align: center;
+	    	font-size: 0.72533rem;
+    	}
+    </style>
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body>
+	<div class="main-content">
+		<form>
+			<div class="top-tips">请输入申请加入理由:</div>
+			<div class="reason-box">
+				<textarea></textarea>
+			</div>
+			<button class="btn-submit" type="submit">提交</button>
+		</form>
+	</div>
+</body>
+</html>

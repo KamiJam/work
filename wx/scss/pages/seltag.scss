@@ -1,0 +1,87 @@
+@charset "utf-8";
+@import "../reset";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+
+.tags-block{
+    padding: 15px;
+    margin: prem(60) 10px 0 10px;
+    background-color: white;
+}
+.tb-title{
+    font-size: 14px;
+    color: #000;
+}
+.tags-container{
+    font-size: 0;
+    padding-top: 10px;
+    .tag-item{
+        box-sizing: border-box;
+        display: inline-block;
+        width: 22%;
+        margin: 0 3% prem(20) 0;
+        line-height: prem(50);
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        background-color: #0ac48f;
+        border-radius: 3px;
+        @include ellipsis;
+    }
+    .add-tag{
+        box-sizing: border-box;
+        display: inline-block;
+        width: 22%;
+        margin: 0 3% prem(20) 0;
+        line-height: prem(50);
+        font-size: 12px;
+        color: #666;
+        text-align: center;
+        background-color: #E9EAEA;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    .tag-itemn{
+        box-sizing: border-box;
+        display: inline-block;
+        width: 22%;
+        margin: 0 3% prem(20) 0;
+        line-height: prem(50);
+        font-size: 12px;
+        color: #666;
+        text-align: center;
+        background-color: white;
+        border-radius: 3px;
+        border: 1px solid  #C8C8C9;
+        @include ellipsis;
+        &.selected{
+            border-color: #0ac48f;
+            color: white;
+            background-color: #0ac48f;
+        }
+    }
+    
+}
+.notags{
+    color: #666;
+    font-size: 14px;
+    line-height: prem(70);
+    
+}
+.submit-btn{
+    @include blockbutton(prem(650),prem(90),#0ac48f);
+    font-size: prem(32);
+    margin: prem(80) auto 0 auto;
+}
+.layer-input{
+    width: 100%;
+    border: 0;
+    resize: none;
+}
+.layui-m-layerchild:not(.layui-m-layer-msg) .layui-m-layercont{
+    padding: 20px 10px !important;
+}
+.layui-m-layerbtn span[yes]{
+    color: #0ac48f !important;
+}

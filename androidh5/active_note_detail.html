@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title>活动帖</title>
+
+	<!--
+        width=device-width：让文档的宽度与设备的宽度保持一致，且文档最大的宽度比例是1.0
+        initial-scale=1：初始的缩放比例
+        maximum-scale=1：允许用户缩放到的最大比例（对应还有个minimum-scale）
+        user-scalable=no：不允许用户手动缩放
+    -->
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+	<!--
+        telephone=no：禁止自动将页面中的数字识别为电话号码
+        address=no：禁止自动地址转为链接
+        email=no：禁止自动将email转为链接
+    -->
+	<meta name="format-detection" content="telephone=no,address=no,email=no" />
+	<!-- 强制将页面布局为一列 -->
+	<meta name="mobileOptimized" content="width" />
+	<!-- 申明页面是移动友好的 -->
+	<meta name="handheldFriendly" content="true" />
+	<!-- 允许用户使用全屏模式浏览 -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- 当用户使用全屏浏览时，将状态条设置为黑色 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+	<link rel="stylesheet" type="text/css" href="css/activity.css" />
+
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/dateutil.js"></script>
+	<style type="text/css">
+		img{
+			max-width: 100%;
+		}
+		#richItem{
+			overflow: hidden;
+			color: #666;
+		}
+		#richItem *{
+			max-width: 100%;
+		}
+		#richItem table{
+			max-width: 100% !important;
+		}
+	</style>
+
+
+</head>
+<body>
+<!--<section class="b-top">
+	<div class="post" style="width:100%">
+
+		<div class="activity-content" id="html_content" style="width:100%">
+
+		</div>
+	</div>
+</section>-->
+	<section class="b-top" id="detail">
+		<div class="post">
+			<div style="" id="ac_img"><img style="width:100%" id="imgurl" src="images/jq.png" /> </div>
+
+			<div id="ac_title"></div>
+			<div class="infoD">
+				<div class="imgicon"><img src="images/start_time.png"></div>
+				<div class="contentInfo" id="startDate"></div>
+			</div>
+			<div class="infoD">
+				<div class="imgicon"><img src="images/ac_address.png"></div>
+
+				<div class="contentInfo" id="ac_addr"></div>
+			</div>
+			<div class="infoD">
+				<div class="imgicon"><img src="images/ac_mobile.png"></div>
+
+				<a class="contentInfo" id="ac_mobile"></a>
+			</div>
+			<div class="infoD">
+				<div class="imgicon"><img src="images/ac_master.png"></div>
+				<div class="contentInfo" id="ac_master"></div>
+			</div>
+
+			<div id="ac_master_info"></div>
+
+			<div class="infoT" id="ac_member">
+
+				<div class="titleInfo" id="id_apply_num">已报名</div>
+
+				<div class="viewAll">查看全部<i class="more-icon"></i></div>
+
+			</div>
+
+			<div id="imgdiv" class="imgdiv1">
+
+				<span class="img-head">
+					<div class="imgcontainer">
+						<img  class="head-img" id="mpic1" src="images/jq.png" alt="">
+						<img class="vip-icon" src="images/v.png" alt="" style="display: none;">
+					</div>
+					<span></span>
+				</span>
+				<span class="img-head">
+					<div class="imgcontainer">
+						<img  class="head-img" id="mpic2" src="images/jq.png" alt="">
+						<img class="vip-icon" src="images/v.png" alt="" style="display: none;">
+					</div>
+					<span></span>
+				</span>
+				<span class="img-head">
+					<div class="imgcontainer">
+						<img  class="head-img" id="mpic3" src="images/jq.png" alt="">
+						<img class="vip-icon" src="images/v.png" alt="" style="display: none;">
+					</div>
+					<span></span>
+				</span>
+				<span class="img-head">
+					<div class="imgcontainer">
+						<img  class="head-img" id="mpic4" src="images/jq.png" alt="">
+						<img class="vip-icon" src="images/v.png" alt="" style="display: none;">
+					</div>
+					<span></span>
+				</span>
+				<span class="img-head">
+					<div class="imgcontainer">
+						<img  class="head-img" id="mpic5" src="images/jq.png" alt="">
+						<img class="vip-icon" src="images/v.png" alt="" style="display: none;">
+					</div>
+					<span></span>
+				</span>
+				<!--<span class="img-head"><img class="head-img" id="mpic3" src="images/jq.png" alt="">诸葛明</span>
+				<span class="img-head"><img class="head-img" id="mpic4" src="images/jq.png" alt="">诸葛孔明</span>
+				<span class="img-head"><img class="head-img" id="mpic5" src="images/jq.png" alt="">诸葛孔明</span>-->
+
+			</div>
+			
+			
+			<div class="infoT" id="ac_block">
+
+				<div class="titleInfo">活动公告</div>
+				<!--<div class="viewAll">查看全部</div>-->
+			</div>
+
+			<div class="noticeC" id="ac_block_content">
+				
+			</div>
+			<!--<div class="noticeT" id="ac_block_time">
+				
+			</div>-->
+			
+			<!--直播-->
+			<div class="infoT" id="ac_live">
+				<div class="titleInfo">活动直播</div>
+			</div>
+			<div class="infoAlive ov-h">
+				<div class="liveimg-c">
+					<img  class="liveimg" src="images/jq.png"/>
+					<img  class="liveicon" src="images/live2.png"/>
+				</div>
+				<div class="livetitle"></div>
+				<div class="fr" id="enterlive">进入直播<i class="more-icon"></i></div>
+			</div>
+			<div style="height: 10px;background-color: white;margin-bottom: 10px;"></div>
+			<!--<div class="dline"></div>-->
+			<!--活动详情-->
+			<div class="infoDetail">
+				<div class="tName">活动详情</div>
+				<!--<div class="flag"></div>-->
+			</div>
+			<div class="acrichtext" id="richItem">
+				
+			</div>
+
+			<!--<div class="bbbottom">
+				<div class="block-btn">
+					<span h class="btn-apply">我要报名</span>
+					<div class="divop">
+
+						<img id="btn-phone" src="images/电话咨询@3x.png">&nbsp;&nbsp;&nbsp;&nbsp;
+
+						<img id="btn-share" src="images/分享活动@3x.png">
+					</div>
+
+				</div>
+
+			</div>-->
+			
+			<!--底部按键-->
+			<!--<div class="bottom-btns">
+				<div class="bb-btn btn-collect "></div>
+				<div class="bb-btn btn-zan active"></div>
+				<div class="btn-apply">
+					我要报名
+					<p class="ba-tips">(一小时后开始报名)</p>
+				</div>
+			</div>-->
+	</section>
+
+
+<script type="text/javascript">
+window.onerror = function(err) {
+		//log('window.onerror: ' + err)
+		console.log(err);
+	}
+
+
+	function connectWebViewJavascriptBridge(callback) {
+            if (window.WebViewJavascriptBridge) {
+                callback(WebViewJavascriptBridge)
+            } else {
+                document.addEventListener(
+                    'WebViewJavascriptBridgeReady'
+                    , function() {
+                        callback(WebViewJavascriptBridge)
+                    },
+                    false
+                );
+            }
+
+    }
+
+    connectWebViewJavascriptBridge(function(bridge) {
+            bridge.init(function(message, responseCallback) {
+                console.log('JS got a message', message);
+                var data = {
+                    'Javascript Responds': '测试中文!'
+                };
+                console.log('JS responding with', data);
+                responseCallback(data);
+            });
+
+
+            bridge.registerHandler("initDetailData", function(data, responseCallback) {
+                var obj = $.parseJSON(data);
+					
+				//填充数据
+				$("#imgurl").attr("src",obj.imgurl);
+				$("#ac_title").html(obj.title);
+				
+				//起止时间
+				if(obj.postItem.startDate && obj.postItem.endDate){
+					$("#startDate").html(timestampToDate(obj.postItem.startDate) + "~" + timestampToDate(obj.postItem.endDate));
+				}else{
+					$("#startDate").parent().hide();
+				}
+				
+				//地址
+				if(obj.postItem.ac_addr){
+					$("#ac_addr").html(obj.postItem.ac_addr);
+				}else{
+					$("#ac_addr").parent().hide();
+				}
+				
+				//手机号码
+				if(obj.postItem.ac_mobile){
+					$("#ac_mobile").html(obj.postItem.ac_mobile);
+				}else{
+					$("#ac_mobile").parent().hide();
+				}
+				
+				//主办方
+				if(obj.postItem.ac_master){
+					$("#ac_master").html("主办方: " + obj.postItem.ac_master);
+					$("#ac_master_info").html(obj.postItem.ac_master_info);
+				}else{
+					$("#ac_master").parent().hide();
+				}
+				
+				
+				//处理报名头像
+				if(!obj.ac_member_count){
+					$("#ac_member").hide();
+					$("#imgdiv").hide();
+				}else{
+					$("#id_apply_num").html("已报名" + obj.ac_member_count);
+					for(var ii = 1; ii<=5 ; ii++){
+						var index = ii-1;
+						if(!obj.ac_member_list[index]){
+							$("#mpic"+ii).parent().parent().hide();
+						}else{
+							var data1 = obj.ac_member_list[index].member;
+							$("#mpic"+ii).attr("src",data1.logo);
+							$("#mpic"+ii).parent().next("span").html(data1.nickname);
+							if(Number(data1.celebrity) == 1){
+								$("#mpic"+ii).next(".vip-icon").show();
+							}
+						}
+					}
+				}
+				
+				//活动公告
+				if(obj.ac_notice_list.length > 0){
+					$("#ac_block_content").html(obj.ac_notice_list[0].notice);
+				}else{
+					$("#ac_block_content").html("暂无公告");
+				}
+				
+				//活动直播
+				if(obj.postItem.postId == -1 ||　obj.postItem.postId == "-1"){
+					$("#ac_live").hide();
+					$(".infoAlive").next("div").hide();
+					$(".infoAlive").hide();
+					
+				}else{
+					$(".infoAlive .liveimg-c .liveimg").attr("src",obj.postItem.ac_pic);
+					$(".infoAlive .livetitle").html(obj.postItem.lvTitle);
+				}
+				
+				//活动详情
+				if(obj.richItem.richHtmlB64){
+					$("#richItem").html(obj.richItem.richHtmlB64);
+				}else{
+					$("#richItem").html("暂无详情");
+				}
+				
+				
+//              $("#html_content").html(obj.richItem.richHtmlB64);
+                var time = obj.ct;
+
+                var responseData = "Javascript Says Right back aka!";
+                responseCallback(responseData);
+				
+				//点击打电话
+				$("#ac_mobile").bind("click",function(){
+					window.WebViewJavascriptBridge.callHandler(
+                          'clickPhone'
+                          , {}
+                          , function(responseData) {
+
+                         }
+                    );
+				});
+				//点击查看报名人员
+				$("#ac_member").bind("click",function(){
+					window.WebViewJavascriptBridge.callHandler(
+                          'checkMember'
+                          , {}
+                          , function(responseData) {
+
+                         }
+                    );
+				});
+				$("#imgdiv").bind("click",function(){
+					window.WebViewJavascriptBridge.callHandler(
+                          'checkMember'
+                          , {}
+                          , function(responseData) {
+
+                         }
+                    );
+				});
+				
+				//公告跳转
+				$("#ac_block").bind("click",function(){
+					window.WebViewJavascriptBridge.callHandler(
+                          'acBlock'
+                          , {}
+                          , function(responseData) {
+
+                         }
+                    );
+				});
+				$("#ac_block_content").bind("click",function(){
+					window.WebViewJavascriptBridge.callHandler(
+                          'acBlock'
+                          , {}
+                          , function(responseData) {
+
+                         }
+                    );
+				});
+				
+				//进入直播
+				$("#enterlive").bind("click",function(){
+					window.WebViewJavascriptBridge.callHandler(
+                          'enterLive'
+                          , {}
+                          , function(responseData) {
+
+                         }
+                    );
+				});
+				
+
+                $("#richItem img").bind("click",function(){
+
+                    var url =  $(this).attr("src");
+                    var srcArray = "";
+                    $("#richItem img").each(function(i){
+                         var imgurl = $(this).attr("src");
+                         if(srcArray == ""){
+                            srcArray = imgurl;
+                         }else{
+                            if(imgurl != ""){
+                               srcArray = srcArray + ","+ imgurl;
+                            }
+                         }
+                    });
+
+                    window.WebViewJavascriptBridge.callHandler(
+                          'clickImage'
+                          , {'url': url,'urlArray':srcArray}
+                          , function(responseData) {
+
+                         }
+                    );
+
+                });
+
+                $("#richItem a").bind("click",function(){
+
+                    //拦截a的href的跳转
+                    event.preventDefault();
+
+                    var title = $(this).html();
+                    var href = $(this).attr("href");
+
+                    window.WebViewJavascriptBridge.callHandler(
+                          'clickA'
+                          , {'title': title,'href':href}
+                          , function(responseData) {
+
+                         }
+                    );
+
+                });
+
+            });
+
+    })
+
+	function timestampToDate(stamp){
+		var date = new Date(stamp);
+		var hour = date.getHours();
+		hour = hour<10 ? "0"+hour : hour ;
+		
+		var mins = date.getMinutes();
+		mins = mins<10 ? "0"+mins : mins;
+		
+		return (date.getMonth()+1) +"月"+date.getDate()+"号 "+ hour +":"+ mins;
+	}
+
+</script>
+</body>
+</html>

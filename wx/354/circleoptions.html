@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>圈子管理</title>
+    
+    <link rel="stylesheet" href="../css/topic.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body>
+	<div class="main-content">
+		<div class="data-line mart10">
+			<span class="dl-l">设置管理员</span>
+			<span class="dl-r">1/5<i class=""></i></span>
+		</div>
+		<div class="data-line">
+			<span class="dl-l">加入条件</span>
+			<span class="dl-r">需审核<i class=""></i></span>
+		</div>
+		
+		<div class="set-line mart10">
+			<div class="sl-left">
+				<p class="sll-top">允许公开该圈子</p>
+				<p class="sll-btm">关闭后，圈子不可以被搜到及推荐</p>
+			</div>
+			<div class="sl-right">
+		        <div class="custswitch">
+		            <input id="checked_1" type="checkbox" class="switch" checked="checked" disabled="disabled"/>
+		            <label for="checked_1"></label>
+		        </div>
+			</div>
+		</div>
+		<div class="set-line">
+			<div class="sl-left">
+				<p class="sll-top">允许圈子内容被分享</p>
+				<p class="sll-btm">关闭后，圈子内容不可以被圈子成员分享</p>
+			</div>
+			<div class="sl-right">
+		        <div class="custswitch">
+		            <input id="checked_2" type="checkbox" class="switch" disabled="disabled"/>
+		            <label for="checked_2"></label>
+		        </div>
+			</div>
+		</div>
+		
+		<div class="set-line mart10">
+			<div class="sl-left">
+				<p class="sll-top">圈子成员显示列表</p>
+				<p class="sll-btm">关闭后，圈子成员列表不可以被圈子成员查看</p>
+			</div>
+			<div class="sl-right">
+		        <div class="custswitch">
+		            <input id="checked_3" type="checkbox" class="switch" disabled="disabled"/>
+		            <label for="checked_3"></label>
+		        </div>
+			</div>
+		</div>
+		<div class="set-line">
+			<div class="sl-left">
+				<p class="sll-top">圈子成员信息公开</p>
+				<p class="sll-btm">关闭后，圈子成员不可以查看其它成员信息</p>
+			</div>
+			<div class="sl-right">
+		        <div class="custswitch">
+		            <input id="checked_4" type="checkbox" class="switch" disabled="disabled"/>
+		            <label for="checked_4"></label>
+		        </div>
+			</div>
+		</div>
+		
+		<div class="set-line mart10">
+			<div class="sl-left">
+				<p class="sll-top">开启产品模块</p>
+				<p class="sll-btm">关闭后，产品模块不可见</p>
+			</div>
+			<div class="sl-right">
+		        <div class="custswitch">
+		            <input id="checked_5" type="checkbox" class="switch" disabled="disabled"/>
+		            <label for="checked_5"></label>
+		        </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

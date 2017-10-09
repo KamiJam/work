@@ -1,0 +1,51 @@
+@charset "utf-8";
+@import "../reset";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+
+.main-content{
+    position: relative;
+    padding-top: prem(60);
+    .toplogo{
+        display: block;
+        width: prem(140);
+        height: prem(140);
+        margin: 0 auto prem(40) auto;
+    }
+    .bgimg-c{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        font-size: 0;
+    }
+    .bgimg{
+        
+        width: 100%;
+    }
+}
+.btn{
+    display: block;
+    width: prem(375);
+    margin: 0 auto;
+    line-height: prem(80);
+    border-radius: 999px;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    
+    &.btn-top{
+        background-color: #31d8f2;
+        box-shadow: 0 0 5px 0 #999;
+        
+    }
+    &.btn-bottom{
+        position: absolute;
+        bottom: prem(100);
+        left: 50%;
+        margin-left: - prem(375/2);
+        background-color: #14ca93;
+    }
+}

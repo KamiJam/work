@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>标题</title>
+    
+    <link rel="stylesheet" href="../css/coverpinfo.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body>
+	<div class="groupchat-item">
+		<div class="gci-left">
+			<img class="gci-img" src="../images/3.jpg"/>
+		</div>
+		<div class="gci-center">
+			<p class="gci-name">昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称</p>
+			<p class="gci-desc">描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</p>
+		</div>
+		<div class="gci-right">
+			<!--<span class="squ-btn c-green">加入群聊</span>-->
+			<span class="squ-btn ">审核中</span>
+		</div>
+	</div>
+	<div class="groupchat-item">
+		<div class="gci-left">
+			<img class="gci-img" src="../images/3.jpg"/>
+		</div>
+		<div class="gci-center">
+			<p class="gci-name">昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称</p>
+			<p class="gci-desc">描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</p>
+		</div>
+		<div class="gci-right">
+			<span class="squ-btn c-green">加入群聊</span>
+		</div>
+	</div>
+	<div class="groupchat-item">
+		<div class="gci-left">
+			<img class="gci-img" src="../images/3.jpg"/>
+		</div>
+		<div class="gci-center">
+			<p class="gci-name">昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称</p>
+			<p class="gci-desc">描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</p>
+		</div>
+		<div class="gci-right">
+			<p class="gci-enter">已加入</p>
+			<p class="gci-count">68人</p>
+		</div>
+	</div>
+	
+</body>
+</html>
