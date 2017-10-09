@@ -1,0 +1,36 @@
+@charset "utf-8";
+/*自定义toast*/
+.cust_toast {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 50%;
+    /*left: 50%;*/
+    width: auto;
+    font-size: 14px;
+    color: white;
+    /* margin-left: -100px; */
+    /* border: 1px solid #666; */
+    background-color: #1a1a1a;
+    padding: 8px;
+    text-align: center;
+    opacity: .9;
+    border-radius: 4px;
+    /* box-shadow: 2px 2px 1px #1a1a1a; */
+    -webkit-transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -ms-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -ms-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out;
+}
+.nodatadiv{
+    margin: 6rem auto 0 auto;
+    height: 6rem;
+    background: url(../images/bg-nodata.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+}

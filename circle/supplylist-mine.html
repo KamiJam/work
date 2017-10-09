@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	    <meta http-equiv="Pragma" content="no-cache" />
+	    <meta http-equiv="Expires" content="0" />
+	    <meta name="format-detection" content="telephone=no" />
+	    <title>供应信息</title>
+	    <link rel="stylesheet" href="css/mysupplyinfo.css">
+	    <link rel="stylesheet" href="css/dropload.css"/>
+	    <script type="text/javascript">
+	        (function () {
+	            var html = document.querySelector("html");
+	            var width = html.getBoundingClientRect().width;
+	            html.style.fontSize = width / 16 + "px";
+	        })();
+	        
+	        
+	        var phpdata = {
+	        	myMemberId: 12045, //我的memberid
+	        	pageMemberId: 11220, //当前页面所属的memberid
+	        	token: "",
+	        	type:1    //供需类型,(1=>供应，2=>求购)
+	        }
+	        
+	        //判断是否是自己的
+			var isSelf = (phpdata.myMemberId == phpdata.pageMemberId);
+	    </script>
+	    <style>
+	    	.supply-btm{
+	    		position: fixed;
+	    		bottom: 0;
+	    		left: 0;
+	    		right: 0;
+	    		line-height: 2.2rem;
+	    		height: 2.2rem;
+	    		width: 100%;
+	    		text-align: center;
+	    		background-color: white;
+	    		border-top: 1px solid #eeeef3;
+	    	}
+	    	.supply-btm-link{
+	    		color: #0ac48f;
+	    		font-size: 16px;
+	    	}
+	    	.sbl-plus{
+	    		font-size: 18px;
+	    	}
+	    </style>
+	</head>
+	<body style="padding:0 2.2rem;">
+		<div class="maincontent">
+			<div class="infinitelist">
+			</div>
+		</div>
+		<div class="supply-btm">
+			<a class="supply-btm-link" href=""><span class="sbl-plus">+</span>发布求购</a>
+		</div>
+		<script src="js/jquery-1.9.1.min.js" ></script>
+		<script src="js/jquery.lazyload.min.js"></script>
+		<script src="js/dropload.min.js"></script>
+		<script src="js/public.js"></script>
+		<script>
+			$(function(){
+				// 页码
+			    var page = 0;
+				//借口地址
+				var listUrl = "http://jq.flyzz.net/m/supply/mysupplylists";
+				
+				
+			    $('.maincontent').dropload({
+			        scrollArea : window,
+			        loadDownFn : function(me){
+			            page++;
+			            // 拼接HTML
+			            var result = '';
+			            $.ajax({
+			                type: 'GET',
+			                url: listUrl,
+			                data:{
+			                	memberId: phpdata.pageMemberId,
+			                	type: phpdata.type,
+			                	page: page,
+			                	token: phpdata.phpdata
+			                },
+			                dataType: 'json',
+			                success: function(data){
+			                	console.log(data);
+			                	if(data.code == 0){
+			                		if(data.list && data.list.length){
+			                			
+			                			$.each(data.list,function(listindex,listitem){
+			                				result += '<section class="supply-item animate-opacity" data-id="'+listitem._id+'">';
+			                				if(isSelf){
+			                					//当前页面为自己的数据
+			                					result += '<div class="user-info">'+
+																'<img class="headimg lazy" src="images/placeholder.png" data-original="'+listitem.member.logo+'" />'+
+																'<div class="u-info">'+
+																	'<p class="u-name">'+listitem.member.nickname+'</p>'+
+																	'<p class="u-time">'+timestampToDate(listitem.ct)+'</p>'+
+																'</div>'+
+															'</div>';
+			                				}else{
+			                					result += 	'<div class="user-info">'+
+																'<img class="headimg lazy" src="images/placeholder.png" data-original="'+listitem.member.logo+'" />'+
+																'<div class="u-info">'+
+																	'<p class="u-name">'+listitem.member.nickname+'</p>'+
+																	'<p class="u-time patch-nkname">'+companyJob(listitem.member.company,listitem.member.job)+'</p>'+
+																	'<span class="right-time">'+timestampToDate(listitem.ct)+'</span>'+
+																'</div>'+
+															'</div>';
+			                				}
+			                				
+			                				result += '<div class="supply-con">'+
+															'<div class="con-text">'+listitem.richItem.textArr.join()+'</div>';
+			                				
+			                				var  imgHtml = "";
+			                				if(listitem.richItem.imageArr && listitem.richItem.imageArr.length){
+			                					imgHtml = '<div class="con-squared">';
+				                				$.each(listitem.richItem.imageArr,function(imgindex,imgitem){
+				                					if(imgindex >= 9) return false;
+				                					imgHtml += '<div class="squared-item">'+
+			        											'<img class="lazy" src="images/placeholder.png" data-original="'+imgitem+'">'+
+			        											'</div>';
+				                				});
+				                				imgHtml += '</div>';
+			                				}
+			                				result += imgHtml;
+			                				result += '</div>';
+			                				result += '</section>';
+			                			});
+			                			
+			                			
+			                		}else{
+			                			//锁定
+			                       		me.lock();
+				                        // 无数据
+				                        me.noData();
+			                		}
+			                	}else{
+//			                		alert("请求数据失败");
+			                	}
+//			                    var arrLen = data.length;
+//			                    if(arrLen > 0){
+//			                        for(var i=0; i<arrLen; i++){
+//			                            result +=   '<a class="item opacity" href="'+data[i].link+'">'
+//			                                            +'<img src="'+data[i].pic+'" alt="">'
+//			                                            +'<h3>'+data[i].title+'</h3>'
+//			                                            +'<span class="date">'+data[i].date+'</span>'
+//			                                        +'</a>';
+//			                        }
+//			                    // 如果没有数据
+//			                    }else{
+//			                        // 锁定
+//			                        me.lock();
+//			                        // 无数据
+//			                        me.noData();
+//			                    }
+//			                    // 为了测试，延迟1秒加载
+//			                    setTimeout(function(){
+//			                        // 插入数据到页面，放到最后面
+//			                        $('.infinitelist').append(result);
+//			                        // 每次数据插入，必须重置
+//			                        me.resetload();
+//			                    },0);
+			                    setTimeout(function(){
+			                        // 插入数据到页面，放到最后面
+			                        $('.infinitelist').append(result);
+			                        $("img.lazy").lazyload();
+			                        // 每次数据插入，必须重置
+			                        me.resetload();
+			                    },0);
+			                },
+			                error: function(xhr, type){
+//			                    alert('网络错误!');
+			                    // 即使加载出错，也得重置
+			                    me.resetload();
+			                }
+			            });
+			        }
+			    });
+			    
+			    
+			    
+
+			});
+		</script>
+	</body>
+</html>

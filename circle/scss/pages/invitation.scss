@@ -1,0 +1,88 @@
+@charset "utf-8";
+@import "../reset";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+
+
+//顶部
+.top-line{
+    margin: prem(180) auto  prem(47) auto;
+    text-align: center;
+    *{
+        vertical-align: middle;
+    }
+    .headimg{
+        width: prem(75);
+        height: prem(75);
+        border-radius: prem(75);
+    }
+    span{
+        margin-left: prem(24);
+        font-size: prem(28);
+        color: #000;
+    }
+}
+
+//卡片
+.card-container{
+    width: prem(502);
+    height: prem(637);
+    margin: 0 auto;
+    background: url(../img/invCardBg.png) no-repeat;
+    background-size: contain;
+    text-align: center;
+    color: white;
+    .cardimg{
+        overflow: hidden;
+        margin: prem(100) auto prem(20) auto;
+        height: prem(130);
+        width: prem(130);
+        border-radius: prem(130);
+        border: 1px solid white;
+    }
+    .circle-name{
+        font-size: prem(34);
+        margin-bottom: prem(45);
+    }
+    .circle-size{
+        @include flexbox;
+        align-items: center;
+        .cs-item{
+            @include flexitem;
+            font-size: prem(26);
+            font{
+                margin-left: prem(10);
+            }            
+        }
+        .cs-line{
+            width: 1px;
+            margin: 0 prem(16);
+            background-color: white;
+            height: prem(30);
+        }
+       
+    }
+    .join-circle{
+        margin-top: prem(130);
+        display: inline-block;
+        width: prem(239);
+        height: prem(77);
+        border-radius: prem(77);
+        line-height: prem(77);
+//      background-color: #2FD2DB;
+        background-image: url(../img/join-bg.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        text-align: center;
+        font-size: prem(34);
+        
+    }
+}
+
+.tl{
+    text-align: left;
+}
+.tr{
+    text-align: right;
+}

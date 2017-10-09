@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	    <meta http-equiv="Pragma" content="no-cache" />
+	    <meta http-equiv="Expires" content="0" />
+	    <meta name="format-detection" content="telephone=no" />
+	    <title>供应详情</title>
+	    <link rel="stylesheet" href="css/mysupplyinfo.css">
+	    <link rel="stylesheet" href="css/supplydetail.css">
+	    <script type="text/javascript">
+	        (function () {
+	            var html = document.querySelector("html");
+	            var width = html.getBoundingClientRect().width;
+	            html.style.fontSize = width / 16 + "px";
+	        })();
+	        
+	        var phpdata = {
+	        	myMemberId: 12045, //我的memberid
+	        	pageMemberId: 11220, //当前页面所属的memberid
+	        	token: "eyJpdiI6IjkyNnZVRWJIR2hmd3o3dHFBRWpPVHc9PSIsInZhbHVlIjoiaXlPaVoweFRSRmIxYUgxV3ZPU0ZMWUcxZm5nNDFJWTVPSkpBeEdyVE13Q1VUeERuZTRtXC9sdGZQOFwvWnZORmd0QkxieWR6QklHYmt0SnhtdkRcL1luK1E9PSIsIm1hYyI6ImZhOWI1N2IwYzNkNGI3ZWQyZjUyZjI2NGZlMzU0ZTVlNzAwYTNmM2FkZWU0Y2NhYjY4NDk0OThlOTY5ZTFiYjYifQ==",
+//	        	type:1    //供需类型,(1=>供应，2=>求购)	
+				supplyId: 1 //供需id
+	        }
+	        
+	        //判断是否是自己的
+			var isSelf = (phpdata.myMemberId == phpdata.pageMemberId);
+			
+	    </script>
+	</head>
+	<body>
+		<section class="supply-item" id="main">
+		</section>
+		
+		<section class="bottom-block" id="minebtm" style="" >
+			<div class="btn-del" onclick="delFunc()"></div>
+		</section>
+		
+		<section class="bottom-block" id="otherbtm" style="" >
+			<!--<div class="btn-collect active" onclick="collFunc(this)"></div>-->
+			<a class="btn-chat" style="display: none;"></a>
+			<div class="btn-save" onclick="saveFunc(this)"></div>
+		</section>
+		<script src="js/jquery-1.9.1.min.js" ></script>
+		<script src="js/jquery.lazyload.min.js"></script>
+		<script src="js/public.js"></script>
+		<script>
+			//详情地址
+			var detailurl = "http://jq.flyzz.net/m/supply/getsupplylists";
+			//删除地址
+			var delUrl = "http://jq.flyzz.net/m/supply/delniche";
+			//收藏地址
+			var collUrl = "http://jq.flyzz.net/m/personal/doCollectSupply";
+			//保存名片地址
+			var saveUrl = "http://jq.flyzz.net/m/card/saveFriend";
+			
+			if(isSelf){
+				$("#minebtm").show();
+			}else{
+				$("#otherbtm").show();
+			}
+			
+			$(function(){
+				$.ajax({
+					type:"get",
+					url: detailurl,
+					data:{
+						memberId: phpdata.pageMemberId,
+						id: phpdata.supplyId
+					},
+					dataType: 'json',
+					success:function(data){
+						console.log(data);
+						if(data.code == 0){
+							if(data.object){
+								var obj = data.object;
+								var html = '';
+								//头像信息
+								var vhtml = "";
+								if(obj.member.celebrity == 1){
+									vhtml += '<img class="v-icon" src="images/v.png" />';
+								}
+								
+								if(obj.member.mobile){
+									$(".btn-chat").attr("href","tel:"+obj.member.mobile);
+								}else{
+									$(".btn-chat").click(function(){
+										info("对方无号码信息");
+									});
+								}
+								
+								if(isSelf){
+									html += '<div class="user-info">'+
+												'<img class="headimg lazy" src="images/placeholder.png" data-original="'+obj.member.logo+'"/>'+
+												vhtml+
+												'<div class="u-info">'+
+													'<div class="name-c">'+
+														'<p class="u-name">'+obj.member.nickname+'</p>'+
+													'</div>'+
+													'<p class="u-time">'+timestampToDate(obj.ct)+'</p>'+
+												'</div>'+
+											'</div>';
+								}else{
+									html += '<div class="user-info">'+
+												'<img class="headimg lazy" src="images/placeholder.png" data-original="'+obj.member.logo+'"/>'+
+												vhtml+
+												'<div class="u-info info3">'+
+													'<div class="name-c">'+
+														'<p class="u-name">'+obj.member.nickname+'</p>'+
+													'</div>'+
+													'<p class="u-time">'+companyJob(obj.member.company,obj.member.job)+'</p>'+
+												'</div>'+
+												'<div class="rightpart">'+
+													timestampToDate(obj.ct)+
+												'</div>'+
+											'</div>';
+											
+								}
+								//主体
+								html += '<div class="supply-con">';
+								if(obj.richItem.textArr && obj.richItem.textArr.length){
+									html += '<div class="con-text">'+obj.richItem.textArr.join()+'</div>';			
+								}
+								//图片
+								if(obj.richItem.imageArr && obj.richItem.imageArr.length){
+									$.each(obj.richItem.imageArr, function(imgindex,imgitem) {
+										html += '<img class="detailimg lazy"  src="images/placeholder.png" data-original="'+imgitem+'"/>';
+									});
+								}
+								
+								html += '</div>';
+								setTimeout(function(){
+			                        $("#main").append(html);
+									$("img.lazy").lazyload();
+			                    },0);
+								
+							}
+						}else{
+							alert("请求数据失败："+data.msg);
+							window.history.go(-1);
+						}
+					},
+					error: function(xhr, type){
+	                    alert('网络错误!');
+	                }
+				});
+			});
+			
+			//删除
+			function delFunc(){
+				var r=confirm("确认删除？")
+				if(r==true){
+					$.ajax({
+						type:"get",
+						url: delUrl,
+						data:{
+							token: phpdata.token,
+							memberId: phpdata.pageMemberId,
+							id: phpdata.supplyId
+						},
+						dataType: 'json',
+						success:function(data){
+							if(data.code == 0){
+								alert("删除成功");
+								window.history.go(-1);
+							}else{
+								alert("请求数据失败");
+							}
+						},
+						error:function(){
+							alert("网络错误，删除失败");	
+						}
+					});
+				}
+			}
+			//收藏
+			function collFunc(th){
+				var isDeleted = $(th).hasClass("active")?1:0;
+				$.ajax({
+					type:"get",
+					url: collUrl,
+					data:{
+						token: phpdata.token,
+						memberId: phpdata.pageMemberId,
+						supplyId: phpdata.supplyId,
+						isDeleted: isDeleted
+					},
+					dataType: 'json',
+					success:function(data){
+						if(data.code == 0){
+							var infomsg = "收藏";
+							if(isDeleted){
+								infomsg = "取消收藏";
+							}
+							info(infomsg+"成功");
+							$(th).toggleClass("active");
+						}else{
+							alert("失败："+data.msg);
+						}
+					},
+					error:function(){
+						alert("网络错误，收藏失败");	
+					}
+				});
+			}
+			//保存名片
+			function saveFunc(th){
+				$.ajax({
+					type:"get",
+					url: saveUrl,
+					data:{
+						token: phpdata.token,
+						id: phpdata.pageMemberId
+					},
+					dataType: 'json',
+					success:function(data){
+						if(data.code == 0){
+							info("保存成功");
+							$(th).hide();
+							$(th).parent().find(".btn-chat").show();
+						}else{
+							alert("失败："+data.msg);
+						}
+					},
+					error:function(){
+						alert("网络错误，保存失败");	
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

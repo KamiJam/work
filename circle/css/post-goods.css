@@ -1,0 +1,377 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "微软雅黑","黑体","宋体"; }
+
+html {
+  font-size: 10px; }
+
+body {
+  font-size: 0.875rem;
+  font-family: sans-serif;
+  /* background: #d0d0d0;*/
+  -webkit-tap-highlight-color: transparent; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+strong {
+  font-weight: bold; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+img {
+  border: 0;
+  max-width: 100%; }
+
+a {
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none; }
+
+input[type=button], input[type=submit], input[type=file], button {
+  cursor: pointer;
+  -webkit-appearance: none; }
+
+input {
+  -webkit-tap-highlight-color: transparent; }
+
+a, button, input, optgroup, select, textarea {
+  -webkit-tap-highlight-color: transparent; }
+
+* {
+  -webkit-touch-callout: none;
+  /*系统默认菜单被禁用*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  -moz-user-select: none;
+  /*火狐*/
+  -ms-user-select: none;
+  /*IE10*/
+  user-select: none; }
+
+input, textarea {
+  -webkit-user-select: auto;
+  /*webkit浏览器*/
+  margin: 0px;
+  padding: 0px;
+  outline: none; }
+
+body {
+  background-color: #eeeef3; }
+
+a {
+  text-decoration: none;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent; }
+
+/*自定义toast*/
+.cust_toast {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  /*left: 50%;*/
+  width: auto;
+  font-size: 14px;
+  color: white;
+  /* margin-left: -100px; */
+  /* border: 1px solid #666; */
+  background-color: #1a1a1a;
+  padding: 8px;
+  text-align: center;
+  opacity: .9;
+  border-radius: 4px;
+  /* box-shadow: 2px 2px 1px #1a1a1a; */
+  -webkit-transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  -ms-transition: opacity 0.5s ease-out;
+  -o-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  -ms-transition: opacity 0.5s ease-out;
+  -o-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out; }
+
+.nodatadiv {
+  margin: 6rem auto 0 auto;
+  height: 6rem;
+  background: url(../images/bg-nodata.png) no-repeat;
+  background-size: contain;
+  background-position: center; }
+
+.spinner {
+  margin: 100px auto;
+  width: 20px;
+  height: 20px;
+  position: relative; }
+
+.container1 > div,
+.container2 > div,
+.container3 > div {
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+  border-radius: 100%;
+  position: absolute;
+  -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+  animation: bouncedelay 1.2s infinite ease-in-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.spinner .spinner-container {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+
+.container2 {
+  -webkit-transform: rotateZ(45deg);
+  transform: rotateZ(45deg); }
+
+.container3 {
+  -webkit-transform: rotateZ(90deg);
+  transform: rotateZ(90deg); }
+
+.circle1 {
+  top: 0;
+  left: 0; }
+
+.circle2 {
+  top: 0;
+  right: 0; }
+
+.circle3 {
+  right: 0;
+  bottom: 0; }
+
+.circle4 {
+  left: 0;
+  bottom: 0; }
+
+.container2 .circle1 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s; }
+
+.container3 .circle1 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s; }
+
+.container1 .circle2 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s; }
+
+.container2 .circle2 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s; }
+
+.container3 .circle2 {
+  -webkit-animation-delay: -0.7s;
+  animation-delay: -0.7s; }
+
+.container1 .circle3 {
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s; }
+
+.container2 .circle3 {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s; }
+
+.container3 .circle3 {
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s; }
+
+.container1 .circle4 {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s; }
+
+.container2 .circle4 {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s; }
+
+.container3 .circle4 {
+  -webkit-animation-delay: -0.1s;
+  animation-delay: -0.1s; }
+
+@-webkit-keyframes bouncedelay {
+  0%,
+	80%,
+	100% {
+    -webkit-transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1); } }
+@keyframes bouncedelay {
+  0%,
+	80%,
+	100% {
+    transform: scale(0);
+    -webkit-transform: scale(0); }
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1); } }
+.zhezhaobg {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 99999;
+  width: 100%;
+  height: 100%; }
+
+.zhezhaoColor {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  z-index: 99999; }
+
+.TipDivBg {
+  background: #000;
+  opacity: 0.7;
+  border-radius: 10px;
+  position: fixed;
+  width: 80%;
+  margin: 48% 10% 0;
+  height: 150px; }
+
+.TipText {
+  position: fixed;
+  z-index: 9999999;
+  width: 80%;
+  margin: 48% 10% 0;
+  height: 150px; }
+
+.TipCon {
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  margin-top: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  line-height: 27px; }
+
+.TipDiv {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0px;
+  height: 40px;
+  line-height: 40px;
+  border-top: 1px solid #bababa; }
+
+.TipDiv div {
+  width: 49%;
+  float: left;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  border-right: 1px solid #bababa; }
+
+.type-line {
+  background-color: white;
+  background-image: url(../images/i-more.png);
+  background-repeat: no-repeat;
+  background-size: 0.42667rem;
+  background-position: 96% center;
+  margin: 0.42667rem 0;
+  line-height: 1.92rem; }
+  .type-line .type-name {
+    margin-left: 0.64rem;
+    color: #000;
+    font-size: 0.64rem; }
+
+.detail-block {
+  background-color: white;
+  padding: 0.64rem; }
+  .detail-block textarea {
+    border: none;
+    -webkit-appearance: none;
+    resize: none;
+    width: 100%;
+    color: #000;
+    font-size: 0.64rem;
+    height: 4.8em; }
+
+textarea::-webkit-input-placeholder {
+  color: #808080;
+  opacity: 0.7; }
+
+.imgs-box {
+  font-size: 0; }
+  .imgs-box .img-item {
+    position: relative;
+    display: inline-block;
+    width: 3.2rem;
+    height: 3.2rem;
+    margin: 0 0.42667rem 0.42667rem 0; }
+    .imgs-box .img-item img {
+      width: 100%;
+      height: 100%; }
+    .imgs-box .img-item .file {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0; }
+    .imgs-box .img-item .del-icon {
+      display: inline-block;
+      position: absolute;
+      width: 0.81067rem;
+      height: 0.81067rem;
+      top: -0.40533rem;
+      right: -0.32rem;
+      background: url(../images/clear.png) no-repeat;
+      background-size: 100%; }
+
+.button-block {
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  line-height: 1.70667rem;
+  font-size: 0.64rem;
+  border: none;
+  color: white;
+  border-radius: 4px; }
+  .button-block.btn-submit {
+    margin-top: 1.92rem;
+    background-color: #17C792; }
+    .button-block.btn-submit:disabled {
+      background-color: #ccc; }
+
+/*# sourceMappingURL=post-goods.css.map */
+
+.right-value{
+	font-size: 0.64rem;
+	color: #999;
+	float: right;
+  margin-right: 8%;
+  max-width: 15em;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

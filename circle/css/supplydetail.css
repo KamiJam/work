@@ -1,0 +1,11 @@
+body{
+	background-color: white;
+}
+
+.supply-item{
+	margin: 0;
+}
+.supply-con img{
+	width: 100%;
+	margin: 5px 0 2.5px 0;
+}

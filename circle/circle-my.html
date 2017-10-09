@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>圈子</title>
+    <link rel="stylesheet" href="css/weui.css">
+    <link rel="stylesheet" href="css/circle-index.css">
+    <style type="text/css">
+        .weui-search-bar__label .weui-icon-search {  margin-right: 0px;  }
+        .weui-icon-search {  color: #B2B2B2;  font-size: 12px;  }
+        .weui-search-bar__label span {  font-size: 12px;  }
+        .weui-search-bar__label {  text-align: left;  margin-left: 6px;  }
+    </style>
+    <script type="text/javascript">
+        (function () {
+            var html = document.querySelector("html");
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 16 + "px";
+        })();
+    </script>
+</head>
+<body>
+<div class="circle-wrap">
+<!--<swiper id="swiper_horizontal" :pagination-visible="true" direction="horizontal" :loop="true"  :pagination-clickable="true" :performace-mode="true">
+    <div v-for="slideImg in slides">
+        <img  alt="" :src="setSrc(slideImg.src)">
+    </div>
+</swiper>-->
+<!--<span style="font-size:18px;"><template>
+    <div>
+        <swiper :options="swiperOption"  ref="mySwiper">
+            &lt;!&ndash; 这部分放你要渲染的那些内容 &ndash;&gt;
+            <swiper-slide v-for="item in items">
+                 <img  alt="" v-bind:src="item">
+            </swiper-slide>
+            &lt;!&ndash; 这是轮播的小圆点 &ndash;&gt;
+            <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
+    </div>
+</template>-->
+    <section>
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="Search" required/>
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label class="weui-search-bar__label" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>搜索圈子</span>
+                </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+    </section>
+
+    <!--tab导航切换-->
+    <section class="circle-tab m-top2">
+        <ul class="circle-tab-con">
+            <li class="fl active">
+                <a href="javascript:;">我的</a>
+                <span class="circle-tab-line"></span>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">名人圈</a>
+                <span class="circle-tab-line"></span>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">组织圈</a>
+                <span class="circle-tab-line"></span>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">其他</a>
+                <span class="circle-tab-line"></span>
+            </li>
+        </ul>
+    </section>
+    <!--我的圈子-->
+    <section class="m-top2 w-color circle-my-content">
+        <div class="circle-my-list">
+            <a href="javascript:;">
+               <div class="circle-my-list-img"><img src="images/1.jpg" alt=""></div>
+                 <div class="circle-my-list-text">
+                   <p>中国酒业论坛官方圈子，哈哈哈哈哈哈哈哈哈哈</p>
+                   <div class="circle-my-member">
+                       <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                       <span class="circle-my-member-num">成员</span><span>212</span>
+                   </div>
+                 </div>
+            </a>
+        </div>
+        <div class="circle-my-list">
+            <a href="javascript:;">
+                <div class="circle-my-list-img"><img src="images/1.jpg" alt=""></div>
+                <div class="circle-my-list-text">
+                    <p>中国酒业论坛官方圈子，哈哈哈哈哈哈哈哈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="circle-my-list">
+            <a href="javascript:;">
+                <div class="circle-my-list-img"><img src="images/1.jpg" alt=""></div>
+                <div class="circle-my-list-text">
+                    <p>中国酒业论坛官方圈子，哈哈哈哈哈哈哈哈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="circle-my-list">
+            <a href="javascript:;">
+                <div class="circle-my-list-img"><img src="images/1.jpg" alt=""></div>
+                <div class="circle-my-list-text">
+                    <p>中国酒业论坛官方圈子，哈哈哈哈哈哈哈哈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+    <!--组织圈-->
+    <section class="circle-organizate-content">
+         <div class="circle-organizate-list w-color m-top2 fl">
+             <a href="javascript:;">
+             <img class="organizate-img" src="images/1.jpg" alt="">
+             <div class="origanizate-text">
+                 <p class="">中国酒业官方论坛圈哈哈</p>
+                 <div class="circle-my-member">
+                     <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                     <span class="circle-my-member-num">成员</span><span>212</span>
+                 </div>
+             </div>
+             </a>
+             <div class="origanizate-intr">今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光</div>
+             <a href="javascript:;" class="origanizate-join">
+               <!--  <img src="images/join-circle2.png" alt="" >-->
+                 <span>已加入</span>
+             </a>
+         </div>
+        <div class="circle-organizate-list w-color m-top2 fl">
+            <a href="javascript:;">
+                <img class="organizate-img" src="images/1.jpg" alt="">
+                <div class="origanizate-text">
+                    <p class="">中国酒业官方论坛圈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+            <div class="origanizate-intr">今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光</div>
+            <a href="javascript:;" class="origanizate-join">
+                <img src="images/join-circle2.png" alt="" >
+                <!--<span>已加入</span>-->
+            </a>
+        </div>
+        <div class="circle-organizate-list w-color m-top2 fl">
+        <a href="javascript:;">
+            <img class="organizate-img" src="images/1.jpg" alt="">
+            <div class="origanizate-text">
+                <p class="">中国酒业官方论坛圈哈哈</p>
+                <div class="circle-my-member">
+                    <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                    <span class="circle-my-member-num">成员</span><span>212</span>
+                </div>
+            </div>
+        </a>
+        <div class="origanizate-intr">今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光</div>
+        <a href="javascript:;" class="origanizate-join">
+            <!--<img src="images/join-circle2.png" alt="" >-->
+            <span>已加入</span>
+        </a>
+    </div>
+        <div class="circle-organizate-list w-color m-top2 fl">
+        <a href="javascript:;">
+            <img class="organizate-img" src="images/1.jpg" alt="">
+            <div class="origanizate-text">
+                <p class="">中国酒业官方论坛圈哈哈</p>
+                <div class="circle-my-member">
+                    <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                    <span class="circle-my-member-num">成员</span><span>212</span>
+                </div>
+            </div>
+        </a>
+        <div class="origanizate-intr">今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光</div>
+        <a href="javascript:;" class="origanizate-join">
+            <img src="images/join-circle2.png" alt="" >
+           <!-- <span>已加入</span>-->
+        </a>
+    </div>
+    </section>
+   <!--名人圈-->
+    <section class="circle-famous-content circle-organizate-content">
+        <div class="circle-organizate-list w-color m-top2 fl">
+            <a href="javascript:;">
+                <img class="organizate-img" src="images/1.jpg" alt="">
+                <div class="famous-text">
+                    <p class="">中国酒业官方论坛圈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+            <div class="famous-intr">圈主：哈哈哈</div>
+            <a href="javascript:;" class="origanizate-join"><img src="images/join-circle2.png" alt="" ></a>
+        </div>
+        <div class="circle-organizate-list w-color m-top2 fl">
+            <a href="javascript:;">
+                <img class="organizate-img" src="images/1.jpg" alt="">
+                <div class="famous-text">
+                    <p class="">中国酒业官方论坛圈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+            <div class="famous-intr">圈主：哈哈哈</div>
+            <a href="javascript:;" class="origanizate-join"><img src="images/join-circle2.png" alt="" ></a>
+        </div>
+        <div class="circle-organizate-list w-color m-top2 fl">
+            <a href="javascript:;">
+                <img class="organizate-img" src="images/1.jpg" alt="">
+                <div class="famous-text">
+                    <p class="">中国酒业官方论坛圈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+            <div class="famous-intr">圈主：哈哈哈</div>
+            <a href="javascript:;" class="origanizate-join"><img src="images/join-circle2.png" alt="" ></a>
+        </div>
+        <div class="circle-organizate-list w-color m-top2 fl">
+            <a href="javascript:;">
+                <img class="organizate-img" src="images/1.jpg" alt="">
+                <div class="famous-text">
+                    <p class="">中国酒业官方论坛圈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+            <div class="famous-intr">圈主：哈哈哈</div>
+            <a href="javascript:;" class="origanizate-join"><img src="images/join-circle2.png" alt="" ></a>
+        </div>
+    </section>
+    <!--其他圈子-->
+    <section class="circle-organizate-content">
+        <div class="circle-organizate-list w-color m-top2 fl">
+            <a href="javascript:;">
+                <img class="organizate-img" src="images/1.jpg" alt="">
+                <div class="origanizate-text">
+                    <p class="">中国酒业官方论坛圈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+            <div class="origanizate-intr">今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光</div>
+            <a href="javascript:;" class="origanizate-join">
+                <!--<img src="images/join-circle2.png" alt="" >-->
+                <span>已加入</span>
+            </a>
+        </div>
+        <div class="circle-organizate-list w-color m-top2 fl">
+            <a href="javascript:;">
+                <img class="organizate-img" src="images/1.jpg" alt="">
+                <div class="origanizate-text">
+                    <p class="">中国酒业官方论坛圈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+            <div class="origanizate-intr">今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光</div>
+            <a href="javascript:;" class="origanizate-join">
+                <!--<img src="images/join-circle2.png" alt="" >-->
+                <span>已加入</span>
+            </a>
+        </div>
+        <div class="circle-organizate-list w-color m-top2 fl">
+            <a href="javascript:;">
+                <img class="organizate-img" src="images/1.jpg" alt="">
+                <div class="origanizate-text">
+                    <p class="">中国酒业官方论坛圈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+            <div class="origanizate-intr">今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光</div>
+            <a href="javascript:;" class="origanizate-join">
+                <img src="images/join-circle2.png" alt="" >
+                <!--<span>已加入</span>-->
+            </a>
+        </div>
+        <div class="circle-organizate-list w-color m-top2 fl">
+            <a href="javascript:;">
+                <img class="organizate-img" src="images/1.jpg" alt="">
+                <div class="origanizate-text">
+                    <p class="">中国酒业官方论坛圈哈哈</p>
+                    <div class="circle-my-member">
+                        <span class="circle-my-member-tie">帖子</span><span>1232</span>
+                        <span class="circle-my-member-num">成员</span><span>212</span>
+                    </div>
+                </div>
+            </a>
+            <div class="origanizate-intr">今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光。今天天气好很好，出处好风光</div>
+            <a href="javascript:;" class="origanizate-join">
+                <!--<img src="images/join-circle2.png" alt="" >-->
+                <span>已加入</span>
+            </a>
+        </div>
+    </section>
+
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script src="js/vue-swiper.js"></script>
+<script type="text/babel">
+    /*new Vue({
+        el: '#swiper_horizontal',
+        components: {swiper: VueSwiper},
+        data() {
+            return {
+                slides: [{src:"images/1.jpg"}, {src:"images/1.jpg"}, {src:"images/1.jpg"}]
+            }
+        },
+        methods: {
+            setSrc (src) {
+                return src
+            },
+            onSlideChangeStart: function (currentPage) {
+                console.log('onSlideChangeStart', currentPage);
+            },
+            onSlideChangeEnd: function (currentPage) {
+                console.log('onSlideChangeEnd', currentPage);
+            },
+            onSlideRevertStart: function (currentPage) {
+                console.log('onSlideRevertStart', currentPage);
+            },
+            onSlideRevertEnd: function (currentPage) {
+                console.log('onSlideRevertEnd', currentPage);
+            },
+            onSliderMove: function (offset) {
+                console.log('onSliderMove', offset);
+            },
+            prependSlide: function (slideText) {
+                this.slides.unshift(slideText);
+            },
+            appendSlide: function (slideText) {
+                this.slides.push(slideText);
+            },
+            removeSlide: function () {
+
+            }
+        }
+    });*/
+    import { swiper, swiperSlide } from 'vue-awesome-swiper'
+    export default {
+        components: {
+            swiper,
+            swiperSlide
+        },
+        data() {
+            return {
+                swiperOption: {
+                    pagination: '.swiper-pagination',
+                    slidesPerView: 'auto',
+                    centeredSlides: true,
+                    paginationClickable: true,
+                    spaceBetween: 30,
+                    onSlideChangeEnd: swiper => {
+                    //这个位置放swiper的回调方法
+                    this.page = swiper.realIndex+1;
+                    this.index = swiper.realIndex;
+                   },
+                },
+            swiperSlides: [1, 2, 3, 4, 5]
+            }
+        },
+        //定义这个sweiper对象
+        computed: {
+
+            swiper() {
+                return this.$refs.mySwiper.swiper;
+            }
+        },
+        mounted () {
+            //这边就可以使用swiper这个对象去使用swiper官网中的那些方法
+            this.swiper.slideTo(0, 0, false);
+        }
+    }
+</script>
+
+</body>
+</html>

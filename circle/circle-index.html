@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-dpr="2" style="font-size: 50px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>圈子主页</title>
+    <link rel="stylesheet" type="text/css" href="css/circle-index.css">
+	<link rel="stylesheet" href="css/dropload.css"/>
+    <script type="application/javascript">
+        (function () {
+            var html = document.querySelector("html");
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 16 + "px";
+        })();
+        
+        var phpdata = {
+        	myMemberId: 12045, //我的memberid
+        	circleId: 35, // 圈子id
+        	token: "eyJpdiI6IlJScEJqU2xLZk1tbHlpZ0h0TWdUbWc9PSIsInZhbHVlIjoiVTZydW1TQWNXTHFYNjVQXC9PWHVnZnppS1Zvck5oenlwTmFFXC9NVDIxeXFESGc0M1NjUVlUZUxtYWRyem5NdGxTYjdoeElLQ3h0bldIU1dsWW1XYkVqdz09IiwibWFjIjoiNzQxZWE0MDVkZWJhMjRmYzk5ZjQ2OGQyZWZiMjY5MjcxNWZiZWRkYjYwNGJlNmRiZWJlODBkOTg5ZGRkYTBlNCJ9"
+        }
+        //名片主页
+        var cardUrl = "{{ route('card.index') }}";
+    </script>
+</head>
+<body>
+
+<div class="index-wrap">
+    <header class="index-header" data-init="0" style=""> 
+            <div class="index-header-left"><img src="" alt=""></div>
+            <div class="index-header-right">
+                <div class="index-header-right-name">阿萨实阿萨实打实阿萨实打实阿萨实打实阿萨实打实阿萨实打实打实</div>
+                <div class="circle-master bg-owner">阿萨实打实</div>
+                <div class="index-header-right-cont">
+                    <span class="bg-tie">帖子12312</span>&nbsp;&nbsp;&nbsp;
+                    <span class="bg-member">12313人</span>
+                </div>
+            </div>
+            <span class="icon-approve" style="display: none;"></span>
+    </header>
+
+    <section class="index-tab m-top1">
+        <ul class="index-tab-con">
+            <li class="fl active">
+                <a href="javascript:;">帖子</a>
+                <span class="index-tab-line"></span>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">圈组</a>
+                <span class="index-tab-line"></span>
+            </li>
+        </ul>
+    </section>
+    <div class="infinitelist">
+
+    </div>
+   
+    <!--<footer class="index-footer">
+        <a href="javascript:;" class="index-footer-img"><img  src="images/send-tie.png" alt=""></a>
+    </footer>-->
+</div>
+<script src="js/jquery-1.9.1.min.js" ></script>
+<script src="js/jquery.lazyload.min.js"></script>
+<script src="js/dropload.min.js"></script>
+<script src="js/public.js"></script>
+<script>
+	$(function(){
+		// 页码
+	    var page = 0;
+		//借口地址
+		var listUrl = "http://jq.flyzz.net/m/member/circlePostsList";
+		
+	    $('.index-wrap').dropload({
+	        scrollArea : window,
+	        loadDownFn : function(me){
+	            page++;
+	            // 拼接HTML
+	            var result = '';
+	            $.ajax({
+	                type: 'GET',
+	                url: listUrl,
+	                data:{
+	                	token: phpdata.token,
+						memberId: phpdata.myMemberId,
+						circleId: phpdata.circleId,
+						pageSize: 10,
+	                	page: page,
+
+	                },
+	                dataType: 'json',
+	                success: function(data){
+//	                	console.log(data);
+	                	if(data.code == 0){
+	                		//顶部圈子信息
+	                		if($(".index-header").attr("data-init") == "0"){
+	                			$(".index-header-left img").attr("src",data.object.circleinfo.picUrl);
+	                			$(".index-header-right-name").html(data.object.circleinfo.name);
+	                			$(".bg-owner").html(data.object.circleinfo.ownername);
+	                			$(".bg-member").html(data.object.circleinfo.userCount + "人");
+	                			$(".index-header").attr("data-init" , 1).show();
+	                			if(data.object.circleinfo.isapprove == 1){
+	                				$(".icon-approve").show();
+	                			}
+	                		}
+	                		var obj = data.object.circleposts;
+	                		if(obj && obj.length){
+	                			var result = '';
+	                			$.each(obj, function(listindex,listitem) {
+	                				//头像V tag
+	                				var vhtml = '';
+	                				if(listitem.member.celebrity && listitem.member.celebrity == 1){
+	                				
+	                					vhtml += '<img class="vicon" src="images/v.png" />';
+	                				}
+//	                				console.log(listitem);
+	                				result += '<section class="index-content m-top2" data-id="'+listitem._id+'"  onclick="jumpDetail(this)">';
+	                				//头像 昵称栏
+	                				var taghtml = '';
+	                				if(listitem.postType == 2){
+	                					//直播贴
+	                					taghtml = '<img src="images/live.png" class="index-product" alt="">';
+	                				}else if(listitem.postType == 3){
+	                					//活动贴
+	                					taghtml = '<img src="images/activity.png" class="index-product" alt="">';
+	                				}else if(listitem.postType == 4){
+	                					//产品贴
+	                					taghtml = '<img src="images/product.png" class="index-product" alt="">';
+	                				}
+	                				result += '<div class="index-content-header">'+
+	                								'<div class="content-img"><img class="headimg lazy" data-cardid="'+listitem.member._id+'" onclick="jumpCard(this)" src="images/placeholder.png" data-original="'+listitem.member.logo+'" alt="">'+vhtml+'</div>'+
+	                								'<div class="content-intr">'+
+                  									   	'<p class="content-intr-name">'+listitem.member.nickname+'</p>'+
+										                '<p class="content-intr-host">发布于'+(timestampToDate2(listitem.ct))+'</p>'+
+										            '</div>'+
+										            taghtml+
+										        '</div>';
+										        
+									//内容
+									result += '<div class="index-content-con">';
+									var tietype = listitem.postType;	        
+									
+									switch (tietype){
+										case 1:{
+											//判断是否有标题
+											if(listitem.title == ""){
+												//无标题
+												result += '<div class="con-plaintext conp-3">'+listitem.snapshot+'</div>';
+											}else{
+												//有标题
+												result += 	'<div class="con-title">'+listitem.title+'</div>'+
+															'<div class="con-plaintext conp-1">'+listitem.snapshot+'</div>';
+											}
+											//判断是否有图
+											if(listitem.imgurl){
+												//有图
+												var imgcounts = listitem.richItem.imageArr.length;
+												if(imgcounts == 1){
+													result += '<img class="con-fullimg lazy" src="images/placeholder.png" data-original="'+listitem.richItem.imageArr[0]+'">';
+												}else if(imgcounts == 2){
+													result += '<div class="con-two">'+
+													        		'<div class="squared-item">'+
+													        			'<img class="lazy" src="images/placeholder.png" data-original="'+listitem.richItem.imageArr[0]+'">'+
+													        		'</div>'+
+													        		'<div class="squared-item">'+
+													        			'<img class="lazy" src="images/placeholder.png" data-original="'+listitem.richItem.imageArr[1]+'">'+
+													        		'</div>'+
+													        	'</div>';
+												}else{
+													result += '<div class="con-squared">';
+													$.each(listitem.richItem.imageArr, function(imgindex,imgitem) {
+														result += '<div class="squared-item">'+
+													        			'<img class="lazy" src="images/placeholder.png" data-original="'+imgitem+'">'+
+													        		'</div>'					
+													});
+													result += '</div>';
+												}
+												
+											}
+										}break;
+										case 2:{
+											//图文直播贴
+											result += '<div class="con-title">'+listitem.postItem.title+'</div>'+
+											        	'<img class="con-fullimg lazy" src="images/placeholder.png" data-original="'+listitem.postItem.imgurl+'">'+
+											        	'<p class="con-liveinfo">'+
+											        		'在线观看人数：'+listitem.lv_count+'人'+
+											        		'<a>进入直播<i class="content-down trans-right"></i></a>'+
+											        	'</p>';
+										}break;
+										case 3:{
+											//活动贴
+											result += '<div class="con-title">'+listitem.postItem.ac_title+'</div>'+
+											        	'<img class="con-fullimg lazy" src="images/placeholder.png" data-original="'+listitem.postItem.ac_pic+'">'+
+											        	'<p class="con-acttime">活动时间:'+(timestampToDate2(listitem.postItem.startDate))+'~'+(timestampToDate2(listitem.postItem.endDate))+'</p>'+
+											        	'<p class="con-actaddress">活动地点:'+((listitem.postItem.ac_addr=="")?'暂无地址':listitem.postItem.ac_addr)+'</p>';
+										}break;
+										case 4:{
+											//产品贴
+											var temp = "";
+											if(listitem.postItem.product.images && listitem.postItem.product.images.length){
+												temp= listitem.postItem.product.images[0];
+											}else{
+												if(listitem.postItem.product.image.indexOf("http://jiuquandata.b0.upaiyun.com") < 0){
+													temp = 'http://jiuquandata.b0.upaiyun.com' + listitem.postItem.product.image;
+												}else{
+													temp = listitem.postItem.product.image;
+												}
+											}
+											
+											result += '<div class="con-title">'+listitem.title+'</div>'+
+														'<div class="con-plaintext conp-3">'+listitem.snapshot+'</div>'+
+											        	'<img class="con-fullimg lazy" src="images/placeholder.png" data-original="'+listitem.imgurl+'">'+
+											        	'<div class="con-goodsbox">'+
+											        		'<img class="box-left lazy" src="images/placeholder.png" data-original="'+temp+'">'+
+											        		'<div class="box-right">'+
+											        			'<p class="box-title">'+listitem.postItem.product.name+'</p>'+
+											        			'<p class="box-infos">'+
+											        				'<span>参考价格:'+listitem.postItem.product.min_price+'~'+listitem.postItem.product.max_price+'/瓶</span>'+
+											        				'<span class="fr">'+listitem.postItem.product.area+'</span>'+
+											        			'</p>'+
+											        		'</div>'+
+											        	'</div>';
+										}break;
+										default:
+											break;
+									}
+									
+									result += '</div>';
+									
+									//底部栏
+									result += '<div class="index-content-footer">'+
+										            '<div class="footer-time">'+listitem.circle.name+'</div>'+
+										            '<ul class="footer-cont">'+
+										                '<li class="fr '+((listitem.myStarsCount == 0)?"":" index-active ")+'"><a href="javascript:;"><i class="footer-zhan"></i><span class="footer-zhan-text">'+listitem.starsCount+'</span></a></li>'+
+										                '<li class="fr"><a href="javascript:;"><i class="footer-comment"></i><span class="footer-comment-text">'+listitem.commentCount+'</span></a></li>'+
+										                '<li class="fr index-active"><a href="javascript:;"><i class="footer-share"></i></a></li>'+
+										            '</ul>'+
+										        '</div>';
+	                				result += '</section>'
+	                			});
+	                			
+	                			
+	                		}else{
+	                			//锁定
+	                       		me.lock();
+		                        // 无数据
+		                        me.noData();
+	                		}
+	                	}else{
+	                		info(data.msg || "请求数据失败");
+	                		//锁定
+                       		me.lock();
+	                        // 无数据
+	                        me.noData();
+	                        noDataDiv($(".infinitelist"));
+	                	}
+
+	                    setTimeout(function(){
+	                        // 插入数据到页面，放到最后面
+	                        $('.infinitelist').append(result);
+	                        $("img.lazy").lazyload();
+	                        // 每次数据插入，必须重置
+	                        me.resetload();
+	                    },0);
+	                },
+	                error: function(xhr, type){
+	                    info('网络错误:'+type);
+	                    // 即使加载出错，也得重置
+	                    me.resetload();
+                    	me.lock();
+                        // 无数据
+                        me.noData();
+	                }
+	            });
+	        }
+	    });
+	    
+	});
+	
+	function jumpDetail(th){
+		window.location.href = "{{routu('client.page.share.posts')}}"+ "?id" + $(th).attr("data-id");
+	}
+</script>
+</body>
+</html>

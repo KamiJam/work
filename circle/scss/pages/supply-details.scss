@@ -1,0 +1,130 @@
+@charset "utf-8";
+@import "../reset";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+
+body{
+    background-color: #F4F4F4;
+}
+.info-block{
+    margin-top: prem(25);
+    padding: prem(30);
+    background-color: white;
+    .puber-info{
+        @include flexbox;
+        .vertical-line{
+            height: prem(55);
+            width: 1px;
+            background-color: #CCCCCC;
+            align-self: center;
+        }
+        .pi-left,.pi-right{
+            @include flexitem;
+        }
+        .pi-left{
+            .headimg-c{
+                display: inline-block;
+                position: relative;
+                font-size: 0;
+                vertical-align: middle;
+                .headimg{
+                    width: prem(80);
+                    height: prem(80);
+                    border-radius: prem(40);
+                }
+                .vip-icon{
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    width: prem(25);
+                    height: prem(25);
+                    border-radius: prem(25);
+                }
+            }
+            .info-lines{
+                display: inline-block;
+                padding-left: prem(22);
+                vertical-align: middle;
+                .iname{
+                    font-size: prem(30);
+                    line-height: prem(50);
+                    color: #000;
+                }
+                .itime{
+                    font-size: prem(20);
+                    line-height: prem(30);
+                    color: #999;
+                }
+            }
+        }
+        .pi-right{
+            padding-left: prem(33);
+            .imobile,.icompany{
+                font-size: prem(26);
+                line-height: prem(40);
+                color: #666;
+            }
+        }
+    }
+    .brief-line{
+        @include flexbox;
+        margin-bottom: prem(30);
+        font-size: prem(26);
+        color: #666;
+        .infovalue{
+            @include flexitem;
+        }
+    }
+}
+.linkline{
+    height: prem(56);
+    margin: 1px 0 0 0;
+    background-size: auto prem(25);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    &.checkdata{
+        background-image: url(../img/checkdata.png);
+    }
+    &.moreinfo{
+        background-image: url(../img/moreinfo.png);
+    }
+}
+.ver-line{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.fr{
+    float: right;
+}
+
+.ib-title{
+    height: prem(30);
+    margin-bottom: prem(28);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    &.puber{
+        background-image: url(../img/puber.png);
+    }
+    &.brief{
+        background-image: url(../img/brief.png);
+        background-size: auto 98%;
+    }
+    &.productimg{
+        background-image: url(../img/productimg.png);
+        margin-top: prem(28);
+    }
+}
+.img-container{
+    
+    img{
+        vertical-align: bottom;
+        width: 100%;
+        border-bottom: 2px solid #fff; 
+        border-top: 2px solid #fff;
+        margin-bottom: 2px;
+    }
+}

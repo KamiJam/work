@@ -1,0 +1,87 @@
+@charset "utf-8";
+@import "../reset";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+@import "../common";
+@import "../loading";
+
+.type-line{
+    background-color: white;
+    background-image: url(../images/i-more.png);
+    background-repeat: no-repeat;
+    background-size: prem(20);
+    background-position: 96% center;
+    margin: prem(20) 0;
+    line-height: prem(90);
+    .type-name{
+        margin-left: prem(30);
+        color: #000;
+        font-size: prem(30);
+    }
+}
+.detail-block{
+    background-color: white;
+    padding: prem(30);
+    textarea{
+        border:none;
+        -webkit-appearance: none;
+        resize: none;
+        width: 100%;
+        color: #000;
+        font-size: prem(30);
+        height: 4.8em;
+    }
+}
+textarea::-webkit-input-placeholder{
+    color: #808080;opacity:0.7;
+}
+.imgs-box{
+    font-size: 0;
+    .img-item{
+        position: relative;
+        display: inline-block;
+        width: prem(150);
+        height: prem(150);
+        margin: 0 prem(20) prem(20) 0;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .file{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+        .del-icon{
+            display: inline-block;
+            position: absolute;
+            width: prem(38);
+            height: prem(38);
+            top: - prem(19);
+            right: - prem(15);
+            background: url(../images/clear.png) no-repeat;
+            background-size: 100%;
+        }
+    }
+}
+.button-block{
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    line-height: prem(80);
+    font-size: prem(30);
+    border: none;
+    color: white;
+    border-radius: 4px;
+    &.btn-submit{
+        margin-top: prem(90);
+        background-color: #17C792;
+        &:disabled{
+            background-color: #ccc;
+        }
+    }
+}

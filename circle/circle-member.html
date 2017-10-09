@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-dpr="2" style="font-size: 50px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <title>圈子成员</title>
+    <link rel="stylesheet" href="css/weui.css">
+    <link rel="stylesheet" type="text/css" href="css/circle-index.css">
+    <style type="text/css">
+        .member-list,.list-change-con {  background: #fff;  overflow: hidden;  color:#000;  }
+        .list-icon {position:relative;  width: 1.8rem;  height: 1.8rem;  margin: 0.2rem 0.7rem;  border-radius: 50%;  background-color: #d0d0d0;  }
+        .list-icon .member-photo {  width: 1.8rem;  height: 1.8rem;  border-radius: 50%;  }
+        .weui-search-bar__label .weui-icon-search {  margin-right: 0px;  }
+        .weui-icon-search {  color: #B2B2B2;  font-size: 12px;  }
+        .weui-search-bar__label span {  font-size: 12px;  }
+        .weui-search-bar__label {  text-align: left;  margin-left: 6px;  }
+    </style>
+    <script type="application/javascript">
+        (function () {
+            var html = document.querySelector("html");
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 16 + "px";
+        })();
+    </script>
+</head>
+<body>
+<div class="member-wrap">
+    <!--搜索框......
+    .................................-->
+    <div class="top-bar">
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="Search" required/>
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label class="weui-search-bar__label" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>搜索</span>
+                </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+    </div>
+    <!--搜索框end...............................-->
+    <section>
+       <a href="javascript:;" class="member-list-change">
+           <div class="list-change-con">
+            <div class="member-change-icon fl"></div>
+            <div class="fl">审批请求</div>
+            <div class="list-change-inform fr">1</div>
+           </div>
+        </a>
+    </section>
+
+    <!--名片内容-->
+        <section class="list-wrap">
+            <div class="member-select">圈主、管理员</div>
+            <div class="list-flag">
+                <div class="member-list">
+                    <a href="http://www.baidu.com">
+                        <div class="list-icon fl">
+                            <img src="images/1.jpg" alt="" class="member-photo">
+                            <img src="images/circle-host.png" alt="" class="member-circle-host">
+                            <img src="images/v.png" alt="" class="member-circle-v">
+                        </div>
+                        <div class="fl list-name">货</div>
+                    </a>
+                    <p class="fr member-right"></p>
+                </div>
+                <div class="member-list">
+                    <a href="javascript:;">
+                        <div class="list-icon fl">
+                            <img src="images/1.jpg" alt="" class="member-photo">
+                            <img src="images/v.png" alt="" class="member-circle-v">
+                            <img src="images/manage.png" alt="" class="member-circle-manage">
+                        </div>
+                        <div class="fl list-name">哈哈哈</div>
+                    </a>
+                        <p class="fr member-right"></p>
+                </div>
+                <div class="member-list">
+                    <a href="javascript:;">
+                        <div class="list-icon fl">
+                            <img src="images/1.jpg" alt="" class="member-photo">
+                            <img src="images/manage.png" alt="" class="member-circle-manage">
+                        </div>
+                        <div class="fl list-name">哈哈哈</div>
+                    </a>
+                        <p class="fr member-right"></p>
+                </div>
+                <div class="member-list">
+                    <a href="javascript:;">
+                        <div class="list-icon fl">
+                            <img src="images/1.jpg" alt="" class="member-photo">
+                            <img src="images/manage.png" alt="" class="member-circle-manage">
+                        </div>
+                        <div class="fl list-name">一一一</div>
+                    </a>
+                        <p class="fr member-right"></p>
+                </div>
+            </div>
+        </section>
+        <section class="list-wrap">
+            <div class="member-select">圈子成员</div>
+            <div class="list-flag">
+                <div class="member-list">
+                    <a href="javascript:;">
+                        <div class="list-icon fl"><img src="images/1.jpg" alt="" class="member-photo"></div>
+                        <div class="fl list-name">哈哈哈</div>
+                    </a>
+                    <p class="fr member-right"></p>
+                </div>
+                <div class="member-list">
+                    <a href="javascript:;">
+                        <div class="list-icon fl">
+                            <img src="images/1.jpg" alt="" class="member-photo">
+                            <img src="images/v.png" alt="" class="member-circle-v">
+                        </div>
+                        <div class="fl list-name">哈哈哈</div>
+                    </a>
+                    <p class="fr member-right"></p>
+                </div>
+                <div class="member-list">
+                    <a href="javascript:;">
+                        <div class="list-icon fl"><img src="images/1.jpg" alt="" class="member-photo"></div>
+                        <div class="fl list-name">哈哈哈</div>
+                    </a>
+                    <p class="fr member-right"></p>
+                </div>
+                <div class="member-list">
+                    <a href="javascript:;">
+                        <div class="list-icon fl">
+                            <img src="images/1.jpg" alt="" class="member-photo">
+                            <img src="images/v.png" alt="" class="member-circle-v">
+                        </div>
+                        <div class="fl list-name">哈哈哈</div>
+                    </a>
+                    <p class="fr member-right"></p>
+                </div>
+                <div class="member-list">
+                    <a href="javascript:;">
+                        <div class="list-icon fl"><img src="images/1.jpg" alt="" class="member-photo"></div>
+                        <div class="fl list-name">哈哈哈</div>
+                    </a>
+                    <p class="fr member-right"></p>
+                </div>
+                <div class="member-list">
+                    <a href="javascript:;">
+                        <div class="list-icon fl"><img src="images/1.jpg" alt="" class="member-photo"></div>
+                        <div class="fl list-name">哈哈哈</div>
+                    </a>
+                    <p class="fr member-right"></p>
+                </div>
+                <div class="member-list">
+                    <a href="javascript:;">
+                        <div class="list-icon fl"><img src="images/1.jpg" alt="" class="member-photo"></div>
+                        <div class="fl list-name">一一一</div>
+                    </a>
+                    <p class="fr member-right"></p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+<script type="text/javascript">
+
+
+</script>
+</body>
+
+</html>

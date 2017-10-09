@@ -1,0 +1,92 @@
+@charset "utf-8";
+@import "../reset";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+
+.page-c{
+    padding: prem(40);
+}
+.top-tips{
+    padding-left: prem(40);
+    font-size: prem(28);
+    color: #4D4D4D;
+    background: url(../img/val-warm.png) no-repeat;
+    background-size: prem(30);
+    background-position-y: prem(4);
+}
+
+.input-blocks{
+    background-color: white;
+    width: prem(685);
+    margin: prem(40) auto 0 auto;
+    border-radius: 4px;
+    .input-line{
+        position: relative;
+        height: prem(125);
+        line-height: prem(125);
+        margin-left: prem(40);
+        padding-left: prem(50);
+        margin-right: prem(35);
+        input{
+            vertical-align: text-bottom;
+            height: prem(50);
+            border: none !important;
+            font-size: prem(30);
+            color: #808080;
+            width: 80%;
+        }
+        &.mobile-line{
+            background: url(../img/mobile.png) no-repeat;
+            background-size: 0.65rem 0.9rem;
+            background-position: 0 center;
+        }
+        &.idcode-line{
+            background: url(../img/idcode.png) no-repeat;
+            background-size: 0.8rem 0.8rem;
+            background-position: 0 center;
+            padding-right: prem(215);
+        }
+        .clear-icon{
+            display: none;
+            position: absolute;
+            margin-top: prem((125-40)/2);
+            width: prem(40);
+            height: prem(40);
+            background: url(../img/clear.png) no-repeat;
+            background-size: 100% 100%;
+            z-index: 1;
+        }
+        .send-btn{
+            position: absolute;
+            height: prem(77);
+            width: prem(215);
+            color: #fff;
+            font-size: prem(32);
+            background-color: #37CDA3;
+            border-radius: 2px;
+            border: none;
+            top: prem((125-77)/2);
+            right: 0;
+            &:disabled{
+                background-color: #ccc;
+            }
+        }
+    }
+    .input-line:not(:last-child){
+        border-bottom: 1px solid #F5F5F5;
+    }
+}
+.submit-btn{
+    display: block;
+    margin: prem(90) auto;
+    width: prem(568);
+    height: prem(81);
+    line-height: prem(81);
+    border-radius: 2px;
+    color: #fff;
+    text-align: center;
+    border: none;
+    background-color: #37CDA3;
+}
+

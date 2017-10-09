@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	    <meta http-equiv="Pragma" content="no-cache" />
+	    <meta http-equiv="Expires" content="0" />
+	    <meta name="format-detection" content="telephone=no" />
+	    <title>供应信息</title>
+	    <link rel="stylesheet" href="css/mysupplyinfo.css">
+	    <link rel="stylesheet" href="css/dropload.css"/>
+	    <script type="text/javascript">
+	        (function () {
+	            var html = document.querySelector("html");
+	            var width = html.getBoundingClientRect().width;
+	            html.style.fontSize = width / 16 + "px";
+	        })();
+	        
+	        var phpdata = {
+	        	myMemberId: 12045, //我的memberid
+	        	pageMemberId: 11220, //当前页面所属的memberid
+	        	token: "",
+	        	type:1    //供需类型,(1=>供应，2=>求购)
+	        }
+
+	    </script>
+	</head>
+	<body style="padding: 0;">
+		<div class="maincontent">
+			<div class="infinitelist">
+				<section class="supply-item animate-opacity prod-patch" data-id="51" onclick="jumpDetail(this)">
+					<div class="user-info"><img class="v-icon" src="images/v.png"><img class="headimg lazy" src="http://jiuquandata.b0.upaiyun.com/2017/07/10/upload_ae79ec525a915b509a39c88cd68de1c1.0.jpg" data-original="http://jiuquandata.b0.upaiyun.com/2017/07/10/upload_ae79ec525a915b509a39c88cd68de1c1.0.jpg" style="display: block;">
+						<div class="u-info">
+							<div>
+								<p class="u-name ">鱼和熊鱼和熊鱼和熊鱼和熊鱼和熊鱼和熊鱼和熊</p></div>
+							<p class="u-time ">美国总统·狙击手鱼和熊鱼和熊鱼和熊鱼和熊鱼和熊</p></div>
+					</div>
+					<li class="pro-item">
+						<div class="pi-left">
+							<img id="pimg" class="listimg" src="images/placeholder.png" />
+						</div>
+						<div class="pi-center">
+							<div class="c-title">
+								<span class="ct" id="pname">第三方士大夫第三方士大夫第三方士大夫第三方士大夫第三方士大夫</span>
+							</div>
+							<div class="c-brand" id="pbrand">
+								品牌&nbsp;·&nbsp;啊实打实大
+								
+							</div>
+							<div class="c-circle" id="pcircle">
+								圈子&nbsp;·&nbsp;啊实打实大
+								
+							</div>
+						</div>
+					</li>
+					
+				</section>
+			</div>
+
+		</div>
+		<script src="js/jquery-1.9.1.min.js" ></script>
+		<script src="js/jquery.lazyload.min.js"></script>
+		<script src="js/dropload.min.js"></script>
+		<script src="js/public.js"></script>
+		<script>
+			$(function(){
+				// 页码
+			    var page = 0;
+				//借口地址
+				var listUrl = "http://jq.flyzz.net/m/supply/supplylists";
+				
+				
+			    $('.maincontent').dropload({
+			        scrollArea : window,
+			        loadDownFn : function(me){
+			            page++;
+			            // 拼接HTML
+			            var result = '';
+			            $.ajax({
+			                type: 'GET',
+			                url: listUrl,
+			                data:{
+
+			                	page: page,
+
+			                },
+			                dataType: 'json',
+			                success: function(data){
+			                	console.log(data);
+			                	if(data.code == 0){
+			                		if(data.list && data.list.length){
+			                			
+			                			$.each(data.list,function(listindex,listitem){
+			                				result += '<section class="supply-item animate-opacity" data-id="'+listitem._id+'" onclick="jumpDetail(this)">';
+											//头像v信息
+											var vhtml = "";
+											if(listitem.member.celebrity == 1){
+												vhtml += '<img class="v-icon" src="images/v.png" />';
+											}
+											
+											//供求标签判断
+											var tag = '';
+											if(listitem.type == 1){
+												tag = '<span class="nametag supply"></span>';
+											}else if(listitem.type == 2){
+												tag = '<span class="nametag ask"></span>';
+											}
+											
+											//置顶标签判断
+											var topicon = "";
+											if(listitem.topsupply == 1){
+												topicon ='<span class="settop">置顶</span>';
+											}
+		                					result += 	'<div class="user-info">'+
+		                									vhtml+
+															'<img class="headimg lazy" src="images/placeholder.png" data-original="'+listitem.member.logo+'" />'+
+															
+															'<div class="u-info">'+
+																'<div>'+
+																	'<p class="u-name patch-uname">'+listitem.member.nickname+'</p>'+
+																	tag+
+																	topicon+
+																'</div>'+
+																'<p class="u-time patch-nkname">'+companyJob(listitem.member.company,listitem.member.job)+'</p>'+
+																'<span class="right-time">'+timestampToDate(listitem.ct)+'</span>'+
+															'</div>'+
+														'</div>';
+
+			                				
+			                				result += '<div class="supply-con">'+
+															'<div class="con-text">'+listitem.richItem.textArr.join()+'</div>';
+			                				
+			                				var  imgHtml = "";
+			                				if(listitem.richItem.imageArr && listitem.richItem.imageArr.length){
+			                					imgHtml = '<div class="con-squared">';
+				                				$.each(listitem.richItem.imageArr,function(imgindex,imgitem){
+				                					if(imgindex >= 9) return false;
+				                					imgHtml += '<div class="squared-item">'+
+			        											'<img class="lazy" src="images/placeholder.png" data-original="'+imgitem+'">'+
+			        											'</div>';
+				                				});
+				                				imgHtml += '</div>';
+			                				}
+			                				result += imgHtml;
+			                				result += '</div>';
+			                				//底部栏
+			                				result += '<div class="bottom-infos">'+
+															'<span class="pos">'+listitem.city+'</span>'+
+															'<span class="check">'+listitem.views+'查看</span>'+
+															'<span class="coll'+((listitem.isZan == 0)?"active":"")+'">'+listitem.zan+'收藏</span>'+
+														'</div>';
+
+			                				result += '</section>';
+			                			});
+			                			
+			                			
+			                		}else{
+			                			//锁定
+			                       		me.lock();
+				                        // 无数据
+				                        me.noData();
+			                		}
+			                	}else{
+			                		alert("请求数据失败");
+			                	}
+
+			                    setTimeout(function(){
+			                        // 插入数据到页面，放到最后面
+			                        $('.infinitelist').append(result);
+			                        $("img.lazy").lazyload();
+			                        // 每次数据插入，必须重置
+			                        me.resetload();
+			                    },0);
+			                },
+			                error: function(xhr, type){
+			                    alert('网络错误!');
+			                    // 即使加载出错，也得重置
+			                    me.resetload();
+			                }
+			            });
+			        }
+			    });
+			    
+			});
+			
+			function jumpDetail(th){
+				var did = $(th).attr("data-id");
+				window.location.href =  "{{route('niche.supplydetail')}}" + "?supplyId=" + did;
+			}
+		</script>
+	</body>
+</html>

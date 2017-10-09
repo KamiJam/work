@@ -1,0 +1,159 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "微软雅黑","黑体","宋体"; }
+
+html {
+  font-size: 10px; }
+
+body {
+  font-size: 0.875rem;
+  font-family: sans-serif;
+  /* background: #d0d0d0;*/
+  -webkit-tap-highlight-color: transparent; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+strong {
+  font-weight: bold; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+img {
+  border: 0;
+  max-width: 100%; }
+
+a {
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none; }
+
+input[type=button], input[type=submit], input[type=file], button {
+  cursor: pointer;
+  -webkit-appearance: none; }
+
+input {
+  -webkit-tap-highlight-color: transparent; }
+
+a, button, input, optgroup, select, textarea {
+  -webkit-tap-highlight-color: transparent; }
+
+* {
+  -webkit-touch-callout: none;
+  /*系统默认菜单被禁用*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  -moz-user-select: none;
+  /*火狐*/
+  -ms-user-select: none;
+  /*IE10*/
+  user-select: none; }
+
+input, textarea {
+  -webkit-user-select: auto;
+  /*webkit浏览器*/
+  margin: 0px;
+  padding: 0px;
+  outline: none; }
+
+body {
+  background-color: #eeeef3; }
+
+a {
+  text-decoration: none;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent; }
+
+.top-line {
+  margin: 3.84rem auto 1.00267rem auto;
+  text-align: center; }
+  .top-line * {
+    vertical-align: middle; }
+  .top-line .headimg {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 1.6rem; }
+  .top-line span {
+    margin-left: 0.512rem;
+    font-size: 0.59733rem;
+    color: #000; }
+
+.card-container {
+  width: 10.70933rem;
+  height: 13.58933rem;
+  margin: 0 auto;
+  background: url(../img/invCardBg.png) no-repeat;
+  background-size: contain;
+  text-align: center;
+  color: white; }
+  .card-container .cardimg {
+    overflow: hidden;
+    margin: 2.13333rem auto 0.42667rem auto;
+    height: 2.77333rem;
+    width: 2.77333rem;
+    border-radius: 2.77333rem;
+    border: 1px solid white; }
+  .card-container .circle-name {
+    font-size: 0.72533rem;
+    margin-bottom: 0.96rem; }
+  .card-container .circle-size {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center; }
+    .card-container .circle-size .cs-item {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      font-size: 0.55467rem; }
+      .card-container .circle-size .cs-item font {
+        margin-left: 0.21333rem; }
+    .card-container .circle-size .cs-line {
+      width: 1px;
+      margin: 0 0.34133rem;
+      background-color: white;
+      height: 0.64rem; }
+  .card-container .join-circle {
+    margin-top: 2.77333rem;
+    display: inline-block;
+    width: 5.09867rem;
+    height: 1.64267rem;
+    border-radius: 1.64267rem;
+    line-height: 1.64267rem;
+    background-image: url(../img/join-bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 0.72533rem; }
+
+.tl {
+  text-align: left; }
+
+.tr {
+  text-align: right; }
+
+/*# sourceMappingURL=invitation.css.map */

@@ -1,0 +1,79 @@
+@charset "utf-8";
+@import "../reset";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+
+//卡片
+.card-container{
+    width: prem(502);
+    height: prem(637);
+    margin: 0 auto;
+    background: url(../img/invCardBg.png) no-repeat;
+    background-size: contain;
+    text-align: center;
+    color: white;
+    .cardimg{
+        overflow: hidden;
+        margin: prem(100) auto prem(20) auto;
+        height: prem(130);
+        width: prem(130);
+        border-radius: prem(130);
+        border: 1px solid white;
+    }
+    .circle-name{
+        font-size: prem(34);
+        margin-bottom: prem(45);
+    }
+    .circle-size{
+        @include flexbox;
+        align-items: center;
+        .cs-item{
+            @include flexitem;
+            font-size: prem(26);
+            font{
+                margin-left: prem(10);
+            }            
+        }
+        .cs-line{
+            width: 1px;
+            margin: 0 prem(16);
+            background-color: white;
+            height: prem(30);
+        }
+       
+    }
+    .join-result{
+        margin-top: prem(90);
+        text-align: center;
+        font-size: prem(36);
+        color: #000;
+        .line-2{
+            margin-top: prem(20);
+            color: #999;
+            font-size: prem(28);
+        }
+    }
+}
+
+.openjq-btn{
+    width: prem(450);
+    height: prem(77);
+    line-height: prem(77);
+    margin: prem(120) auto;
+    background-color: #37CDA3;
+    color: #fff;
+    font-size: prem(34);
+    text-align: center;
+    border-radius: prem(77);
+}
+
+.mrtop-180{
+    margin-top: prem(180);
+}
+.tl{
+    text-align: left;
+}
+.tr{
+    text-align: right;
+}

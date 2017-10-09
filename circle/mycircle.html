@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的圈子</title>
+    <link rel="stylesheet" href="css/mycircle.css">
+    <link rel="stylesheet" href="css/dropload.css"/>
+    <script type="text/javascript">
+        (function () {
+            var html = document.querySelector("html");
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 16 + "px";
+        })();
+        
+        var phpdata = {
+	    	myMemberId: 12045, //我的memberid
+	    }
+    </script>
+</head>
+<body>
+<body>
+	<div class="topbar">
+		<div class="tb-item active">
+			<span class="innerspan">推荐圈</span>
+		</div>
+		<div class="tb-item">
+			<span class="innerspan">协会圈</span>
+		</div>
+		<div class="tb-item">
+			<a><span class="innerspan">其他圈子</span></a>
+		</div>
+		
+	</div>	
+<div class="circle-wrap" style="margin-top: 2.2rem;">
+	
+    <!--我的圈子-->
+    <section class="w-color" id="main">
+
+    </section>
+</div>
+
+<script src="js/jquery-1.9.1.min.js" ></script>
+<script src="js/jquery.lazyload.min.js"></script>
+<script src="js/dropload.min.js"></script>
+<script src="js/public.js"></script>
+<script>
+	$(function(){
+		// 页码
+	    var page = 0;
+		//接口地址
+		var listUrl = "http://jq.flyzz.net/m/personal/mycircle";
+		
+		
+	    $('.circle-wrap').dropload({
+	        scrollArea : window,
+	        loadDownFn : function(me){
+	            page++;
+	            // 拼接HTML
+	            var result = '';
+	            $.ajax({
+	                type: 'GET',
+	                url: listUrl,
+	                data:{
+	                	memberId: phpdata.myMemberId,
+	                	pageSize: 20,
+	                	first: page,
+	                	page: page
+	                },
+	                dataType: 'json',
+	                success: function(data){
+	                	console.log(data);
+	                	if(data.code == 0){
+	                		if(data.list && data.list.length){
+	                			data.list.forEach(function(listitem,index){
+	                				result += '<div class="circle-my-list" data-id="'+listitem._id+'"  onclik="jumpcircledetail(this)">';
+	                				if(listitem.circlerole == 1){
+	                					result += '<img class="owner-icon" src="images/c-master.png"/>';
+	                				}
+	                				result += '<a href="javascript:;">';
+	                				result += 	'<div class="circle-my-list-img"><img class="lazy" src="images/placeholder.png" data-original="'+listitem.picUrl+'"></div>'+
+									            '<div class="circle-my-list-text">'+
+								                    '<p>'+listitem.name+'</p>'+
+								                   	'<div class="circle-my-member">'+
+								                       	'<div class="tie-c"><span class="circle-my-member-tie">帖子</span><span>'+listitem.postCount+'</span></div>'+
+								                       	'<span class="circle-my-member-num">成员</span><span>'+listitem.userCount+'</span>'+
+								                   	'</div>'+
+								                '</div>';
+	                				result += '</a>';
+	                				result += '</div>';
+	                			});
+	                			
+	                		}else{
+	                			//锁定
+	                       		me.lock();
+		                        // 无数据
+		                        me.noData();
+		                        if(page == 1){
+		                        	$(".dropload-down").hide();
+		                        	$("body").append('<div class="nodatadiv"></div>');
+		                        }
+	                		}
+	                	}else{
+	                		alert("请求数据失败");
+	                	}
+
+	                    setTimeout(function(){
+	                        // 插入数据到页面，放到最后面
+	                        $('#main').append(result);
+	                        $("img.lazy").lazyload();
+	                        // 每次数据插入，必须重置
+	                        me.resetload();
+	                    },0);
+	                },
+	                error: function(xhr, type){
+	                    alert('网络错误!');
+	                    // 即使加载出错，也得重置
+	                    me.resetload();
+	                }
+	            });
+	        }
+	    });
+	    
+	    
+	    
+
+	});
+	function jumpcircledetail(th){
+		window.location.href = "{{route('niche.wxcircleindex')}}" + "?circleId=" + $(th).attr("data-id");
+	}
+</script>
+</body>
+</html>

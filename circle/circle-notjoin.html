@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-dpr="2" style="font-size: 50px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>圈子</title>
+    <link rel="stylesheet" type="text/css" href="css/circle-notjoin.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/circle-index.css">-->
+    <style type="text/css">
+
+    </style>
+    <script type="application/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+            	var width = html.getBoundingClientRect().width;
+           		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+        })();
+    </script>
+</head>
+<body>
+<div id="root" class="index-wrap">
+        <header class="index-header">
+            <div class="index-header-left"><img src="http://jiuquandata.b0.upaiyun.com//2017/01/11/upload_cc38ef25b6b1cb23bb44502054d58211.png" alt=""></div>
+            <div class="index-header-right">
+                <div class="index-header-right-name">中国酒业论坛中国酒业论坛中国酒业论坛中</div>
+
+                <div class="index-header-right-nojoin">
+                    <p class="index-header-right-nojoin-num">人数：111</p>
+                    <p>圈主：哈哈哈</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="circle-row m-top1 " style="border-bottom: none;">
+            <div class="text-left"><span>圈子地点</span></div>
+            <div class="text-right">杭州市</div>
+        </div>
+        <div class="block-row pl-20 pr-20  m-top2">
+            <div class="row-title circle-title"><span>圈子简介</span></div>
+            <div class="circle-text">
+                <p>
+                    酒圈官方圈子，产品反馈请加微信V66888999，加微信时备注”反馈“哟酒圈官方圈子，产品反馈请加微信V66888999，加微信时备注”反馈“哟酒圈官方圈子，产品反馈请加微信V66888999，加微信时备注”反馈“哟
+                </p>
+            </div>
+        </div>
+        <footer class="index-footer">
+            
+            <!--<a href="javascript:;" class="index-footer-img-join"><img  src="images/join-circle.png" alt=""></a>-->
+            <a href="javascript:;" class="index-footer-img-verify"><img  src="images/verify.png" alt=""></a>
+        </footer>
+</div>
+</body>
+</html>

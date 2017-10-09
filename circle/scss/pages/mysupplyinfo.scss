@@ -1,0 +1,389 @@
+@charset "utf-8";
+@import "../reset";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+
+.supply-item{
+    background-color: white;
+    margin: 0.5rem 0 0 0;
+    padding: 10px;
+}
+//.headimg{
+//  float: left;
+//  width: prem(70);
+//  height: prem(70);
+//  border-radius: 999px;
+//  margin-right: 8px;
+//  margin-top: 2px;
+//}
+
+//.u-info{
+//  overflow: hidden;
+// 
+//}
+//.u-name{
+//  font-size: 14px;
+//  @include ellipsis;
+//  color: #386C9B;
+//}
+//.u-time{
+//  font-size: 12px;
+//  color: #666;
+//}
+
+.user-info{
+    @include flexbox;
+    align-items: center;
+    font-size: 0;
+    position: relative;
+}
+
+.headimg{
+    width: prem(70);
+    height: prem(70);
+    border-radius: 999px;
+    margin-right: 5px;
+}
+.u-info{
+    @include flexitem;
+}
+.info3{
+    .u-name{
+        width: 9rem;
+    }
+    .u-time{
+        width: 9rem;
+    }
+}
+.u-name{
+//  display: inline-block;
+    vertical-align: bottom;
+//  width: 7.5rem;
+    max-width: 13rem;
+    font-size: 14px;
+    @include ellipsis;
+    color: #386C9B;
+    vertical-align: middle;
+}
+.u-time{
+    font-size: 12px;
+    max-width: 13rem;
+    @include ellipsis;
+    color: #666;
+}
+.rightpart {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #666;
+}
+.nametag{
+    display: inline-block;
+//  font-size: 12px;
+    vertical-align: bottom;
+    width: 16px;
+    height: 16px;
+    margin-left: 3px;
+//  border-radius: 3px;
+    vertical-align: middle;
+//  color: white;
+//  text-align: center;
+    &.supply{
+        background: url(../images/supply/icon-supply.png) no-repeat;
+        background-size: contain;
+        background-position: center;
+
+    }
+    &.ask{
+        background: url(../images/supply/icon-ask.png) no-repeat;
+        background-size: contain;
+        background-position: center;
+
+    }
+//  margin-left: 0.4rem;
+}
+.name-c{
+    font-size: 0;
+}
+
+
+.supply-con{
+    margin-top: 10px;
+}
+.con-text{
+    color: #000;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.con-squared {
+    @include flexbox;
+    flex-wrap: wrap;
+    width: 100%;
+    font-size: 0;
+    .squared-item {
+        width: 31%;
+        @include padding-propor;
+        margin: 5px 3% 5px 0;
+        &:nth-child(3n) {
+            margin-right: 0!important;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+    }
+}
+
+//底部按钮
+body{
+    padding-bottom: prem(90);
+}
+.bottom-block{
+    height: prem(90);
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    @include flexbox;
+    align-items: center;
+    padding: 5px;
+    .btn-collect{
+        height: 100%;
+        width: prem(200);
+        background: url(../images/supply/btn-collect.png) no-repeat;
+        background-size: contain;
+        background-position: center;
+        &.active{
+            background: url(../images/supply/btn-collected.png) no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+    }
+    .btn-chat,.btn-save,{
+        @include flexitem;
+        height: prem(63);
+    }
+    .btn-chat{
+//      border-left: 1px solid #ccc;
+//      border-right: 1px solid #ccc;
+        background: url(../images/supply/btn-call.png) no-repeat;
+        background-size: 80px;
+        background-position: center;
+    }
+    .btn-save{
+//      border-left: 1px solid #ccc;
+        background: url(../images/supply/btn-save.png) no-repeat;
+        background-size: 80px;
+        background-position: center;
+    }
+    .btn-del,.btn-share{
+        @include flexitem;
+        height: 100%;
+    }
+    .btn-del{
+        background: url(../images/supply/btn-del.png) no-repeat;
+        background-size: 60px;
+        background-position: center;
+    }
+    .btn-share{
+        background: url(../images/supply/btn-share.png) no-repeat;
+        background-size: 60px;
+        background-position: center;
+    }
+    .splitline{
+        height: 80%;
+        width: 1px;
+        background-color: #ccc;
+    }
+}
+
+.patch-nkname{
+//  display: inline-block;
+//  vertical-align: top;
+    max-width: 9rem;
+    display: inline-block;
+
+}
+.patch-uname{
+    max-width: 8rem;
+    display: inline-block;  
+}
+.right-time{
+    float: right;
+    font-size: 12px;
+    color: #666;
+//  margin-top: 2px;
+}
+.animate-opacity{
+    -webkit-animation: opacity 0.3s linear;
+    animation: opacity 0.3s linear;
+}
+@-webkit-keyframes animate-opacity {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+@keyframes animate-opacity {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+.settop{
+    float: right;
+    font-size: 12px;
+    line-height: 18px;
+    width: 4em;
+    border-radius: 3px;
+    text-align: center;
+    color: white;
+    background: #F7BC54; /* 一些不支持背景渐变的浏览器 */  
+    background: -moz-linear-gradient(left, #F6B84D, #EFDA6F);  
+    background: -webkit-gradient(linear, left 0,right 0 , from(#F6B84D), to(#EFDA6F));  
+}
+
+.bottom-infos{
+    @include flexbox;
+    justify-content: flex-end;
+    font-size: 12px;
+    color: #808080;
+    .pos{
+        @include flexitem(2);
+        color: #386C9B;
+       
+    }
+    .check,.coll{
+        @include flexitem;
+        text-align: right;
+        padding-right: 18px;
+        line-height: 16px;
+    }
+    .check{
+        background: url(../images/supply/bg-check.png) no-repeat;
+        background-position: right 2px; 
+        background-size: auto 12px;
+    }
+    .coll{
+        padding-right: 15px;
+        background: url(../images/supply/bg-coll.png) no-repeat;
+        background-position: right 0; 
+        background-size: auto 14px;
+        &.active{
+            background: url(../images/supply/bg-colled.png) no-repeat;
+            background-position: right 0; 
+            background-size: auto 14px;
+        }
+    }
+
+}
+
+.v-icon{
+    
+    position: absolute;
+    left: 1.49333rem - 0.5rem  ;
+    top: 1.49333rem  - 0.5rem  ;
+//  margin-left: 1.49333rem - 0.5rem ;
+//  margin-top: 1.49333rem / 2 - 0.5rem / 2 ;
+    width: 0.5rem;
+    height: 0.5rem;
+}
+/*自定义toast*/
+.cust_toast {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 50%;
+    /*left: 50%;*/
+    width: auto;
+    font-size: 14px;
+    color: white;
+    /* margin-left: -100px; */
+    /* border: 1px solid #666; */
+    background-color: #1a1a1a;
+    padding: 8px;
+    text-align: center;
+    opacity: .9;
+    border-radius: 4px;
+    /* box-shadow: 2px 2px 1px #1a1a1a; */
+    -webkit-transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -ms-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -ms-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out;
+}
+.nodatadiv{
+    margin: 6rem auto 0 auto;
+    height: 6rem;
+    background: url(../images/bg-nodata.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.padd-patch{
+    padding-bottom: prem(100);
+}
+.cards-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: prem(100);
+  padding: prem(10);
+  display: block;
+//opacity: .8;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  width: 100%;
+  z-index: 9999;
+  clear: both;
+  color: #08c48d;
+  .cardsholder{
+      width: prem(137);
+      height: 100%;
+      background-image: url(../img/cardsholder.png);
+      background-repeat: no-repeat;
+      background-size: prem(47) prem(37);
+      background-position: center prem(20-15); 
+      font-size: prem(20);
+      text-align: center;
+      padding-top: prem(20 + 37 + 5-15);
+      border-right: 1px solid $border-color;
+  }
+  .cardsbtns{
+      &.cb-w{
+          margin: 0 prem(65);
+      }
+      height: 100%;
+      @include flexbox;
+      align-items: center;
+      .card-btn{
+          text-align: center;
+          @include flexitem;
+          span{
+              display: inline-block;
+              width: prem(242);
+              height: prem(60);
+              line-height: prem(60);
+              border: 1px solid #08c48d;
+              font-size: prem(32);
+              border-radius: prem(30);
+              &.active{
+                  color: white;
+                  background-color: #08c48d;
+              }
+          }
+      }
+  }
+}
