@@ -35,7 +35,7 @@
 </head>
 <body>
 	<div class="main-content">
-		<div class="zwadd-block">
+		<!--<div class="zwadd-block">
 			<div class="zb-topline ">
 				<span class="del-span float-r"></span>
 			</div>
@@ -63,25 +63,135 @@
 				<span class="add-span float-r"></span>
 			</div>
 		</div>
+		
+		<div class="zwadd-block">
+			<div class="zb-topline ">
+				<span class="del-span float-r"></span>
+			</div>
+			<div class="choose-line">
+				<span class="chl-left">请选择糖酒会</span>
+				<span class="chl-right float-r">
+					<span class="chlr-value">重庆糖酒会</span>
+					<i class="sm-icon smi-more"></i>
+				</span>
+			</div>
+			<div class="choose-line">
+				<div class="del-input">
+					<input type="text" class="float-l" placeholder="请输入您的展位地址"/>
+					<i class="di-icon"></i>
+				</div>
+				
+				<span class="add-span float-r"></span>
+			</div>
+		</div>-->
+		
+		<div class="fixed-btm addtjh">
+			增加糖酒会
+		</div>
 	</div>
+	<script id="item-template" type="text/template">
+		<div class="zwadd-block">
+			<div class="zb-topline ">
+				<span class="del-span float-r"></span>
+			</div>
+			<div class="choose-line">
+				<span class="chl-left">请选择糖酒会</span>
+				<span class="chl-right float-r">
+					<span class="chlr-value"></span>
+					<i class="sm-icon smi-more"></i>
+				</span>
+			</div>
+			<div class="choose-line">
+				<div class="del-input">
+					<input type="text" class="float-l" placeholder="请输入您的展位地址">
+					<i class="di-icon"></i>
+				</div>
+				
+				<span class="add-span float-r"></span>
+			</div>
+		</div>
+	</script>
 	<script src="../js/jquery-1.9.1.min.js"></script>
 	<script>
-		$(".del-input").on('input blur focus','input',function(){
-			var _val = $(this).val();
-			console.log(_val);
-			if(_val != ""){
-				$(this).next(".di-icon").show();
-			}else{
-				$(this).next(".di-icon").hide();
-			}
-
-		});
-		$(".del-input").on('click','.di-icon',function(){
-
-			$(this).prev("input").val('');
-			$(this).hide();
+		
+		
+		$(function(){
+			$(".del-input").on('input blur focus','input',function(){
+				var _val = $(this).val();
+				console.log(_val);
+				if(_val != ""){
+					$(this).next(".di-icon").show();
+				}else{
+					$(this).next(".di-icon").hide();
+				}
+	
+			});
+			$(".del-input").on('click','.di-icon',function(){
+				$(this).prev("input").val('');
+				$(this).hide();
+			});
+			
+			
+			
+			
+			_PAGE.init();
 		});
 		
+		var _PAGE = {
+//			count: 0,
+			init: function(){
+				var _self = this;
+				
+				//初始化值
+				if(localStorage.tangaddress){
+					_self.initlist();
+				}else{
+					localStorage.tangaddress = '[]';
+				}
+
+				//绑定事件
+				$(".addtjh").on('click',function(){
+					_PAGE.addAddress();
+				});
+				
+				$(".main-content").on('click','.del-span',function(){
+					var _id = $(this).parent().parent().attr("id"),
+						_listdata = JSON.parse(localStorage.tangaddress);
+					localStorage.tangaddress = JSON.stringify(removeArrayItem(_listdata,'id',_id));
+					$(this).parent().parent().remove();
+				});
+
+				
+			},
+			initlist:function(){
+				
+			},
+			addAddress: function(){
+				var _listdata = JSON.parse(localStorage.tangaddress),
+					_count = _listdata.length?(parseInt(_listdata[_listdata.length-1].id.replace('item',''))+1):0, //最后一个item的id+1
+					_html = $("#item-template").html();
+				_html = _html.replace(/class="zwadd-block"/,'class="zwadd-block" id="item'+_count+'"');
+				$(".main-content").append(_html);
+				var _item = {
+					id: 'item'+_count,
+					rumId: '',
+					address: []
+				};
+				_listdata.push(_item);
+				localStorage.tangaddress = JSON.stringify(_listdata);
+			}
+		};
+		
+		function removeArrayItem(arr,key,value){
+			
+			$.each(arr, function(index,item) {
+				if(item[key] == value){
+					arr.splice(index,1);
+				}
+			});
+
+			return arr;
+		}
 	</script>
 </body>
 </html>

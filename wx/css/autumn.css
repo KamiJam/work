@@ -161,4 +161,14 @@ a {
     background-image: url(../images/i-more.png);
     vertical-align: middle; }
 
+.addtjh {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  line-height: 2rem;
+  text-align: center;
+  font-size: 0.768rem;
+  background-color: #6497FE;
+  color: white; }
+
 /*# sourceMappingURL=autumn.css.map */
