@@ -98,7 +98,8 @@ a {
   .type-line .type-name {
     margin-left: 0.64rem;
     color: #000;
-    font-size: 0.64rem; }
+    font-size: 0.64rem;
+    vertical-align: bottom; }
 
 .detail-block {
   background-color: white;
@@ -162,6 +163,49 @@ textarea::-webkit-input-placeholder {
   float: right;
   color: #999;
   font-size: 0.64rem;
-  line-height: inherit; }
+  max-width: 9.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.top-suggest {
+  padding-left: 10px;
+  line-height: 1.92rem;
+  background-color: #f5fbff;
+  font-size: 0.55rem;
+  color: #666; }
+
+.fr-btn {
+  float: right;
+  width: 2.8rem;
+  text-align: center;
+  color: white;
+  background-color: #3ebdf6;
+  line-height: 1.22rem;
+  margin: 0.35rem 10px 0 0;
+  border-radius: 3px; }
+
+.fullpage-mask {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5; }
+
+.fm-textarea {
+  padding: 10px;
+  border: none;
+  -webkit-appearance: none;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+  color: #000;
+  font-size: 0.64rem;
+  height: 12rem; }
 
 /*# sourceMappingURL=post-goods.css.map */

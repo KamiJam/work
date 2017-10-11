@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <meta name="format-detection" content="telephone=no" />
-    <title>发布供求</title>
+    <title>发布展位</title>
     
     <link rel="stylesheet" href="../css/post-goods.css">
     
@@ -40,12 +40,16 @@
 </head>
 <body>
 	<div class="main-content">
+		<div class="top-suggest">
+			实名认证用户拥有更多商业机会<span class="fr-btn">去认证</span>
+		</div>
 		<div class="type-line" id="selecttype">
 			<span class="type-name" >请选择标签</span>
 			<span class="right-value">白酒 茅台</span>
 		</div>
-		<div class="type-line" id="">
-			<span class="type-name" >请选择标签</span>
+		<div class="type-line" id="off_address">
+			<span class="type-name" >线下地址</span>
+			<span class="right-value">请输入线下地址(选填)</span>
 		</div>
 		<div class="detail-block">
 			<textarea id="maintext" placeholder="请输入你的产品介绍"></textarea>
@@ -57,7 +61,7 @@
 				</li>-->
 				<li class="img-item" id="uploadimg">
 					<form id="form"  nctype ="multipart/form-data">
-						<input class="file" name="file" type="file" accept="image/gif,image/jpeg,image/jpg,image/png" onchange="fileImg(this)" >
+						<input class="file" name="file" type="file" accept="image/*" onchange="fileImg(this)" >
 					</form>
 					
 					<img src="../images/bg-addnew.png"/>
@@ -65,15 +69,44 @@
 			</ul>
 		</div>
 		<button class="button-block btn-submit" onclick="submitData()" >发布</button>
+
+		<!-- 输入展位地址遮罩 -->
+		<div class="fullpage-mask" id="off_addresspage" style="display: none;">
+			<textarea class="fm-textarea" placeholder="请输入您的线下展位地址" id="address_textarea"></textarea>
+			<button class="button-block btn-submit" id="address_done">完成</button>
+		</div>
 	</div>
 	<script src="../js/jquery-1.9.1.min.js"></script>
 	<script src="../js/jquery.selector-px.js"></script>
+	<script type="text/javascript" src="../js/layer_mobile/layer.js"></script>
 	<script src="../js/public.js"></script>
 	<script>
 		//最大上传图片数
 		var maximgs = 9;
 		//提交地址
 		var addUrl = "http://jq.flyzz.net/m/supply/addsupply";
+
+		$(function(){
+			// $("#off_address").on('click',function(){
+			// 	$("#off_addresspage").fadeIn();
+			// });
+			// $("#address_done").on('click',function(){
+			// 	//$("#off_addresspage").fadeOut();
+			// 	var _address = $.trim($("#address_textarea").val());
+			// 	if(_address){
+			// 		$("#off_address").find('.right-value').text(_address);
+			// 		$("#off_addresspage").fadeOut();
+			// 	}else{
+			// 		layer.open({
+			// 			content: $("#address_textarea").attr("placeholder")
+			// 		    ,skin: 'msg'
+			// 		    ,time: 2 //2秒后自动关闭
+			// 		});
+			// 		$("#address_textarea").focus();
+					
+			// 	}
+			// });
+		});
 		
 		$.scrEvent({
 	        data: [{
@@ -111,11 +144,21 @@
 	            if(data.code == 0){
 	            	addPrev(data.list.url);
 	            }else{
-	            	info(data.msg || "上传失败");
+	            	
+	            	layer.open({
+						content: data.msg || "上传失败"
+					    ,skin: 'msg'
+					    ,time: 2 //2秒后自动关闭
+					});
 	            }
 	            hideloading();
 	        }).fail(function(){
-	        	info("网络错误");
+	        	// info("网络错误");
+	        	layer.open({
+					content: "网络错误"
+				    ,skin: 'msg'
+				    ,time: 2 //2秒后自动关闭
+				});
 	        	hideloading();
 	        });
 	    }
@@ -150,10 +193,10 @@
 	    	var type = 	$(".type-name").attr("data-type");
 	    	var maintext = $("#maintext").val();
 	    	if(!type){
-	    		info("请先选择类型");
+	    		//info("请先选择类型");
 	    		return false;
 	    	}else if(maintext == ""){
-	    		info("请输入产品描述");
+	    		//info("请输入产品描述");
 	    		$("#maintext").focus();
 	    		return false;
 	    	}
@@ -194,7 +237,12 @@
 	    			hideloading();
 	    		},
 	    		error:function(xhr, type){
-	    			info("网络错误:"+type);
+	    			// info("网络错误:"+type);
+	    			layer.open({
+						content: "网络错误:"+type
+					    ,skin: 'msg'
+					    ,time: 2 //2秒后自动关闭
+					});
 	    			hideloading();
 	    		}
 	    	});
