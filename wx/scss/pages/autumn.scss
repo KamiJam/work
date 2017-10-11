@@ -3,5 +3,90 @@
 @import "../constants";
 @import "../funcs";
 @import "../mixin";
+@import "../common";
 
 // 秋糖
+.zwadd-block{
+    margin: prem(30) 0 0 0;
+    background-color: white;
+    .zb-topline{
+        padding: 0 10px;
+        height: 1.5rem;
+        border-bottom: 1px solid #eeeef3;
+    }
+}
+.del-span{
+//  color: #FF8134;
+//  font-size: prem(30);
+//  line-height: 1.5rem;
+    width: 3rem;
+    height: 1.5rem;
+    background: url(../images/icon-deladdress.png) no-repeat center center/auto prem(30);
+    cursor: pointer;
+}
+.add-span{
+    width: prem(190);
+    height: 2rem;
+    background: url(../images/icon-addaddress.png) no-repeat center center/auto prem(30);
+    cursor: pointer;
+}
+.choose-line{
+    padding: 0 10px;
+    line-height: 2rem;
+    font-size: prem(32);
+    border-bottom: 1px solid #eeeef3;
+    .chl-left{
+        color: #000;
+    }
+    .chl-right{
+        color: #999;
+    }
+    
+}
+
+.del-input{
+    display: inline-block;
+//  height: 2rem;
+    width: 70%;
+    vertical-align: middle;
+    font-size: 0.68267rem;
+    padding-right: prem(60);
+//  @include clearfix;
+    input{
+        width: 100%;
+        border: none;
+        outline-style: none;
+        
+        
+    }
+    .di-icon{
+        display: none;
+        float: left;
+        width: prem(60);
+        height: prem(40);
+        background: url(../images/clear.png) no-repeat center center/auto prem(40);
+        margin-left: - prem(60);
+        position: relative;
+        left: prem(60);
+    }
+    
+}
+.chlr-value{
+    vertical-align: middle;
+}
+.sm-icon{
+    display: inline-block;
+    width: prem(35);
+    height: prem(35);
+//  background-color: gold;
+    background: no-repeat center center/contain;
+    &.smi-remove{
+        background-image: url(../images/smi-remove.png);
+        background-size: auto 100% ; 
+    }
+    &.smi-more{
+        background-image: url(../images/i-more.png);  
+        vertical-align: middle;
+    }
+    
+}

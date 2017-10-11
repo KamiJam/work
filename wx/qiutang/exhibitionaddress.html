@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>展位地址</title>
+    
+    <link rel="stylesheet" href="../css/autumn.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+	    //地址数据存于本地 
+    </script>
+</head>
+<body>
+	<div class="main-content">
+		<div class="zwadd-block">
+			<div class="zb-topline ">
+				<span class="del-span float-r"></span>
+			</div>
+			<div class="choose-line">
+				<span class="chl-left">请选择糖酒会</span>
+				<span class="chl-right float-r">
+					<span class="chlr-value">重庆糖酒会</span>
+					<i class="sm-icon smi-more"></i>
+				</span>
+			</div>
+			<div class="choose-line">
+				<span class="chl-left">杭州市江干区</span>
+				<span class="chl-right float-r"><i class="sm-icon smi-remove"></i></span>
+			</div>
+			<div class="choose-line">
+				<span class="chl-left">杭州市江干区</span>
+				<span class="chl-right float-r"><i class="sm-icon smi-remove"></i></span>
+			</div>
+			<div class="choose-line">
+				<div class="del-input">
+					<input type="text" class="float-l" placeholder="请输入您的展位地址"/>
+					<i class="di-icon"></i>
+				</div>
+				
+				<span class="add-span float-r"></span>
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(".del-input").on('input blur focus','input',function(){
+			var _val = $(this).val();
+			console.log(_val);
+			if(_val != ""){
+				$(this).next(".di-icon").show();
+			}else{
+				$(this).next(".di-icon").hide();
+			}
+
+		});
+		$(".del-input").on('click','.di-icon',function(){
+
+			$(this).prev("input").val('');
+			$(this).hide();
+		});
+		
+	</script>
+</body>
+</html>
