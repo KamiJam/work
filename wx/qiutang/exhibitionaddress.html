@@ -228,6 +228,13 @@
 
 					_PAGE.addresslist.update(_item);
 				});
+				//编辑地址
+				$(".main-content").on('input','.tjhaddress',function(){
+					var _tar = this,
+						_item = $(_tar).closest('.zwadd-block');
+
+					_PAGE.addresslist.update(_item);
+				});
 				
 				
 				//获取糖酒会
