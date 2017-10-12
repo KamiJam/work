@@ -34,7 +34,7 @@
     </script>
 </head>
 <body>
-	<div class="main-content">
+	<div class="main-content" style="padding-bottom: 2.2rem;">
 		<!--<div class="zwadd-block">
 			<div class="zb-topline ">
 				<span class="del-span float-r"></span>
@@ -51,7 +51,10 @@
 				<span class="chl-right float-r"><i class="sm-icon smi-remove"></i></span>
 			</div>
 			<div class="choose-line">
-				<span class="chl-left">杭州市江干区</span>
+				<div class="del-input">
+					<input type="text" class="float-l" placeholder="请输入您的展位地址"/>
+					<i class="di-icon"></i>
+				</div>
 				<span class="chl-right float-r"><i class="sm-icon smi-remove"></i></span>
 			</div>
 			<div class="choose-line">
@@ -94,7 +97,7 @@
 			<div class="zb-topline ">
 				<span class="del-span float-r"></span>
 			</div>
-			<div class="choose-line">
+			<div class="choose-line selecttjh">
 				<span class="chl-left">请选择糖酒会</span>
 				<span class="chl-right float-r">
 					<span class="chlr-value"></span>
@@ -112,13 +115,15 @@
 		</div>
 	</script>
 	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/layer_mobile/layer.js"></script>
+	<script src="../js/picker.min.js"></script>
 	<script>
 		
 		
 		$(function(){
 			$(".del-input").on('input blur focus','input',function(){
 				var _val = $(this).val();
-				console.log(_val);
+//				console.log(_val);
 				if(_val != ""){
 					$(this).next(".di-icon").show();
 				}else{
@@ -138,54 +143,330 @@
 		});
 		
 		var _PAGE = {
-//			count: 0,
+			TJHURL: 'http://jq.flyzz.net/m/supply/rumList',
+			TJHLIST: [],
+			LISTREADY: false, //是否已获取到糖酒会列表
+			MAX: 5,
 			init: function(){
 				var _self = this;
 				
-				//初始化值
+				//初始化值，检测完是否有数据变化再初始化dom
 				if(localStorage.tangaddress){
-					_self.initlist();
+//					_self.initlist();
 				}else{
 					localStorage.tangaddress = '[]';
 				}
 
 				//绑定事件
 				$(".addtjh").on('click',function(){
-					_PAGE.addAddress();
+					_self.addItem();
 				});
 				
 				$(".main-content").on('click','.del-span',function(){
-					var _id = $(this).parent().parent().attr("id"),
-						_listdata = JSON.parse(localStorage.tangaddress);
-					localStorage.tangaddress = JSON.stringify(removeArrayItem(_listdata,'id',_id));
-					$(this).parent().parent().remove();
+					var _id = $(this).parent().parent().attr("data-id");
+					if(_id){
+						_listdata = _self.tjhitem.delete(_id);
+						$(this).parent().parent().remove();
+					}else{
+						$(this).parent().parent().remove();
+					}
 				});
+				
+				
+				//添加地址事件
+				$(".main-content").on('click','.add-span',function(){
+					//判断是否有数据未选择糖酒会
+					if($(".zwadd-block").length != $(".zwadd-block.recorded").length){
+						layer.open({
+						    content: '请先选择糖酒会'
+						    ,skin: 'msg'
+						    ,time: 2 //2秒后自动关闭
+						});
+						return false;
+					}
+					var _tar = this,
+						_address = $.trim($(_tar).prev('.del-input').find('input').val()),
+						_id = $(_tar).closest('.zwadd-block').attr("data-id"),
+						_count = $(_tar).closest('.zwadd-block').find('.tjhaddress').length;
+					if(_count >= 5){
+						layer.open({
+						    content: '最多只能添加5个地址哦!'
+						    ,skin: 'msg'
+						    ,time: 2 //2秒后自动关闭
+						});
+						return false;
+					}else if(!_address){
+						layer.open({
+						    content: '请先输入地址'
+						    ,skin: 'msg'
+						    ,time: 2 //2秒后自动关闭
+						});
+						return false;
+					}else{
+						var _html = '<div class="choose-line">'+
+										'<div class="del-input">'+
+											'<input type="text" class="float-l tjhaddress" value="'+_address+'" placeholder="请输入您的展位地址"/>'+
+											'<i class="di-icon"></i>'+
+										'</div>'+
+										'<span class="chl-right float-r"><i class="sm-icon smi-remove"></i></span>'+
+									'</div>';
+						$(_html).insertBefore($(_tar).closest('.choose-line'));
+//						var _newaddress = []; //直接覆盖更新，不更新一个
+//						$.each($(_tar).closest('.zwadd-block').find('.tjhaddress'), function(addind,addit) {
+//							_newaddress.push($(addit).val());
+//						});
+//						_PAGE.addresslist.save(_id,_newaddress);
+						_PAGE.addresslist.update($(_tar).closest('.zwadd-block'));
+						$(_tar).prev('.del-input').find('input').val('');
+					}
+				});
+				//删除地址
+				$(".main-content").on('click','.smi-remove',function(){
+					var _tar = this,
+						_item = $(_tar).closest('.zwadd-block');
+					$(_tar).closest('.choose-line').remove();
 
+					_PAGE.addresslist.update(_item);
+				});
+				
+				
+				//获取糖酒会
+				_self.getTangList();
+				
 				
 			},
 			initlist:function(){
 				
+				var _self = this,
+					_listdata =  this.tjhitem.get(),
+					html = '';
+
+				$.each(_listdata,function(index,item){
+					//剔除已经没有的展会
+					console.log(findArrayItem(_self.TJHLIST,'rumId',item.rumId));
+					if(!findArrayItem(_self.TJHLIST,'_id',item.rumId)){
+						removeArrayItem(_listdata,'rumId',item.rumId);
+						_self.tjhitem.save(_listdata);
+						return true;
+					}
+					var _address = '';
+					$.each(item.address, function(aind,ait) {
+						_address += '<div class="choose-line">'+
+										'<div class="del-input">'+
+											'<input type="text" class="float-l tjhaddress" value="'+ait+'" placeholder="请输入您的展位地址"/>'+
+											'<i class="di-icon"></i>'+
+										'</div>'+
+										'<span class="chl-right float-r"><i class="sm-icon smi-remove"></i></span>'+
+									'</div>';
+					});
+					html += '<div class="zwadd-block recorded" data-id="'+item.rumId+'">'+
+								'<div class="zb-topline ">'+
+									'<span class="del-span float-r"></span>'+
+								'</div>'+
+								'<div class="choose-line selecttjh">'+
+									'<span class="chl-left">请选择糖酒会</span>'+
+									'<span class="chl-right float-r">'+
+										'<span class="chlr-value">'+item.rumname+'</span>'+
+										'<i class="sm-icon smi-more"></i>'+
+									'</span>'+
+								'</div>'+
+								_address+
+								'<div class="choose-line">'+
+									'<div class="del-input">'+
+										'<input type="text" class="float-l" placeholder="请输入您的展位地址">'+
+										'<i class="di-icon"></i>'+
+									'</div>'+
+									'<span class="add-span float-r"></span>'+
+								'</div>'+
+							'</div>';
+				});
+				
+				$(".main-content").append(html);
 			},
-			addAddress: function(){
-				var _listdata = JSON.parse(localStorage.tangaddress),
-					_count = _listdata.length?(parseInt(_listdata[_listdata.length-1].id.replace('item',''))+1):0, //最后一个item的id+1
-					_html = $("#item-template").html();
-				_html = _html.replace(/class="zwadd-block"/,'class="zwadd-block" id="item'+_count+'"');
+			addItem: function(){ //只生成dom，选完糖酒会才生成实体数据
+				//判断是否有数据未选择糖酒会
+				if($(".zwadd-block").length != $(".zwadd-block.recorded").length){
+					layer.open({
+					    content: '请先选择糖酒会'
+					    ,skin: 'msg'
+					    ,time: 2 //2秒后自动关闭
+					});
+					return false;
+				}
+				
+				var addressnum = $(".zwadd-block").length,
+					_self = this;
+				if(addressnum == _self.MAX){
+					if(_self.MAX == 5){
+						layer.open({
+						    content: '最多可以输入5条糖酒会信息，让我们去发布糖酒会吧'
+						    ,skin: 'msg'
+						    ,time: 2 //2秒后自动关闭
+						});
+					}else if(_self.MAX < 5){
+						layer.open({
+						    content: '没有了哦！酒圈君正在努力的为你收集糖酒会信息！'
+						    ,skin: 'msg'
+						    ,time: 2 //2秒后自动关闭
+						});
+					}
+					
+					return false;
+				}			
+				var	_html = $("#item-template").html();
 				$(".main-content").append(_html);
-				var _item = {
-					id: 'item'+_count,
-					rumId: '',
-					address: []
-				};
-				_listdata.push(_item);
-				localStorage.tangaddress = JSON.stringify(_listdata);
+			},
+			getTangList: function(){ //获取糖酒会列表
+				var _self = this;
+				$.ajax({
+					type: "get",
+					url: _self.TJHURL,
+					dataType: 'json',
+					success:function(data){
+						console.log(data);
+						if(data.code == 0){
+							if(data.list && data.list.length){
+								_self.LISTREADY = true;
+								_self.TJHLIST = data.list;
+								_self.MAX = data.list.length;
+								_self.initPicker();
+								_self.initlist();
+							}
+						}
+					},
+					error:function(){
+						layer.open({
+						    content: '网络错误'
+						    ,skin: 'msg'
+						    ,time: 2 //2秒后自动关闭
+						});
+					}
+				});
+			},
+			initPicker: function(){ //初始化糖酒会选择
+				var _self = this;
+				if(_self.picker){
+					return;
+				}
+				var data1 = [];
+				$.each(_self.TJHLIST,function(index,item){
+					data1.push({
+						text: item.name,
+						value: item._id
+					});
+				});
+				var picker1 = new Picker({
+					data: [data1]
+				});
+				
+				picker1.on('picker.select', function (selectedVal, selectedIndex) {  
+					//判断是否是更改
+					//选完判断是否已有，若无，直接插入
+					console.log(selectedVal[0],data1[selectedIndex].text);
+					var ISEDIT = $(_self.selecting).parent().hasClass('recorded');
+					if(_self.hasItem(selectedVal[0])){ //选择的已有
+						if(ISEDIT && selectedVal[0] == $(_self.selecting).parent().attr("data-id")){
+							return;
+						}else{
+							layer.open({
+							    content: '该糖酒会已存在，不能重复选择'
+							    ,skin: 'msg'
+							    ,time: 2 //2秒后自动关闭
+							});
+						}
+						
+					}else{
+
+						
+						if(!ISEDIT){
+							_self.tjhitem.add({
+								rumId: selectedVal[0],
+								rumname: data1[selectedIndex].text,
+								address: []
+							});
+						}else{
+							_self.tjhitem.update($(_self.selecting).parent().addClass('recorded').attr("data-id"),'rumname',data1[selectedIndex].text);
+							_self.tjhitem.update($(_self.selecting).parent().addClass('recorded').attr("data-id"),'rumId',selectedVal[0]);
+						}
+						$(_self.selecting).find('.chlr-value').html(data1[selectedIndex].text);
+						$(_self.selecting).parent().addClass('recorded').attr("data-id",selectedVal[0]);
+						
+					}
+					
+				});
+				_self.picker = picker1;
+				
+				$(".main-content").on('click','.selecttjh',function(){
+					_self.selecting = this;
+					_self.picker.show();
+				});
+
+			},
+			hasItem: function(id){ //检测糖酒会是否已有
+				var FLAG = false,
+					_listdata =  this.tjhitem.get();
+				if(findArrayItem(_listdata,'rumId',id)){
+					FLAG =true;
+				}
+				return FLAG;
+			},
+			tjhitem:{
+				get: function(){
+					return (localStorage.tangaddress)?JSON.parse(localStorage.tangaddress):[];
+				},
+				add: function(_item){
+					var _listdata = this.get();
+					_listdata.push(_item);
+					this.save(_listdata);
+					return true;
+				},
+				delete: function(id){
+					var _listdata = this.get();
+					this.save(removeArrayItem(_listdata,'rumId',id));
+				},
+				update: function(_id,key,value){
+					var _listdata = this.get();
+					updateArrayItem(_listdata,'rumId',_id,key,value);
+					
+					this.save(_listdata);
+				},
+				save: function(data){
+					localStorage.tangaddress = JSON.stringify(data);
+				}
+			},
+			addresslist:{
+				get: function(id){
+					return findArrayItem(_PAGE.tjhitem.get(),'rumId',id).address;
+				},
+				add: function(id,_item){
+					var _address = this.get(id);
+					_address.push(_item);
+					this.save(id,_address);
+					return true;
+				},
+				delete: function(id){
+					var _listdata = this.get();
+					this.save(removeArrayItem(_listdata,'rumId',id));
+				},
+				update: function(lineselecter){
+					var _newaddress = []; //直接覆盖更新，不更新单个
+					$.each(lineselecter.find('.tjhaddress'), function(addind,addit) {
+						_newaddress.push($(addit).val());
+					});
+					this.save(lineselecter.attr('data-id'),_newaddress);
+				},
+				save: function(id,data){
+					var _listdata = _PAGE.tjhitem.get();
+					updateArrayItem(_listdata,'rumId',id,'address',data);
+					localStorage.tangaddress = JSON.stringify(_listdata);
+				}
 			}
 		};
 		
 		function removeArrayItem(arr,key,value){
 			
 			$.each(arr, function(index,item) {
-				console.log(item[key]);
+//				console.log(item[key]);
 				if(item[key] == value){
 					arr.splice(index,1);
 					return false;
@@ -193,6 +474,26 @@
 			});
 
 			return arr;
+		}
+		
+		function findArrayItem(arr,key,value){
+			var find = null;
+			$.each(arr, function(index,item) {
+				if(item[key] == value){
+					find = item;
+					return false;
+				}
+			});
+			return find;
+		}
+		
+		function updateArrayItem(arr,key,value,newkey,newvalue){
+			$.each(arr, function(index,item) {
+				if(item[key] == value){
+					item[newkey] = newvalue;
+					return false;
+				}
+			});			
 		}
 	</script>
 </body>
