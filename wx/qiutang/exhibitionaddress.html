@@ -121,7 +121,7 @@
 		
 		
 		$(function(){
-			$(".del-input").on('input blur focus','input',function(){
+			$(".main-content").on('input blur focus','.del-input input',function(){
 				var _val = $(this).val();
 //				console.log(_val);
 				if(_val != ""){
@@ -131,7 +131,7 @@
 				}
 	
 			});
-			$(".del-input").on('click','.di-icon',function(){
+			$(".main-content").on('click','.del-input .di-icon',function(){
 				$(this).prev("input").val('');
 				$(this).hide();
 			});
@@ -206,7 +206,7 @@
 						var _html = '<div class="choose-line">'+
 										'<div class="del-input">'+
 											'<input type="text" class="float-l tjhaddress" value="'+_address+'" placeholder="请输入您的展位地址"/>'+
-											'<i class="di-icon"></i>'+
+//											'<i class="di-icon"></i>'+
 										'</div>'+
 										'<span class="chl-right float-r"><i class="sm-icon smi-remove"></i></span>'+
 									'</div>';
@@ -261,7 +261,7 @@
 						_address += '<div class="choose-line">'+
 										'<div class="del-input">'+
 											'<input type="text" class="float-l tjhaddress" value="'+ait+'" placeholder="请输入您的展位地址"/>'+
-											'<i class="di-icon"></i>'+
+//											'<i class="di-icon"></i>'+
 										'</div>'+
 										'<span class="chl-right float-r"><i class="sm-icon smi-remove"></i></span>'+
 									'</div>';
