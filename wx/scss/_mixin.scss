@@ -60,7 +60,14 @@
     -ms-user-select: none;
     user-select: none;
 }
-
+@mixin roundcorner-btn($w:100px,$lh:40px,$bgc:#08C48D,$color:#fff){
+    width: $w;
+    line-height: $lh;
+    background-color: $bgc;
+    color: $color;
+    border-radius: 999px;
+    text-align: center;
+}
 
 @mixin blockbutton($width: 12.11733rem,$height: 1.728rem,$color: #37CDA3){
     display: block;

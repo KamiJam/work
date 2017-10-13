@@ -88,8 +88,8 @@
 			</div>
 		</div>-->
 		
-		<div class="fixed-btm addtjh">
-			增加糖酒会
+		<div class="addtjh">
+			<span id="add_tjh">增加糖酒会</span><span class="side-btn">完成</span>
 		</div>
 	</div>
 	<script id="item-template" type="text/template">
@@ -158,7 +158,7 @@
 				}
 
 				//绑定事件
-				$(".addtjh").on('click',function(){
+				$("#add_tjh").on('click',function(){
 					_self.addItem();
 				});
 				
@@ -458,7 +458,10 @@
 				update: function(lineselecter){
 					var _newaddress = []; //直接覆盖更新，不更新单个
 					$.each(lineselecter.find('.tjhaddress'), function(addind,addit) {
-						_newaddress.push($(addit).val());
+						if($.trim($(addit).val())){
+							_newaddress.push($.trim($(addit).val()));
+						}
+						
 					});
 					this.save(lineselecter.attr('data-id'),_newaddress);
 				},

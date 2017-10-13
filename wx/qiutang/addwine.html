@@ -45,11 +45,11 @@
 		</div>
 		<div class="type-line" id="selecttype">
 			<span class="type-name" >请选择标签</span>
-			<span class="right-value">白酒 茅台</span>
+			<span class="right-value"></span>
 		</div>
 		<div class="type-line" id="off_address">
 			<span class="type-name" >线下地址</span>
-			<span class="right-value">请输入线下地址(选填)</span>
+			<span class="right-value">我有线下展位(选填)</span>
 		</div>
 		<div class="detail-block">
 			<textarea id="maintext" placeholder="请输入你的产品介绍"></textarea>
@@ -77,7 +77,7 @@
 		</div>
 	</div>
 	<script src="../js/jquery-1.9.1.min.js"></script>
-	<script src="../js/jquery.selector-px.js"></script>
+	<script src="../js/picker.min.js"></script>
 	<script type="text/javascript" src="../js/layer_mobile/layer.js"></script>
 	<script src="../js/public.js"></script>
 	<script>
@@ -87,44 +87,65 @@
 		var addUrl = "http://jq.flyzz.net/m/supply/addsupply";
 
 		$(function(){
-			// $("#off_address").on('click',function(){
-			// 	$("#off_addresspage").fadeIn();
-			// });
-			// $("#address_done").on('click',function(){
-			// 	//$("#off_addresspage").fadeOut();
-			// 	var _address = $.trim($("#address_textarea").val());
-			// 	if(_address){
-			// 		$("#off_address").find('.right-value').text(_address);
-			// 		$("#off_addresspage").fadeOut();
-			// 	}else{
-			// 		layer.open({
-			// 			content: $("#address_textarea").attr("placeholder")
-			// 		    ,skin: 'msg'
-			// 		    ,time: 2 //2秒后自动关闭
-			// 		});
-			// 		$("#address_textarea").focus();
-					
-			// 	}
-			// });
+			
+			_PAGE.init();
 		});
 		
-		$.scrEvent({
-	        data: [{
-	        	text:"供应",
-	        	value: 1
-	        },{
-	        	text:"求购",
-	        	value: 2
-	        }],
-	        evEle: '#selecttype',
-	        title: '选择类型',
-	        defValue: "",
-	        afterAction: function (data) {
-	          	console.log(data);
-	          	$(".type-name").text(data.text);
-	          	$(".type-name").attr("data-type",data.value);
-	        }
-	    });
+	    
+	    
+	    var _PAGE = {
+	    	CATEURL: 'http://jq.flyzz.net/m/supply/categorylist',
+	    	init: function(){
+	    		//页面逻辑
+	    		//获取标签，初始化picker
+	    		this.initPicker();
+	    	},
+	    	initPicker: function(){
+	    		var _self = this;
+				$.ajax({
+					type: "get",
+					url: _self.CATEURL,
+					dataType: 'json',
+					success:function(data){
+						console.log(data);
+						if(data.code == 0){
+							var data1 = [];
+							if(data.list && data.list.length){
+								$.each(data.list,function(index,item){
+									data1.push({
+										text: item.name,
+										value: item._id
+									});
+								});
+							}
+							var picker1 = new Picker({
+								data: [data1]
+							});
+							
+							picker1.on('picker.select', function (selectedVal, selectedIndex) {  
+								console.log(selectedVal[0],data1[selectedIndex].text);
+								$("#selecttype").attr("data-value",selectedVal[0]);
+								$("#selecttype .right-value").html(data1[selectedIndex].text);
+							});
+							_self.picker = picker1;
+							
+							$("#selecttype").on('click',function(){
+								_self.selecting = this;
+								_self.picker.show();
+							});
+						}
+					},
+					error:function(){
+						layer.open({
+						    content: '网络错误'
+						    ,skin: 'msg'
+						    ,time: 2 //2秒后自动关闭
+						});
+					}
+				});
+	    	}
+	    	
+	    };
 	    
 	    function fileImg(th){
 	    	showloading();

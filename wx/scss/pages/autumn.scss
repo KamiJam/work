@@ -88,17 +88,137 @@
         background-image: url(../images/i-more.png);  
         vertical-align: middle;
     }
+    &.smi-heart{
+        background-image: url(../images/autumn/smi-heart.png);  
+        vertical-align: middle;
+    }
     
 }
 
     
 .addtjh{
     position: fixed;
+    padding-right: 3rem;
     bottom: 0;
     width: 100%;
     line-height: 2rem;
     text-align: center;
     font-size: prem(36);
-    background-color: #6497FE;
+    background-color: #fff;
+    color: #6497FE;
+    .side-btn{
+        float: right;
+        width: 3rem;
+        margin-right: -3rem;
+        color: #20BF96;
+        border-left: 1px solid #eeeef3;
+    }
+}
+
+//发布成功
+.topload-img{
+    display: block;
+}
+.topsucc-info{
+    position: absolute;
+    top: 3.5rem;
+    left: 1.5rem;
+    font-size: prem(36);
     color: white;
+    &.completeinfo-box{
+        width: prem(375);
+        top: 2.5rem;
+        >p{
+            font-size: prem(28);
+        }
+    }
+}
+.hori-three{
+    padding: 0 prem(40);
+    margin: prem(100) 0 prem(56) 0;
+    @include flexbox;
+    align-items: center;
+    .ht-line{
+        @include flexitem;
+        border-bottom: 1px solid #FE6E35;
+    }
+    .ht-text{
+        padding: 0 prem(20);
+        color: #FE6E35;
+        font-size: prem(28);
+    }
+}
+
+.marr12{
+    margin-right: prem(12);
+}
+
+.bgwhite-list{
+    margin: 0 10px;
+    padding: 0 15px;
+    background-color: white;
+}
+
+.custinfo-line{
+    padding: 10px 0;
+    @include flexbox;
+    align-items: center;
+    &:not(:last-child){
+        border-bottom: 1px solid #eeeef3;
+    }
+    .cl-infoblock{
+        width: 0;
+        padding-left: prem(20);
+        @include flexitem;
+        >p{
+            @include ellipsis;
+        }
+        .clib-name{
+           
+            color: #000;
+            font-size: prem(34);
+        }
+        .clib-career{
+            margin: 2px 0;
+        }
+        .clib-career,.clib-desc{
+            color: #666;
+            font-size: prem(28);
+        }
+    }
+}
+.himg-box{
+    position: relative;
+    height: prem(100);
+    width: prem(100);
+    .hib-img{
+        width: 100%;
+        height: 100%;
+        border-radius: 999px;
+    }
+    .hib-tag{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: prem(30);
+        height: prem(30);
+    }
+}
+.roundcorner-btn{
+    display: block;
+    margin: prem(80) auto 0 ;
+    @include roundcorner-btn(prem(250),prem(78));
+    font-size: prem(32);
+}
+
+.compinfo-tag{
+    margin: prem(120) prem(100) prem(80);
+    font-size: prem(30);
+}
+
+.goverifybtn{
+    margin:  0 auto;
+    @include blockbutton(80%,prem(80),#08C48D);
+    font-size: prem(30);
+
 }

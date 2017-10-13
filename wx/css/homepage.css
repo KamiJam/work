@@ -175,24 +175,20 @@ a {
 
 .action-menu {
   margin: 0;
-  position: absolute;
   width: 100%;
-  bottom: 7.68rem;
+  height: 9.6rem;
   background-color: initial; }
   .action-menu .tmi-icon {
     width: 2.26133rem;
     height: 2.26133rem; }
 
 .split-line {
-  position: absolute;
-  bottom: 3.2rem;
   width: 14.50667rem;
-  margin: 0 0.74667rem;
+  margin: 0 0.74667rem 0.64rem;
   border-bottom: 1px solid #D6D6D6; }
 
 .oper-close {
-  position: absolute;
-  bottom: 1.49333rem;
+  margin-bottom: 0.96rem;
   width: 1.28rem;
   height: 1.28rem;
   margin-left: -0.64rem; }
@@ -395,5 +391,11 @@ a {
     border-bottom: 2px solid #0ac48f;
     left: 13%;
     bottom: -2px; }
+
+.mp-fixedbtm {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; }
 
 /*# sourceMappingURL=homepage.css.map */

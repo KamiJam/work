@@ -100,29 +100,30 @@
 }
 .action-menu{
     margin: 0;
-    position: absolute;
+//  position: absolute;
     width: 100%;
-    bottom: prem(360);
+//  bottom: prem(360);
+    height: prem(450);
     background-color: initial;
     .tmi-icon{
         width: prem(106);
         height: prem(106);  
     }
+    
 
 }
 .split-line{
-    position: absolute;
-    bottom: prem(150);
+//  position: absolute;
     width: prem(680);
-    margin: 0 prem(35);
+    margin: 0 prem(35) prem(30);
     border-bottom: 1px solid #D6D6D6;
 }
 .oper-close{
-    position: absolute;
-    bottom: prem(70);
+//  position: absolute;
+    margin-bottom: prem(45);
     width: prem(60);
     height: prem(60); 
-    margin-left: -0.64rem;
+    margin-left: - prem(30);
 }
 
 //我的页面
@@ -341,4 +342,10 @@
             bottom: -2px;
         }
     }
+}
+.mp-fixedbtm{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
