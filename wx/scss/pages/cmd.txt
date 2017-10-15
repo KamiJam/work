@@ -1,12 +1,16 @@
-´´½¨È¦×Ó
+ï¿½ï¿½ï¿½ï¿½È¦ï¿½ï¿½
 cd D:\Documents\HBuilderProject\zzl\wx\scss\pages
 sass --watch createcircle.scss:..\..\css\createcircle.css  --style nested
 
-»°ÌâÏêÇé
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 cd D:\Documents\HBuilderProject\zzl\wx\scss\pages
 sass --watch topic.scss:..\..\css\topic.css  --style nested
 
-ÍêÉÆÐÅÏ¢
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 cd D:\Documents\HBuilderProject\zzl\wx\scss\pages
 d:
 sass --watch coverpinfo.scss:..\..\css\coverpinfo.css  --style nested
+
+cd E:\coding\work\ing\wx\scss\pages 
+e
+sass --watch autumn.scss:..\..\css\autumn.css  --style nested
