@@ -37,15 +37,34 @@
 	
 	<section class="topinfo-block">
 		<a href="">
-			<img class="tb-headimg" src="../images/3.jpg"/>
-			<div class="tb-infos">
-				<p class="tbi-name">用户名</p>
-				<p class="tbi-career">职位职位职位职位职位职位</p>
+			<div class="tb-himgc">
+				<img class="himg" src="{{$info['logo']}}"/>
+				<img class="htag" src="{{ asset('weixin/circle/images/v.png') }}" style="display: none;"/>
 			</div>
-			<span class="tbi-more"></span>
+			<div class="tb-infos">
+				<p class="tbi-name">
+					<span class="tbin-span">{{$info['nickname']}}</span>
+					<img class="nametag" src="{{ asset('weixin/circle/images/topic-top.png') }}" style="display: none;"/>
+				</p>
+				<p class="tbi-career">@if(isset($info['job']) && $info['job']){{$info['job']}}@else暂无职位@endif</p>
+			</div>
+			<span class="tbi-more">个人主页</span>
 		</a>
 	</section>
-	
+	<div class="linetab-box">
+		<a class="line-tab">
+			<p class="lt-one">13</p>
+			<p class="lt-two">圈子</p>
+		</a>
+		<a class="line-tab">
+			<p class="lt-one">256</p>
+			<p class="lt-two">话题</p>
+		</a >
+		<a class="line-tab">
+			<p class="lt-one">136</p>
+			<p class="lt-two">名片</p>
+		</a>
+	</div>
 	<a href="">
 		<div class="jump-line martop24">
 			<span class="jl-l"><i class="jl-icon jli-circle"></i>我的圈子</span>
@@ -80,6 +99,19 @@
 	<a href="">
 		<div class="jump-line">
 			<span class="jl-l"><i class="jl-icon jli-favor"></i>我的收藏</span>
+			<span class="jl-r">&nbsp;<i class=""></i></span>
+		</div>
+	</a>
+	
+	<a href="">
+		<div class="jump-line">
+			<span class="jl-l"><i class="jl-icon jli-verify"></i>成为认证用户</span>
+			<span class="jl-r jlr-val">我要认证<i class=""></i></span>
+		</div>
+	</a>
+	<a href="">
+		<div class="jump-line">
+			<span class="jl-l"><i class="jl-icon jli-tang"></i>糖酒会</span>
 			<span class="jl-r">&nbsp;<i class=""></i></span>
 		</div>
 	</a>

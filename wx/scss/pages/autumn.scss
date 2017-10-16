@@ -154,13 +154,13 @@
 }
 
 .bgwhite-list{
-    margin: 0 10px;
-    padding: 0 15px;
+    margin: 0 5px;
+    padding: 0 10px;
     background-color: white;
 }
 
 .custinfo-line{
-    padding: 10px 0;
+    padding: 6px 0;
     @include flexbox;
     align-items: center;
     &:not(:last-child){
@@ -207,7 +207,7 @@
 .roundcorner-btn{
     display: block;
     margin: prem(80) auto 0 ;
-    @include roundcorner-btn(prem(250),prem(78));
+    @include roundcorner-btn(prem(250),prem(70));
     font-size: prem(32);
 }
 
@@ -410,6 +410,34 @@
     margin-top: prem(15);
 }
 //圈子人数排行榜
+.memberslist{
+    .rank-item:nth-child(1){
+        .ri-index{
+            height: prem(38);
+            font-size: 0;
+            background: url(../images/autumn/bg-mfirst.png) no-repeat 0.2rem center/auto 100%;
+        } 
+    } 
+    .rank-item:nth-child(2){
+        .ri-index{
+            height: prem(38);
+            font-size: 0;
+            background: url(../images/autumn/bg-msecond.png) no-repeat 0.2rem center/auto 100%;
+        } 
+    }   
+    .rank-item:nth-child(3){
+        .ri-index{
+            height: prem(38);
+            font-size: 0;
+            background: url(../images/autumn/bg-mthird.png) no-repeat 0.2rem center/auto 100%;
+        } 
+    }   
+}
+.circlerank{
+    .rr-members{
+        color: #3f9aeb;
+    }
+}
 .rank-item{
     
     &.myrank{
@@ -422,7 +450,9 @@
     .ri-index{
         font-size: prem(30);
         font-weight: bold;
-        margin-right: prem(12);
+        min-width: 1.2rem;
+//      margin-right: prem(12);
+        text-align: center;
     }
     .ri-himg{
         margin:0 prem(20) 0 0;
@@ -463,7 +493,7 @@
 .rr-members{
     margin-right: prem(10);
     font-size: prem(34);
-    color: #3f9aeb;
+    color: #ffcd76;
 }
 .rank-list{
     padding: 0 prem(30);
@@ -471,4 +501,76 @@
         padding: 0;
         border-bottom: 1px solid #F5F5F5;
     }
+}
+//圈子排行榜
+.rank-top{
+    @include flexbox;
+    width: 100%;
+    height: prem(450);
+    background: url(../images/autumn/bg-ranktop.png) no-repeat center center/cover;
+}
+.top-item{
+    @include flexitem;
+    text-align: center;
+    width: 0;
+    .ti-hbox{
+        position: relative;
+        margin: prem(50) auto prem(32);
+        width: prem(162);
+        height: prem(214);
+        background: no-repeat center center/cover;
+        &.ti-second{
+            background-image: url(../images/autumn/bg-tsecond.png);
+        }
+        &.ti-first{
+            background-image: url(../images/autumn/bg-tfirst.png);
+        }
+        &.ti-third{
+            background-image: url(../images/autumn/bg-tthird.png);
+        }
+        &.ti-second .cir-img,&.ti-third .cir-img{
+            margin-top: prem(68);
+            width: prem(144);
+            height: prem(144);
+            border-radius: 999px;
+        }
+        &.ti-first .cir-img{
+            margin-top: prem(55);
+            width: prem(157);
+            height: prem(157);
+            border-radius: 999px;
+        }
+    }
+    
+    .cir-name{
+        padding: 0 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: prem(28);
+        color: white;
+    }
+    .rr-btn{
+        margin-top: prem(20);
+        font-size: prem(30);
+        color: white;
+    }
+}
+.top-suggest{
+    padding-left: 10px;
+    line-height: 1.92rem;
+    background-color: #f5fbff;
+    font-size: 0.55rem;
+    color: #666;
+
+}
+.fr-btn{
+    float: right;
+    width: 2.8rem;
+    text-align: center;
+    color: white;
+    background-color: #3ebdf6;
+    line-height: 1.22rem;
+    margin: 0.35rem 10px 0 0;
+    border-radius: 3px;
 }
