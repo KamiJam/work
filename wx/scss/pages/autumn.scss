@@ -35,13 +35,13 @@
     line-height: 2rem;
     font-size: prem(32);
     border-bottom: 1px solid #eeeef3;
+    overflow: hidden;
     .chl-left{
         color: #000;
     }
     .chl-right{
         color: #999;
     }
-    
 }
 
 .del-input{
@@ -92,6 +92,11 @@
         background-image: url(../images/autumn/smi-heart.png);  
         vertical-align: middle;
     }
+    &.smi-more{
+        background-image: url(../images/autumn/more_unfold.png); 
+        transition: transform 200ms;
+//      vertical-align: middle;
+    }
     
 }
 
@@ -137,7 +142,8 @@
     padding: 0 prem(40);
     margin: prem(100) 0 prem(56) 0;
     @include flexbox;
-    align-items: center;
+    align-items: center;-webkit-align-items:center;
+
     .ht-line{
         @include flexitem;
         border-bottom: 1px solid #FE6E35;
@@ -162,7 +168,8 @@
 .custinfo-line{
     padding: 6px 0;
     @include flexbox;
-    align-items: center;
+    align-items: center;-webkit-align-items:center;
+
     &:not(:last-child){
         border-bottom: 1px solid #eeeef3;
     }
@@ -351,6 +358,25 @@
         width: 80%;
         background-color: #17C792;
     }
+    &.btn-veredit{
+        margin: prem(70) auto;
+        width: 80%;
+        background-color: #17C792;
+    }
+    &.btn-goverify{
+        margin: prem(140) auto;
+        width: 80%;
+        background-color: #53aefa;
+    }
+    &.btn-versubmit{
+        margin: prem(40) auto 0;
+        width: 100%;
+        background-color: #17C792;
+        border-radius: 0;
+    }
+    &:disabled{
+        background-color: #ccc;
+    }
 }
 //生成完成
 .post-shower{
@@ -446,7 +472,8 @@
     padding: 0 prem(30);
     @include flexbox;
     height: prem(126);
-    align-items: center;
+    align-items: center;-webkit-align-items:center;
+
     .ri-index{
         font-size: prem(30);
         font-weight: bold;
@@ -573,4 +600,499 @@
     line-height: 1.22rem;
     margin: 0.35rem 10px 0 0;
     border-radius: 3px;
+}
+.sugarprod-item{
+    width: prem(680);
+    height: prem(400);
+    margin: 0.5rem auto 1.5rem;
+    position: relative;
+    .spi-bg{
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: prem(400);
+        border-radius: 8px;
+        box-shadow: 0 0 6px 2px #999;
+    }
+    .spi-title{
+        font-size: 16px;
+        color: #fff;
+        padding: 0.8rem 0;
+        margin: 0 3rem 0 1rem ;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .spi-tag{
+        position: absolute;
+        top: 0.8rem;
+        right: 0.8rem;
+        width: 2rem;
+        line-height: 18px;
+        text-align: center;
+        color: #fff;
+        border: 1px solid #fff;
+        font-size: 12px;
+        border-radius: 2px;
+    }
+    .spi-owner{
+        position: absolute;
+        bottom: - prem(40);
+        left: prem(20);
+        @include flexbox;
+        width: prem(640);
+        height: prem(110);
+        background-color: #fff;
+        border-radius: 6px;
+        align-items: center;-webkit-align-items:center;
+
+        box-shadow: 0 0 6px 0 #ccc;
+        .spi-imgc{
+            position: relative;
+            width: prem(68);
+            height: prem(68);
+            margin: 0 prem(10) 0;
+            .spi-headimg{
+                width: 100%;
+                height: 100%;
+                border-radius: 999px;
+            }
+            .spi-htag{
+                position: absolute;
+                width: prem(20);
+                height: prem(20);
+                right: 0;
+                bottom: 0;
+            }
+        }
+        .spi-infos{
+            width: 0;
+            @include flexitem;
+            color: #386C9B;
+            .spi-name{
+                display: inline-block;
+                max-width: 3em;
+                font-size: 14px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .spi-posi{
+                font-size: 12px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .name-vertag{
+                vertical-align: baseline;
+            }
+        }
+
+            .sugar-rank{
+                margin: 0 3px;
+                font-size: 10px;
+            }
+    }
+}
+.checknum{
+    font-size: 10px;
+    color: #808080;
+    background: url(../images/bg-check.png) no-repeat;
+    background-position: right 2px;
+    background-size: auto 12px;    
+    min-width: 3rem;
+    text-align: right;
+    padding-right: 18px;
+    line-height: 16px;
+}
+
+//糖酒会详情
+.sugarwine-detail{
+    padding: 10px;
+    background-color: white;
+    .sugar-pos{
+        color: #4775a3;
+        font-size: 12px;
+        &.s-online{
+            color: #08C48D;
+        }
+    }
+    .main-context{
+        padding: 10px 0 0;
+        font-size: 14px;
+        overflow: hidden;
+        *{
+            max-width: 100%;
+        }
+        img{
+            width: 100%;
+            margin-top: 8px;
+        }
+    }
+}
+
+.off-address{
+    margin: 10px 0 0 0;
+    padding: 0 prem(36);
+    background-color: #fff;
+    overflow: hidden;
+    h4{
+        line-height: 32px;
+        font-size: 15px;
+        color: #000;
+        border-bottom: 1px solid #eeeef3;
+    }
+    .offa-item{
+        margin: prem(60) 0;
+    }
+    .oamore{
+        line-height: 30px;
+        text-align: center;
+        font-size: 12px;
+        color: #333;
+        border-top: 1px solid #eeeef3;
+
+    }
+}
+
+.oi-one{
+    line-height: 18px;
+    font-size: 14px;
+    .oio-left,.oio-right{
+        
+        color: #4775A3;
+        
+    }   
+    .oio-right{
+        float: right;
+    }
+}
+.oi-list{
+    position: relative;
+    padding-right: prem(120);
+    >p{
+        margin-top: prem(30);
+        font-size: 12px;
+        color: #4d4d4d;
+    }
+    .oi-status {
+        position: absolute;
+        right: 0;
+        width: prem(90);
+        height: prem(40);
+        background: no-repeat 0 0/contain;
+        &.ois-ing{
+            background-image: url(../images/autumn/bg-sugaring.png);
+        }
+        &.ois-ed{
+            background-image: url(../images/autumn/bg-sugared.png);
+        }
+        &.ois-pre{
+            background-image: url(../images/autumn/bg-sugarpre.png);
+        }
+    }
+}
+.trans180{
+    transform: rotate(180deg);
+}
+
+.fixed-share{
+    position: fixed;
+    bottom: prem(120);
+    right: prem(16);
+    width: prem(128);
+    height: prem(128);
+    background: url(../images/autumn/bg-shareposter.png) no-repeat 0 0/contain;
+}
+.bottom-block{
+    .sw-collect{
+        width: prem(135);
+        height: 100%;
+        background: url(../images/autumn/bg-btmcollect.png) no-repeat center center/auto 100%;
+        &.active{
+            background: url(../images/autumn/bg-btmcollected.png) no-repeat center center/auto 100%;
+        }
+    }
+    .sw-contact{
+        @include flexitem;
+        height: 100%;
+        background: url(../images/autumn/bg-btmcontact.png) no-repeat center center/auto prem(40);
+    }
+    .sw-addnew{
+        @include flexitem;
+        height: 100%;
+        background: url(../images/autumn/bg-btmaddnew.png) no-repeat center center/auto prem(40);
+    }
+}
+.btmfixedpage{
+    padding-bottom: 1.92rem;
+}
+
+//找酒
+.linecenter{
+    
+    text-align: center;
+    .lc-left{
+        display: inline-block;
+        width: prem(190);
+        height: prem(14);
+        background: url(../images/autumn/bg-lcleft.png) no-repeat 0 0/contain;
+        vertical-align: middle;
+    }
+    .lc-right{
+        display: inline-block;
+        width: prem(190);
+        height: prem(14);
+        background: url(../images/autumn/bg-lcright.png) no-repeat 0 0/contain;
+        vertical-align: middle;
+    }
+    >span{
+        color: #26254e;
+        font-size: 12px;
+        >font{
+            font-size: 16px;
+        }
+    }
+}
+
+//认证页面
+.ver-tabs{
+    @include flexbox;
+    height: prem(300);
+    background-color: white;
+    .ver-tab{
+        @include flexitem;
+        text-align: center;
+        .tabimg{
+            display: inline-block;
+            margin: prem(50) 0 prem(32);
+            width: prem(124);
+            height: prem(124);
+            border-radius: 999px;
+            background: no-repeat 0 0/contain;
+            &.tab-card{
+                background-image: url(../images/autumn/bg-itemcard.png);
+            }
+            &.tab-identity{
+                background-image: url(../images/autumn/bg-itemidentity.png);
+            }
+            &.tab-success{
+                background-image: url(../images/autumn/bg-itemsuccess.png);
+            }
+            &.tab-upload{
+                background-image: url(../images/autumn/bg-itemupload.png);
+                margin: prem(40) 0 prem(10);
+            }
+        }
+        .tabname{
+            font-size: prem(28);
+            color: #000;
+        }
+        
+        &.active{
+//          .tabimg{
+//              box-sizing: content-box;
+//              border: 2px solid #B3DBFD;
+//          }
+            .tabname{
+                color: #53aefa;
+            }
+            .tab-card{
+                background-image: url(../images/autumn/bg-itemcarding.png);
+            }
+            .tab-identity{
+                background-image: url(../images/autumn/bg-itemidentitying.png);
+            }
+            .tab-success{
+                background-image: url(../images/autumn/bg-itemsuccessing.png);
+            }
+            .tab-upload{
+                background-image: url(../images/autumn/bg-itemuploading.png);
+            }
+        }
+        .tabuploadone{
+            font-size: prem(30);
+            color: #000;
+        }
+        .tabuploadtwo{
+            margin: prem(8) 0 prem(10);
+            font-size: prem(28);
+            color: #53aefa;
+        }
+    }
+}
+.graybg-box{
+    min-height: prem(62);
+    .triangleline{
+        height: prem(20);
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAjCAYAAAApF3xtAAAACXBIWXMAAAsTAAALEwEAmpwYAAACkUlEQVRogeXYX2SVcRzH8d/v9zSJ/syapCQpkhSJKaaMxZQoUkQiIikpIiO6SOluF112Xa3LiEkikSSiJFKS1EwqpXPOc37f3+fz62I786gzZ+fsOc+32utuz9n4ft6eczPrve9NkmTYGGONMWJmMWutjTHOjzFessYYQ/KgMeaatXae8m3qSF5NkuSkrT0QkV3OuevOuYWah2kiOZQkyWljxr8+k0RkwDl3wznXqXOaLmvtZI852Q86OjpGRGS/tfamtbar+NNUXcn+YOv9hoj0O+eGnXOzIg7Jy0mSDGaf1Q1jjDEi0uecu+Wc627/aXpijBedc+eb+iPv/XaSY/E/BeBCy0W9970kR7VH5C2E0NxbUg/JrQA+aY/JSwhhsPHqafLebwHwUXtUDs7lFiUTpwfAB+1lrSJ5NvcomTibAbzXHtkskmfaFqWmWq1uAvBOe+x0kTzV9ig1JDcCeKs9uhGSJwqLUlOtVjcAeKM9vh6OO154lEyc9QBea4fIIokQwjG1KDVpmq4j+Uo7SIwxkgwhhKPaTSalaboWwEvlKBJCOKLd4g8k1wB4oRTFhxAOazeYUqVSWQ3gecFRqiGEQ9rbGyK5iuSzgqKkE/+z/jeQXAngaZujVEge0N7atHK5vALAk3ZEAVAmuU97Y8tKpdJyAI9zjlIiuVd724yVSqVlAB7lFOWniOzR3pSbGONSkg9nEoXkD5K7tbfkjuQSAA9afFO+k9ypvaFtYozdAO43+aZ8E5EB7dvbjuRiAPemGeWriOzQvrkwJLsA3G0Q5YuI9GvfWrgYYyeAkSmifBaRPu0b1cQYFwG481uUMZLbtG9TR3IBgNsTUUa9973aN/01SM4FMESyR/sWY4z5BZoPFXJY2cSYAAAAAElFTkSuQmCC) no-repeat center 0/contain;
+    }
+    .ver-desc{
+        padding: prem(50);
+        h4{
+            font-size: prem(32);
+            margin-bottom: prem(20);
+        }
+        p{
+            font-size: prem(30);
+        }
+    }
+}
+.ver-infobox{
+    padding: 0 prem(30);
+    background-color: white;
+    h4{
+        line-height: prem(75);
+        text-align: center;
+        >span{
+            margin: 0 prem(20);
+            font-size: prem(30);
+            color: #000;
+        }
+        .ileft{
+            display: inline-block;
+            width: 0.64rem;
+            height: 0.3413333rem;
+            background: url(../images/autumn/bg-verinfoleft.png) no-repeat 0 0/contain;
+            vertical-align: middle;
+        }
+        .iright{
+            display: inline-block;
+            width: 0.64rem;
+            height: 0.3413333rem;
+            background: url(../images/autumn/bg-verinforight.png) no-repeat 0 0/contain;
+            vertical-align: middle;
+        }
+    }
+}
+.ver-line{
+    @include flexbox;
+    padding-left: prem(20);
+    height: prem(98);
+    align-items: center;-webkit-align-items:center;
+
+    border-top: 1px solid #eeeef3;
+    .vl-label{
+        font-size: prem(30);
+        color: #4d4d4d;
+    }
+    .vl-input{
+        @include flexitem;
+        font-size: prem(30);
+        color: #000;
+        border: none;
+        text-align: right;
+    }
+    .vl-code{
+        text-align: left;
+    }
+    .vl-send{
+        width: auto;
+        line-height: 1.06667rem;
+        padding: 0 5px;
+        font-size: 0.59733rem;
+        border: 1px solid #08C28D;
+        color: #08C28D;
+        border-radius: 2px;
+        white-space: nowrap;
+        background-color: white;
+    }
+}
+.vstatus-item{
+   padding: prem(40) 0;
+   border-top: 1px solid #eeeef3;
+    >p{
+        margin-bottom: prem(26);
+        font-size: prem(30);
+        color: #000;
+    }
+    .vstatus-span{
+        float: right;
+        width: prem(134);
+        height: prem(34);
+        background: no-repeat center center/contain;
+        
+        &.vs-ing{
+            background-image: url(../images/autumn/bg-vstatusing.png); 
+        }
+        &.vs-fail{
+            background-image: url(../images/autumn/bg-vstatusfailed.png); 
+        }
+        &.vs-success{
+            background-image: url(../images/autumn/bg-vstatussuccess.png); 
+        }
+    }
+    .ver-imgbox{
+        position: relative;
+    }
+    .ver-upimg{
+        margin-right: prem(30);
+        width: prem(166);
+        height: prem(112);
+        vertical-align: bottom;
+    }
+    .reverify{
+        position: absolute;
+        right: 0;
+        padding: 0 5px;
+        font-size: prem(28);
+        line-height: prem(48);
+        text-align: center;
+        color: #3ebdf6;
+        border: 1px solid #3ebdf6;
+        border-radius: 2px;
+    }
+    .verdate{
+        
+        margin-top: prem(75);
+        float: right;
+        font-size: prem(28);
+        color: #999;
+    }
+    .verfailinfo{
+        margin-top: prem(18);
+        font-size: prem(28);
+        color: #ff6600;
+    }
+}
+//上传认证文件页面
+.uploadbox{
+    padding-bottom: prem(20);
+    border-top: 1px solid #eeeef3;
+}
+.verup-line{
+    margin-top: prem(30);
+    line-height: prem(75);
+    @include flexbox;
+    label{
+        font-size: prem(30);
+    }
+    input[type="text"]{
+        @include flexitem;
+        margin-right: 5px;
+        padding: 0 20px 0 10px;
+        line-height: inherit;
+        border: none;
+        background-color: #eeeef3;
+    }
+}
+.unload-card{
+    position: relative;
+    width: prem(534);
+    height: prem(354);
+    margin: prem(65) auto;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+    input[type="file"]{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+    }
 }

@@ -16,6 +16,13 @@
     -webkit-flex: $s;
     flex: $s;
 }
+@mixin alignitems-center(){
+    align-items:center;
+    -webkit-align-items:center;
+    box-align:center;
+    -moz-box-align:center;
+    -webkit-box-align:center;
+}
 //多行文字超出隐藏加省略号
 @mixin overflowemp($lines:1){
     overflow: hidden;
