@@ -11,6 +11,7 @@
 	    <link rel="stylesheet" href="css/mysupplyinfo.css">
 	    <link rel="stylesheet" href="css/dropload.css"/>
 	    <link rel="stylesheet" href="../wx/css/autumn.css"/>
+	    <link rel="stylesheet" href="../wx/css/countdown.css"/>
 	    <script type="text/javascript">
 	        (function () {
 	            var html = document.querySelector("html");
@@ -28,6 +29,75 @@
 	    </script>
 	</head>
 	<body style="padding: 0;">
+		<div class="countdown-box" id="countdownbox">
+			<div class="center-line">
+				<div class="numitem">
+					<i class="ni-side"></i>
+					<div class="numbox">
+						<img class="showing" src="../wx/images/countdown/0.png"/>
+						<img class="hiding" src="../wx/images/countdown/3.png"/>
+					</div>
+					<i class="ni-side"></i>
+				</div>
+				<div class="numitem">
+					<div class="numbox">
+						<img class="showing" src="../wx/images/countdown/0.png"/>
+						<img class="hiding" src="../wx/images/countdown/3.png"/>
+					</div>
+					<i class="ni-side"></i>
+				</div>
+				<div class="numitem">
+					<div class="numbox">
+						<img class="showing" src="../wx/images/countdown/0.png"/>
+						<img class="hiding" src="../wx/images/countdown/3.png"/>
+					</div>
+					<i class="ni-side"></i>
+				</div>
+				<div class="numitem">
+					<div class="numbox">
+						<img class="showing" src="../wx/images/countdown/0.png"/>
+						<img class="hiding" src="../wx/images/countdown/3.png"/>
+					</div>
+					<i class="ni-side"></i>
+				</div>
+				<div class="numitem">
+					<div class="numbox">
+						<img class="showing" src="../wx/images/countdown/0.png"/>
+						<img class="hiding" src="../wx/images/countdown/3.png"/>
+					</div>
+					<i class="ni-side"></i>
+				</div>
+				<div class="numitem">
+					<div class="numbox">
+						<img class="showing" src="../wx/images/countdown/0.png"/>
+						<img class="hiding" src="../wx/images/countdown/3.png"/>
+					</div>
+					<i class="ni-side"></i>
+				</div>
+				<div class="numitem">
+					<div class="numbox">
+						<img class="showing" src="../wx/images/countdown/0.png"/>
+						<img class="hiding" src="../wx/images/countdown/3.png"/>
+					</div>
+					<i class="ni-side"></i>
+				</div>
+				<div class="numitem">
+					<div class="numbox">
+						<img class="showing" src="../wx/images/countdown/0.png"/>
+						<img class="hiding" src="../wx/images/countdown/3.png"/>
+					</div>
+					<i class="ni-side"></i>
+				</div>
+				<div class="numitem">
+					<div class="numbox">
+						<img class="showing" src="../wx/images/countdown/0.png"/>
+						<img class="hiding" src="../wx/images/countdown/3.png"/>
+					</div>
+					<i class="ni-side"></i>
+				</div>
+			</div>
+		</div>
+		
 		<div class="linecenter">
 			<div class="lc-left"></div>
 			<span><font>12580</font>人正在观展</span>
@@ -97,7 +167,7 @@
 					</div>
 					<div class="bottom-infos"><span class="pos online-exhi">线上展位</span><span class="check">438查看</span><span class="coll">0收藏</span></div>
 				</section>
-			</div>
+
 			<!--糖酒会-->
 			<section class="supply-item animate-opacity" data-id="7065" onclick="jumpDetail(this)">
 				<div class="user-info sugar-user">
@@ -273,11 +343,78 @@
 			
 			<div style="height: 200px;"></div>
 		</div>
-		<!--<script src="js/jquery-1.9.1.min.js" ></script>
+		<script src="js/jquery-1.9.1.min.js" ></script>
 		<script src="js/jquery.lazyload.min.js"></script>
 		<script src="js/dropload.min.js"></script>
-		<script src="js/public.js"></script>-->
+		<script src="js/public.js"></script>
 		<script>
+//			$(".numitem").eq(0).find(".numbox .showing").fadeOut('fast',function(){
+//			    var next = $(this).parent().find(".hiding");
+//			    next.fadeIn('slow');
+//			    $(this).removeClass("showing").addClass("hiding");
+//			    $(next).removeClass("hiding").addClass("showing");
+//			});
+			
+			
+			var _Countdown = {
+				now: 0,
+				loadsuccess: 0,
+				images: [],
+				imgurl: 'http://127.0.0.1:8020/zzlgit/wx/images/countdown/',
+				init: function(num){
+					var _self = this;
+					
+					num = _self.format(num).split('');
+					now = _self.format(_self.now).split('');
+					
+					$.each(num, function(index,item) {
+						if(item != now[index]){
+							_self.changeOne(index,item);
+							now[index] = item;
+							_self.now = now.join('');
+						}
+						
+					});
+				},
+				loadimg: function(){
+					var _self = this;
+					for(var i=0; i<10;i++){
+						var url = _self.imgurl + i +'.png';
+						_self.images.push(url);
+						var img = new Image();
+						img.src = url;
+						img.onload = function(){
+							_self.loadsuccess++;
+						}
+					}
+				},
+				format: function(num){
+					var length = 9;
+					//转成9位string
+					return (Array(length).join('0') + num).slice(-length);
+				},
+				changeOne: function(index,num){
+					var _self = this;
+					var _item = $("#countdownbox .numitem").eq(index);
+					_item.find('.hiding').attr('src',_self.images[num]);
+					_item.find('.showing').fadeOut('fast',function(){
+					    var next = $(this).parent().find(".hiding");
+					    next.fadeIn('slow');
+					    $(this).removeClass("showing").addClass("hiding");
+					    $(next).removeClass("hiding").addClass("showing");
+					});
+				}
+			}
+			var xxx = 1201;
+			_Countdown.loadimg();
+			_Countdown.init(xxx)
+			
+//			setInterval(function(){
+//				xxx += 33;
+//				_Countdown.init(xxx)
+//			},1000);
+		</script>
+		<!--<script>
 			$(function(){
 				// 页码
 			    var page = 0;
@@ -402,6 +539,6 @@
 				var did = $(th).attr("data-id");
 				window.location.href =  "{{route('niche.supplydetail')}}" + "?supplyId=" + did;
 			}
-		</script>
+		</script>-->
 	</body>
 </html>

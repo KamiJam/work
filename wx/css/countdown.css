@@ -1,0 +1,37 @@
+.countdown-box {
+  height: 11.2rem;
+  background: url(../images/autumn/bg-countdown.png) no-repeat 0 0/contain;
+  overflow: hidden; }
+
+.center-line {
+  margin-top: 4.26667rem;
+  text-align: center;
+  font-size: 0; }
+  .center-line .numitem {
+    display: inline-block;
+    height: 1.28rem;
+    font-size: 0; }
+    .center-line .numitem .ni-side {
+      display: inline-block;
+      vertical-align: bottom;
+      height: 1.28rem;
+      width: 0.42667rem;
+      background: url(../images/autumn/bg-numside.png) no-repeat 0 center/contain; }
+    .center-line .numitem .numbox {
+      position: relative;
+      display: inline-block;
+      vertical-align: bottom;
+      height: 1.28rem;
+      width: 1.10933rem;
+      background: url(../images/autumn/bg-numbox.png) no-repeat 0 0/contain; }
+      .center-line .numitem .numbox > img {
+        position: absolute;
+        top: 0.10667rem;
+        left: 0.096rem;
+        height: 1.06667rem; }
+      .center-line .numitem .numbox .showing {
+        display: block; }
+      .center-line .numitem .numbox .hiding {
+        display: none; }
+
+/*# sourceMappingURL=countdown.css.map */

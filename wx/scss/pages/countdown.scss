@@ -1,0 +1,51 @@
+@charset "utf-8";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+
+
+.countdown-box{
+    height: prem(525);
+    background: url(../images/autumn/bg-countdown.png) no-repeat 0 0/contain;
+    overflow: hidden;
+}
+.center-line{
+    margin-top: prem(200);
+    text-align: center;
+    font-size: 0;
+    .numitem{
+        
+        display: inline-block;
+        
+        height: prem(60);
+        font-size: 0;
+        .ni-side{
+            display: inline-block;
+            vertical-align: bottom;
+            height: prem(60);
+            width: prem(20); 
+            background: url(../images/autumn/bg-numside.png) no-repeat 0 center/contain;
+        }
+        .numbox{
+            position: relative;
+            display: inline-block;
+            vertical-align: bottom;
+            height: prem(60);
+            width: prem(52);
+            background: url(../images/autumn/bg-numbox.png) no-repeat 0 0/contain;
+            >img{
+                position: absolute;
+                top: prem(5);
+                left: prem(4.5);
+                height: prem(50);
+//              width: prem(52);
+            }
+            .showing{
+                display: block;
+            }
+            .hiding{
+                display: none;
+            }
+        }
+    }
+}
