@@ -49,3 +49,45 @@
         }
     }
 }
+//新列表
+.supply-item{
+    padding: 20px 10px;
+    &.corner-sugar{
+        background: url(../images/autumn/corner-sugar.png) #fff no-repeat right top/ prem(170) prem(100);
+    }
+    &.corner-select{
+        background: url(../images/autumn/corner-select.png) #fff no-repeat right top/ prem(170) prem(100);
+    }
+    &.corner-ask{
+        background: url(../images/autumn/corner-ask.png) #fff no-repeat right top/ prem(170) prem(100); 
+    }
+    &.corner-supply{
+        background: url(../images/autumn/corner-supply.png) #fff no-repeat right top/ prem(170) prem(100); 
+    }
+    &.corner-product{
+        background: url(../images/autumn/corner-product.png) #fff no-repeat right top/ prem(170) prem(100); 
+    }
+}
+.imgtext-box{
+    position: relative;
+    @include padding-propor(9/10);
+    >img{
+        position: absolute; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .ibtitle{
+        position: absolute; 
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 0 prem(20);
+        line-height: prem(80);
+        color: #fff;
+        font-size: prem(32);
+        background-color: rgba(77,77,77,.35);
+        @include ellipsis;
+    }
+}
