@@ -1,1 +1,4 @@
 wx/scss/pages/.sass-cache/
+*.scssc
+wx/css/countdown.css.map
+*.map
