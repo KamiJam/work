@@ -1,0 +1,80 @@
+.ps-container {
+  margin-bottom: 0; }
+
+.uploadprod-box {
+  margin: 0.85333rem 0.512rem 0.64rem;
+  background-color: white;
+  height: 9.81333rem;
+  overflow: hidden; }
+  .uploadprod-box .ub-view {
+    display: block;
+    margin: 0.93867rem auto 0.85333rem;
+    width: 8.32rem;
+    height: 5.54667rem; }
+  .uploadprod-box .ub-title {
+    text-align: center;
+    font-size: 0.68267rem;
+    color: #666; }
+  .uploadprod-box .ub-desc {
+    margin-top: 0.21333rem;
+    text-align: center;
+    font-size: 0.59733rem;
+    color: #999; }
+
+.flextab-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  -webkit-align-items: center;
+  box-align: center;
+  -moz-box-align: center;
+  -webkit-box-align: center;
+  height: 1.96267rem;
+  background-color: #fff;
+  font-size: 0.68267rem;
+  color: #999; }
+  .flextab-box .flextab-item {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center; }
+    .flextab-box .flextab-item span {
+      padding: 0 5px;
+      position: relative; }
+  .flextab-box.flextabs1 {
+    padding: 0 4.26667rem; }
+    .flextab-box.flextabs1 .flextab-item.active {
+      color: #000; }
+      .flextab-box.flextabs1 .flextab-item.active span:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #0ac48f;
+        border-radius: 2px;
+        left: 0;
+        bottom: -3px; }
+  .flextab-box.flextabs2 span {
+    padding: 0 15px;
+    display: inline-block;
+    line-height: 1.96267rem; }
+  .flextab-box.flextabs2 .flextab-item.active {
+    color: #6699ff; }
+    .flextab-box.flextabs2 .flextab-item.active span:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #6699ff;
+      border-radius: 2px;
+      left: 0;
+      bottom: -1px; }
+  .flextab-box.fixedtop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1; }
+
+/*# sourceMappingURL=patch11-1.css.map */

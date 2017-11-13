@@ -1,4 +1,4 @@
-����Ȧ��
+﻿����Ȧ��
 cd D:\Documents\HBuilderProject\zzl\wx\scss\pages
 sass --watch createcircle.scss:..\..\css\createcircle.css  --style nested
 
@@ -13,4 +13,4 @@ sass --watch coverpinfo.scss:..\..\css\coverpinfo.css  --style nested
 
 cd E:\coding\work\ing\wx\scss\pages 
 e
-sass --watch autumn.scss:..\..\css\autumn.css  --style nested
+sass --watch patch11-1.scss:..\..\css\patch11-1.css  --style nested

@@ -1,0 +1,119 @@
+@charset "utf-8";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+
+body{   
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+//  min-width: 1400px;
+}
+.outterbox{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.lottery-title{
+    display: block;
+    width: 650px;
+    margin: 50px auto 30px;
+}
+.wbg-box{
+    box-sizing: border-box;
+    padding: 60px 50px;
+    width: 900px;
+    height: 543.6px;
+    margin: 0 auto;
+    background: url(../images/bg-wbgbox.png) no-repeat 0 0/contain;
+}
+.listline{
+    margin: 0 0 65px 0;
+    font-size: 30px;
+    color: #fff;
+    span{
+        margin-right: 24px;
+    }
+}
+.roundbtn{
+    width: 325px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 34px;
+    color: #fff;
+    background-color: #ff6633;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    &.wbg{
+        background-color: #fff;
+        color: #ff6633;
+        margin-right: 106px;
+    }
+}
+.roundbtn-s{
+    float: right;
+    margin: 100px 50px 0 0;
+    width: 230px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 28px;
+    color: #fff;
+    background-color: #ff6633;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.blockcenter{
+    display: block;
+    margin: 0 auto;
+}
+
+.drawinput{
+    display: block;
+    margin: 200px auto 72px;
+    width: 820px;
+    line-height: 185px;
+    text-align: center;
+    font-size: 56px;
+    color: #4d4d4d;
+    &::placeholder{
+        color: #4d4d4d;
+    }
+}
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.namebox{
+    margin: 180px auto 94px;
+    width: 900px;
+    span{
+        display: inline-block;
+        margin: 0 20px 30px 0;
+        font-size: 34px;
+        color: #fff;
+    }
+}
+.btns-box{
+    text-align: center;
+    .roundbtn{
+        display: inline-block;
+    }
+}
+
+.result-box{
+    margin: 50px 120px 0 ;
+    min-height: 400px;
+    .listline{
+        margin-bottom: 50px;
+        font-size: 25px;
+    }
+    
+}

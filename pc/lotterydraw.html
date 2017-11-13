@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>抽奖</title>
+		<link rel="stylesheet" href="css/lottery.css"/>
+	</head>
+	<body>
+		<img src="images/bg-lottery.png" style="width: 100%;display: block;"/>
+		
+		<div class="outterbox" id="drawbox">
+			<input class="drawinput" type="number" placeholder="请输入抽奖数目" id="drawcount"/>
+			<div class="roundbtn blockcenter" id="draw">
+				确认
+			</div>
+			<div class="roundbtn-s">查看中奖名单</div>
+		</div>
+		
+		<div class="outterbox " id="oneturnbox" style="display: none;">
+			<div class="namebox">
+				<span>中奖名</span>
+				<span>中奖姓名</span>
+				<span>中名</span>
+				<span>中奖姓名</span>
+				<span>中奖姓</span>
+				<span>中奖姓名</span>
+				<span>中奖姓名</span>
+				<span>中奖姓名</span>
+				<span>中奖名</span>
+				<span>中奖姓名</span>
+				<span>中名</span>
+				<span>中奖姓名</span>
+				<span>中奖姓</span>
+				<span>中奖姓名</span>
+				<span>中奖姓名</span>
+				<span>中奖姓名</span>
+				<span>中奖名</span>
+				<span>中奖姓名</span>
+				<span>中名</span>
+				<span>中奖姓名</span>
+				<span>中奖姓</span>
+				<span>中奖姓名</span>
+				<span>中奖姓名</span>
+				<span>中奖姓名</span>
+			</div>
+			<div class="btns-box">
+				<div class="roundbtn wbg" id="enddraw">
+					结束抽奖
+				</div>
+				<div class="roundbtn " id="continuedraw">
+					继续抽奖
+				</div>
+			</div>
+		</div>
+		
+		<div class="outterbox " id="resultbox" style="display: none;">
+			<div class="result-box">
+				<div class="listline">
+					<span>第一轮</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+				</div>
+				<div class="listline">
+					<span>第二轮</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+				</div>
+				<div class="listline">
+					<span>第三轮</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+				</div>
+				<div class="listline">
+					<span>第四轮</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+				</div>
+				<div class="listline">
+					<span>第五轮</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+				</div>
+				<div class="listline">
+					<span>第六轮</span>
+					<span>姓名</span>
+					<span>姓名</span>
+					<span>姓名</span>
+				</div>
+				
+			</div>
+			<div class="roundbtn blockcenter" id="backdraw">
+				继续抽奖
+			</div>
+		</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$("#draw").on('click',function(){
+				//抽奖
+				var _count = $("#drawcount").val();
+				
+				$("#drawbox").hide();
+				_PAGE.go("oneturnbox");
+				
+			});
+			
+			$("#continuedraw,#backdraw").on('click',function(){
+				_PAGE.go("drawbox");
+			});
+			$("#enddraw").on('click',function(){
+				_PAGE.go("resultbox");
+			});
+		});
+		
+		var _PAGE = {
+			go: function(id){
+				$("#"+id).show().siblings('.outterbox').hide();
+			}
+		}
+	</script>
+	</body>
+</html>

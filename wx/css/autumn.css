@@ -140,6 +140,7 @@ a {
   font-size: 0.68267rem;
   padding-right: 1.28rem; }
   .del-input input {
+  	font-size: 0.65rem;
     width: 100%;
     border: none;
     outline-style: none; }
@@ -173,7 +174,10 @@ a {
   .sm-icon.smi-more {
     background-image: url(../images/autumn/more_unfold.png);
     transition: transform 200ms; }
-
+	.sm-icon.smi-fire {
+		width: 0.8rem;
+    height: 0.8rem;
+    background-image: url(../images/autumn/smi-fire.png); }
 .addtjh {
   position: fixed;
   padding-right: 3rem;
@@ -312,7 +316,7 @@ a {
   overflow-x: auto;
   white-space: nowrap;
   margin: 0.42667rem 0.64rem 1.70667rem;
-  padding: 0.21333rem 0.10667rem 0.21333rem;
+  padding: 4px;
   font-size: 0; }
 
 .psc-item {
@@ -679,11 +683,18 @@ a {
         right: 0;
         bottom: 0; }
     .sugarprod-item .spi-owner .spi-infos {
+    	font-size: 0;
       width: 0;
       -webkit-box-flex: 1;
       -webkit-flex: 1;
       flex: 1;
       color: #386C9B; }
+      .spi-infos.norank{
+      	padding-right: 10px;
+      }
+      .spi-infos.norank .spi-name{
+      	max-width: 10em !important;
+      }
       .sugarprod-item .spi-owner .spi-infos .spi-name {
         display: inline-block;
         max-width: 3em;
@@ -698,12 +709,13 @@ a {
         text-overflow: ellipsis; }
       .sugarprod-item .spi-owner .spi-infos .name-vertag {
         vertical-align: baseline; }
+
     .sugarprod-item .spi-owner .sugar-rank {
       margin: 0 3px;
-      font-size: 10px; }
+      font-size: 12px; }
 
 .checknum {
-  font-size: 10px;
+  font-size: 12px;
   color: #808080;
   background: url(../images/bg-check.png) no-repeat;
   background-position: right 2px;
@@ -793,6 +805,10 @@ a {
   width: 2.88rem;
   height: 100%;
   background: url(../images/autumn/bg-btmcollect.png) no-repeat center center/auto 100%; }
+.bottom-block .sw-rules {
+  width: 2.88rem;
+  height: 100%;
+  background: url(../images/autumn/bg-btmrules.png) no-repeat center center/auto 100%; }
   .bottom-block .sw-collect.active {
     background: url(../images/autumn/bg-btmcollected.png) no-repeat center center/auto 100%; }
 .bottom-block .sw-contact {
@@ -800,19 +816,42 @@ a {
   -webkit-flex: 1;
   flex: 1;
   height: 100%;
-  background: url(../images/autumn/bg-btmcontact.png) no-repeat center center/auto 0.85333rem; }
+  background: url(../images/autumn/bg-btmcontact.png) no-repeat center center/auto 0.95rem; }
 .bottom-block .sw-addnew {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   flex: 1;
   height: 100%;
   background: url(../images/autumn/bg-btmaddnew.png) no-repeat center center/auto 0.85333rem; }
-
+.bottom-block .vertiline{
+	border-left: 1px solid #ddd;
+  height: 100%;
+}
+.bottom-block .sw-card{
+  width: 2.88rem;
+  height: 100%;
+  background: url(../images/autumn/bg-btmcard.png) no-repeat center center/auto 100%; }
+.bottom-block .sw-homepage{
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  height: 100%;
+  background: url(../images/autumn/bg-btmhomepage.png) no-repeat center center/auto 0.85333rem; }
+.bottom-block .sw-sidesugar {
+  width: 2.88rem;
+  height: 100%;
+  background: url(../images/autumn/bg-btmsugar.png) no-repeat center center/auto 100%; }
+.bottom-block .sw-sidehome {
+  width: 2.88rem;
+  height: 100%;
+  background: url(../images/autumn/bg-btmsidehome.png) no-repeat center center/auto 100%; }
 .btmfixedpage {
   padding-bottom: 1.92rem; }
 
 .linecenter {
-  text-align: center; }
+  text-align: center;
+  background-color: white;
+  line-height: 2.5rem; }
   .linecenter .lc-left {
     display: inline-block;
     width: 4.05333rem;
@@ -890,7 +929,8 @@ a {
       font-size: 0.68267rem;
       margin-bottom: 0.42667rem; }
     .graybg-box .ver-desc p {
-      font-size: 0.64rem; }
+      font-size: 0.64rem;
+      white-space: pre-line; }
 
 .ver-infobox {
   padding: 0 0.64rem;
@@ -947,7 +987,10 @@ a {
     border-radius: 2px;
     white-space: nowrap;
     background-color: white; }
-
+	.ver-line .vl-send:disabled{
+		border-color: #ccc;
+		color: #ccc;
+	}
 .vstatus-item {
   padding: 0.85333rem 0;
   border-top: 1px solid #eeeef3; }
@@ -1013,6 +1056,7 @@ a {
     padding: 0 20px 0 10px;
     line-height: inherit;
     border: none;
+    font-size: 0.7rem;
     background-color: #eeeef3; }
 
 .unload-card {
@@ -1030,5 +1074,22 @@ a {
     left: 0;
     right: 0;
     opacity: 0; }
-
-/*# sourceMappingURL=autumn.css.map */
+.col666{
+	color: #666;
+}
+.counterbar{
+		height: 3.28rem;
+		width: 100%;
+		padding: 0.384rem 1.3866667rem 0;
+		text-align: center;
+		background: url(../images/autumn/bg-counterbar.png) #fff no-repeat center center/auto 100%;
+}
+.counterbar>span{
+	font-size: 16px;
+	
+}
+.counterbar>p{
+	
+	font-size: 12px;
+	text-align: center;
+}

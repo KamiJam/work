@@ -124,6 +124,10 @@ a {
     background-image: url(../images/home/me.png); }
     .fb-item.me.active {
       background-image: url(../images/home/me-a.png); }
+	.fb-item.tjh {
+		background: url(../images/home/tjh.png) no-repeat center 7px/auto 20px; }
+		.fb-item.tjh.active {
+	  	background-image: url(../images/home/tjh-a.png); }
 
 .top-menus {
   margin: 0 0 0.55467rem 0;
@@ -131,7 +135,8 @@ a {
   display: -webkit-flex;
   display: flex;
   background-color: white;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  -webkit-flex-wrap:wrap; }
 
 .tm-item {
   width: 25%;
@@ -206,7 +211,8 @@ a {
   width: 2.88rem;
   height: 2.88rem;
   border-radius: 999px;
-  border: 1px solid #fff; }
+  border: 1px solid #fff;
+  box-sizing: content-box; }
 .tb-himgc .himg{
 	width: 2.88rem;
   height: 2.88rem;
@@ -271,7 +277,8 @@ a {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  align-items: center;
+  align-items: center;-webkit-align-items:center;
+
   padding: 0 10px;
   border-bottom: 1px solid #eeeef3;
   width: 100%; }
@@ -322,7 +329,8 @@ a {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  align-items: center;
+  align-items: center;-webkit-align-items:center;
+
   height: 4.05333rem;
   padding-top: 2px;
   background-color: white;
@@ -398,7 +406,8 @@ a {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  align-items: center;
+  align-items: center;-webkit-align-items:center;
+
   height: 1.8rem;
   background-color: white;
   top: 0;

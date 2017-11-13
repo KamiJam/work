@@ -12,6 +12,7 @@
 	    <link rel="stylesheet" href="css/dropload.css"/>
 	    <link rel="stylesheet" href="../wx/css/autumn.css"/>
 	    <link rel="stylesheet" href="../wx/css/countdown.css"/>
+	    <link rel="stylesheet" href="../wx/css/patch11-1.css"/>
 	    <script type="text/javascript">
 	        (function () {
 	            var html = document.querySelector("html");
@@ -27,9 +28,39 @@
 	        }
 
 	    </script>
+	    <style>
+	    	.fixed-gotop{
+		    	position: fixed;
+		    	z-index: 1;
+		    	bottom: 4rem;
+		    	right: 1rem;
+		    	width: 2rem;
+		    	height: 2rem;
+		    	border-radius: 999px;
+		    	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACZUlEQVR4Xu2avU3EQBCF36sACiBAIkFEUAHQAXRwVwGEkIGEiKECqAEKACoAEkIIaAAqGLTSWbKMf/Zndi3Ls8lJp93xvO9m3u7ZJmY+OHP9MABWATMnYC0w8wIwExxsARE5BnAFYGdi1fIB4JzkQ1/ePgC+AGxOTHyV7ifJrVQA3wA25gzAtcA1gO2JQXAtcEbyMakCJiY6ON1BDwiOOLEFBmBiP5h6uqNVgIicALgAsO4+SV6qq/MIOAoAEbkDsGjkd09y6ZGz6pTiADrEV6KKQygKYED8KBCKAfAUXxxCEQCB4otCyA6gQ/wvgLWGm7V9l90TsgLoEX8A4LUBYA/AcwuYrBCyAegTT/JNRKQOgCRFZLcDwi3JU9X9bxUsC4Ah8e7abQBW33dBWJK814agDsBHfB+A0hBUAfiKHwJQEoIagBDxPgBKQVABECreF0AJCMkAYsSHAMgNIQlArPhQADkhRAMQkRsA7j99fbjT3IHb54e2q65tsG9dzzkheouMArBKpHmS8xYfUwEVmB4Iez7gm4BjAbij7FMtWJD4FAA97XBI0h2lg0YUgFUS7mL7AILFpwJogfBC0v0owSMaQJVETNlpAKi3RGwOLkYSgGDctQUxJphyva61BiAHVZ+YVgEt9wN8wGnPsRbQJuobz1rAWuD/PUHf6tGcZx6gSTMklnmAeYB5wL8HIyEtpDXXTFCLZGgcM0EzQTNBM8G6b7jH46E+ojF/lItq3hNMhWAAUgnGrheRn9rrMO8k3YsRxceYFXAEwD1ecyAWKbe2U6iNBiAlac21BkCT5hRjzb4C/gDaj2JQ3kF7zwAAAABJRU5ErkJggg==) no-repeat rgba(204,204,204,0.7) center center/1.5rem;
+		    }
+	    </style>
 	</head>
 	<body style="padding: 0;">
+		<div class="fixed-gotop"></div>
 		<div class="maincontent">
+			<div class="flextab-box flextabs1">
+				<div class="flextab-item active">
+					<span>精华</span>
+				</div>
+				<div class="flextab-item">
+					<span>关注</span>
+				</div>
+			</div>
+			
+			<div class="flextab-box flextabs2" style="margin-top: 10px;">
+				<div class="flextab-item active">
+					<span>热门展位</span>
+				</div>
+				<div class="flextab-item">
+					<span>最新发布</span>
+				</div>
+			</div>
 			<div class="infinitelist">
 				<!--糖酒会-->
 				<section class="supply-item animate-opacity corner-sugar" data-id="7065" onclick="jumpDetail(this)">
@@ -207,6 +238,47 @@
 		<script src="js/dropload.min.js"></script>
 		<script src="js/public.js"></script>
 		<script>
+			
+			jQuery.fn.goToTop = function(settings) {
+		        settings = jQuery.extend({
+		            min: 1,  //设置距离顶部的最小值为1
+		            fadeSpeed: 200,  //设置一个淡出淡入的速度
+		            ieOffset: 50  //处理IE的兼容问题
+		        },settings);
+		        return this.each(function(){
+		            //listen for scroll
+		            var el = $(this);
+		            el.css("display","none");//in case the user forgot
+		            $(window).scroll(function(){
+		                //stupid IE hack
+//		                if(!jQuery.support.hrefNormalized) {  //设置这个按钮的css属性
+//		                    el.css({
+//		                        "position": "absolute",
+//		                        "top" : $(window).scrollTop() + $(window).height() - settings.ieOffset
+//		                    });
+//		                }
+		               
+		
+		                if($(window).scrollTop() >= settings.min) {
+		                    el.fadeIn(settings.fadeSpeed);
+		                } else {
+		                    el.fadeOut(settings.fadeSpeed);
+		                }
+		            });
+		            
+		            el.click(function(e){
+			           	e.preventDefault();
+			           	$("html,body").animate({scrollTop:0},"slow");
+			        });
+		        });
+		    };
+		    
+		    
+		    $(".fixed-gotop").goToTop({
+	            min:1,
+	            fadeSpeed: 500
+	        });
+
 //			$(".numitem").eq(0).find(".numbox .showing").fadeOut('fast',function(){
 //			    var next = $(this).parent().find(".hiding");
 //			    next.fadeIn('slow');
@@ -214,7 +286,20 @@
 //			    $(next).removeClass("hiding").addClass("showing");
 //			});
 			
-			
+//			$(function(){
+//				$(window).on("scroll",function(){
+//					console.log(document.querySelector("html").getBoundingClientRect())
+//					if($(".flextabs2").hasClass("fixedtop")){
+//						return false;
+//					}
+//					
+//					if($(".flextabs2")[0].getBoundingClientRect().top <= 0){
+//						$(".flextabs2").addClass("fixedtop");
+//					}else{
+//						$(".flextabs2").removeClass("fixedtop");
+//					}
+//				});
+//			});
 			var _Countdown = {
 				now: 0,
 				loadsuccess: 0,
