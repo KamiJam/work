@@ -14,3 +14,5 @@ sass --watch coverpinfo.scss:..\..\css\coverpinfo.css  --style nested
 cd E:\coding\work\ing\wx\scss\pages 
 e
 sass --watch patch11-1.scss:..\..\css\patch11-1.css  --style nested
+cd C:\Users\Administrator\Desktop\zzl\wx\scss\pages
+sass --watch vote.scss:..\..\css\vote.css  --style nested

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>投票</title>
+    
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/vote.css">
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body style="background-color: white;">
+	<div class="main-content" style="padding: 10px;">
+		<!--投票未开始-->
+		<section class="voteitem-box">
+			<div class="vote-topbar">
+				<span class="vote-tbstatus notstart">投票未开始</span>
+				<span class="vote-tbcounts"><font>1290</font>人参与投票</span>
+			</div>
+			<div class="vote-oneline">
+				<i class="greensidebar"></i>
+				<span>请选择</span>
+				<span class="float-r">单选</span>
+			</div>
+			<div class="voteoption-box">
+				<div class="vote-option">
+					<div class="voteopt-left">
+						<img class="vol-simg" src="../images/3.jpg"/>
+					</div>
+					<div class="voteopt-right">
+						<p class="vor-text">sadas15多舒服sadas15多舒服sadas15多舒服sadas15多舒服sadas15多舒服</p>
+						<p class="barselline">
+							<span class="precent-bar">
+								<span class="pb-inner" style="width: 88%;"></span>
+							</span>
+							<label class="vote-checkbox float-r">
+								<input type="checkbox" disabled="disabled">
+								<i></i>
+							</label>
+						</p>
+						<p class="optcountline">
+							<span class="precentspan">80.0%</span>
+							<span>2054票</span>
+						</p>
+					</div>
+				</div>
+				<div class="vote-option">
+					<div class="voteopt-left">
+						<img class="vol-simg" src="../images/3.jpg"/>
+					</div>
+					<div class="voteopt-right">
+						<p class="vor-text">sadas15多舒</p>
+						<p class="barselline">
+							<span class="precent-bar">
+								<span class="pb-inner" style="width: 88%;"></span>
+							</span>
+							<label class="vote-checkbox float-r">
+								<input type="checkbox" disabled="disabled">
+								<i></i>
+							</label>
+						</p>
+						<p class="optcountline">
+							<span class="precentspan">80.0%</span>
+							<span>2054票</span>
+						</p>
+					</div>
+				</div>
+
+			</div>
+			<div class="vote-oneline">
+				<i class="greensidebar"></i>
+				<span>请选择</span>
+				<span class="float-r">单选</span>
+			</div>
+			<p class="voteoption-title">你为什么阿萨德饭店你为什么阿萨德饭店你为什么阿萨德饭店</p>
+			<div class="voteoption-box">
+				<div class="vote-option">
+					<div class="voteopt-left">
+						<img class="vol-simg" src="../images/3.jpg"/>
+					</div>
+					<div class="voteopt-right">
+						<p class="vor-text">sadas15多舒服sadas15多舒服sadas15多舒服sadas15多舒服sadas15多舒服</p>
+						<p class="barselline">
+							<span class="precent-bar">
+								<span class="pb-inner" style="width: 88%;"></span>
+							</span>
+							<label class="vote-checkbox float-r">
+								<input type="checkbox" disabled="disabled">
+								<i></i>
+							</label>
+						</p>
+						<p class="optcountline">
+							<span class="precentspan">80.0%</span>
+							<span>2054票</span>
+						</p>
+					</div>
+				</div>
+				<div class="vote-option">
+					<div class="voteopt-left">
+						<img class="vol-simg" src="../images/3.jpg"/>
+					</div>
+					<div class="voteopt-right">
+						<p class="vor-text">sadas15多舒</p>
+						<p class="barselline">
+							<span class="precent-bar">
+								<span class="pb-inner" style="width: 88%;"></span>
+							</span>
+							<label class="vote-checkbox float-r">
+								<input type="checkbox" disabled="disabled">
+								<i></i>
+							</label>
+						</p>
+						<p class="optcountline">
+							<span class="precentspan">80.0%</span>
+							<span>2054票</span>
+						</p>
+					</div>
+				</div>
+
+			</div>
+			<button class="votesubmit-btn" type="button" disabled="disabled">投票</button>
+			<p class="votedate-line">投票时间:<span>2017.10.20-2017.11.11</span></p>
+		</section>
+		<!--投票进行中-->
+		<section class="voteitem-box ">
+			<div class="vote-topbar">
+				<span class="vote-tbstatus going">投票进行中</span>
+				<span class="vote-tbcounts"><font>1290</font>人参与投票</span>
+				<p class="vt-linetwo">
+					<i class="greensidebar"></i>
+					<span>请选择</span>
+					<span class="float-r">单选</span>
+				</p>
+			</div>
+			<div class="voteoption-box noleftimg">
+				<div class="vote-option">
+					<div class="voteopt-right">
+						<p class="vor-text">sadas15多舒服sadas15多舒服sadas15多舒服sadas15多舒服sadas15多舒服</p>
+						<p class="barselline">
+							<span class="precent-bar">
+								<span class="pb-inner" style="width: 88%;"></span>
+							</span>
+							<label class="vote-checkbox float-r">
+								<input type="checkbox">
+								<i></i>
+							</label>
+						</p>
+						<p class="optcountline">
+							<span class="precentspan">80.0%</span>
+							<span>2054票</span>
+						</p>
+					</div>
+				</div>
+				<div class="vote-option">
+
+					<div class="voteopt-right">
+						<p class="vor-text">sadas15多舒</p>
+						<p class="barselline">
+							<span class="precent-bar">
+								<span class="pb-inner" style="width: 88%;"></span>
+							</span>
+							<label class="vote-checkbox float-r">
+								<input type="checkbox">
+								<i></i>
+							</label>
+						</p>
+						<p class="optcountline">
+							<span class="precentspan">80.0%</span>
+							<span>2054票</span>
+						</p>
+					</div>
+				</div>
+
+			</div>
+			
+			<button class="votesubmit-btn" type="button">投票</button>
+			<p class="votedate-line">投票时间:<span>2017.10.20-2017.11.11</span></p>
+		</section>
+		<!--投票结束-->
+		<section class="voteitem-box noleftimg">
+			<div class="vote-topbar">
+				<span class="vote-tbstatus end">投票已结束</span>
+				<span class="vote-tbcounts"><font>1290</font>人参与投票</span>
+				<p class="vt-linetwo">
+					<i class="greensidebar"></i>
+					<span>请选择</span>
+					<span class="float-r">单选</span>
+				</p>
+			</div>
+			<div class="voteoption-box">
+				<div class="vote-option">
+					<div class="voteopt-right">
+						<p class="vor-text">sadas15多舒服sadas15多舒服sadas15多舒服sadas15多舒服sadas15多舒服</p>
+						<p class="barselline">
+							<span class="precent-bar">
+								<span class="pb-inner" style="width: 88%;"></span>
+							</span>
+							<!--<label class="vote-checkbox float-r">
+								<input type="checkbox">
+								<i></i>
+							</label>-->
+						</p>
+						<p class="optcountline">
+							<span class="precentspan">80.0%</span>
+							<span>2054票</span>
+						</p>
+					</div>
+				</div>
+				<div class="vote-option">
+
+					<div class="voteopt-right">
+						<p class="vor-text">sadas15多舒</p>
+						<p class="barselline">
+							<span class="precent-bar">
+								<span class="pb-inner" style="width: 88%;"></span>
+							</span>
+							<!--<label class="vote-checkbox float-r">
+								<input type="checkbox">
+								<i></i>
+							</label>-->
+						</p>
+						<p class="optcountline">
+							<span class="precentspan">80.0%</span>
+							<span>2054票</span>
+						</p>
+					</div>
+				</div>
+
+			</div>
+			
+			<button class="votesubmit-btn" type="button" disabled="disabled">投票</button>
+			<p class="votedate-line">投票时间:<span>2017.10.20-2017.11.11</span></p>
+		</section>
+	</div>
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(".barselline .vote-checkbox").on('click',function(){
+			if(!$(this).find("input[type='checkbox']").disabled && $(this).find("input[type='checkbox']")[0].checked){
+				$(this).closest(".vote-option").addClass("selected");
+			}else{
+				$(this).closest(".vote-option").removeClass("selected");
+			}
+		});
+	</script>
+</body>
+</html>

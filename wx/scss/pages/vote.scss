@@ -1,0 +1,148 @@
+@charset "utf-8";
+@import "../constants";
+@import "../funcs";
+@import "../mixin";
+@import "../common";
+//@import "../component/checkbox";
+
+
+.voteitem-box{
+    margin: prem(38) 0 prem(50);
+    padding: prem(44) prem(28) prem(128);
+    background-color: #f9f9f9;
+    
+}
+.noleftimg{
+    .precent-bar{
+        width: prem(518);
+    }
+}
+.vote-topbar{
+    font-size: prem(28);
+    .vote-tbstatus{
+//      font-size: prem(26);
+        &.notstart{
+            color: #79beff;
+        }
+        &.going{
+            color: #0AC48F;
+        }
+        &.end{
+            color: #FF6600;
+        }
+    }
+    .vote-tbcounts{
+        float: right;
+        
+        color: #808080;
+    }
+}
+.vote-oneline{
+    margin: prem(70) 0 prem(40);
+    font-size: prem(30);
+    color: #333;
+}
+.voteoption-title{
+    margin: 0 0 prem(20);
+    font-size: prem(32);
+    color: #000;
+}
+.greensidebar{
+    margin-right: 2px;
+    display: inline-block;
+    width: prem(6);
+    height: prem(22);
+    background-color: #0AC48F;
+
+}
+
+.vote-checkbox{
+    @include custcheckbox(url(../images/autumn/cb-checked.png),url(../images/autumn/cb-notchecked.png),url(../images/autumn/cb-disabled.png));
+}
+
+.cust-radiobutton{
+    @include custcheckbox(url(../images/autumn/rb-checked.png),url(../images/autumn/rb-notchecked.png),url(../images/autumn/rb-disabled.png));
+}
+.precent-bar{
+    position: relative;
+    display: inline-block;
+    width: prem(344);
+    height: prem(18);
+    border-radius: 999px;
+    background-color: #E6E6E6;
+    overflow: hidden;
+    .pb-inner{
+        position: absolute;
+        left: 0;
+        top: 0;
+//      display: inline-block;
+        height: 100%;
+        width: 20%;
+        background-color: #b3b3b3;
+        border-radius: 999px;
+    }
+}
+
+.vote-option{
+    margin-bottom: prem(50);
+    @include flexbox;
+    @include alignitems-center;
+    .voteopt-left{
+        width: prem(150);
+        height: prem(150);
+        margin-right: prem(24);
+        .vol-simg{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .voteopt-right{
+        
+        @include flexitem;
+        .vor-text{
+            line-height: 1.4em;
+            min-height: 2.8em;
+            @include overflowemp(2);
+            font-size: prem(32);
+            color: #333;
+        }
+        
+    }
+    
+    &.selected{
+        .precent-bar .pb-inner{
+            background-color: #0AC48F;
+        }
+        .optcountline{
+            color: #0AC48F;
+        }
+    }
+}
+.barselline{
+    overflow: hidden;
+    font-size: 0;
+    .precent-bar{
+        margin-top: 0.258rem;
+    }
+}
+.optcountline{
+    font-size: prem(28);
+    color: #808080;
+    .precentspan{
+        display: inline-block;
+        width: prem(110);
+    }
+}
+.votesubmit-btn{
+    margin: prem(108) auto prem(70);
+    @include blockbutton(prem(560),prem(80),#0ac48f);
+    outline-style: none; 
+    &:disabled{
+        background-color: #bfbfbf;
+    }
+}
+.votedate-line{
+    color: #808080;
+    font-size: prem(28);
+    text-align: center;
+}
