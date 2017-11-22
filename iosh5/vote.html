@@ -149,7 +149,7 @@
           $('.vname').show();
       }else{ $('.vname').hide();}
       */
-      _VOTE.init(data.object,data.FlagToken,data.FlagURL)
+      _VOTE.init(data.object,data.FlagToken,data.FlagURL);
       if (data.QFlag != "undefined" && data.QFlag != "") {
         $('.vname').attr("src", data.QFlag);
         $('.vname').show();
@@ -408,7 +408,7 @@ username: "123", circlename: "123", time: "123",
           } else {
             _self.vote({
               token: token,
-              postId: phpdata.postId,
+              postId: obj._id,
               selectedId: $(".vote-option.selected").find("input[type='checkbox']").val()
             });
           }
@@ -442,7 +442,6 @@ username: "123", circlename: "123", time: "123",
 				_html += '<div class="vote-topbar">'+
 							'<span class="vote-tbstatus '+temp.status+'">'+temp.statusText+'</span>'+
 							'<span class="vote-tbcounts"><font>'+temp.votecount+'</font>人参与投票</span>'+
-							
 						'</div>';
 				$.each(obj.tpDataAll,function(lindex,litem){
 					_html += '<div class="vote-oneline">'+
@@ -461,7 +460,7 @@ username: "123", circlename: "123", time: "123",
 						if(optitem.tptype == 2){
 							hasimg = false;
 						}else if(optitem.tptype == 1){
-							_optimg += '<div class="voteopt-left"><img class="vol-simg" src="'+(optitem.img || '{{ asset('weixin/supply/images/placeholder.png') }}')+'"/></div>';
+							_optimg += '<div class="voteopt-left"><img class="vol-simg" src="'+(optitem.img || 'default.png')+'"/></div>';
 						}
 						opthtml += _optimg;
 						opthtml += 	'<div class="voteopt-right">'+
@@ -515,7 +514,10 @@ username: "123", circlename: "123", time: "123",
           } else {
             toast(data.msg);
           }
-        }
+        },
+             error:function(err){
+             toast(err.status);
+             }
       });
     }
                 }

@@ -64,7 +64,7 @@
     width: 100%;
     height: 100%;
     background: no-repeat right center/contain;
-    background-image: url(../images/autumn/cb-notchecked.png);
+    background-image: url(cb-notchecked.png);
     background-color: #E5E6E6; }
   .vote-checkbox input[type="checkbox"] {
     position: absolute;
@@ -74,10 +74,10 @@
     height: 100%;
     opacity: 0; }
   .vote-checkbox input[type="checkbox"]:checked + i {
-    background-image: url(../images/autumn/cb-checked.png);
+    background-image: url(cb-checked.png);
     background-color: #33CA97; }
   .vote-checkbox input[type="checkbox"]:disabled + i {
-    background-image: url(../images/autumn/cb-disabled.png); }
+    background-image: url(cb-disabled.png); }
 
 .cust-radiobutton {
   display: inline-block;
@@ -93,7 +93,7 @@
     width: 100%;
     height: 100%;
     background: no-repeat right center/contain;
-    background-image: url(../images/autumn/rb-notchecked.png);
+    background-image: url(rb-notchecked.png);
     background-color: #E5E6E6; }
   .cust-radiobutton input[type="checkbox"] {
     position: absolute;
@@ -103,10 +103,10 @@
     height: 100%;
     opacity: 0; }
   .cust-radiobutton input[type="checkbox"]:checked + i {
-    background-image: url(../images/autumn/rb-checked.png);
+    background-image: url(rb-checked.png);
     background-color: #33CA97; }
   .cust-radiobutton input[type="checkbox"]:disabled + i {
-    background-image: url(../images/autumn/rb-disabled.png); }
+    background-image: url(rb-disabled.png); }
 
 .precent-bar {
   position: relative;
