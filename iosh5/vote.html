@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="font-size: 20px;">
+
+<head>
+  <meta charset="utf-8">
+  <title>图文话题</title>
+
+  <!--
+             width=device-width：让文档的宽度与设备的宽度保持一致，且文档最大的宽度比例是1.0
+             initial-scale=1：初始的缩放比例
+             maximum-scale=1：允许用户缩放到的最大比例（对应还有个minimum-scale）
+             user-scalable=no：不允许用户手动缩放
+             -->
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <!--
+             telephone=no：禁止自动将页面中的数字识别为电话号码
+             address=no：禁止自动地址转为链接
+             email=no：禁止自动将email转为链接
+             -->
+  <meta name="format-detection" content="telephone=no,address=no,email=no" />
+  <!-- 强制将页面布局为一列 -->
+  <meta name="mobileOptimized" content="width" />
+  <!-- 申明页面是移动友好的 -->
+  <meta name="handheldFriendly" content="true" />
+  <!-- 允许用户使用全屏模式浏览 -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!-- 当用户使用全屏浏览时，将状态条设置为黑色 -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <link rel="stylesheet" type="text/css" href="post.css" />
+  <link rel="stylesheet" type="text/css" href="vote.css" />
+
+  <script src="jquery.min.js"></script>
+  <style type="text/css">
+    #nickname {
+      position: absolute;
+      top: 9px;
+      left: 56px;
+      /*    padding-left:0px;*/
+      height: 18px;
+      line-height: 18px;
+      font-size: 13px;
+      color: #527EAD;
+      /*    width:100%;*/
+      overflow: hidden;
+    }
+
+    .post-top {
+      position: relative;
+    }
+
+    #circlename {
+      color: #527EAD;
+      height: 18px;
+      line-height: 18px;
+      font-size: 13px;
+      position: static;
+      top: 0;
+    }
+
+    #time {
+      padding-right: 4px;
+    }
+
+    .vname {
+      display: none;
+      position: absolute;
+      width: 14px !important;
+      height: 14px !important;
+      top: 34.5px !important;
+      left: 33px !important;
+      z-index: 11111111;
+    }
+  </style>
+  <script type="text/javascript">
+    (function () {
+      // 事件监听
+      if ('addEventListener' in document) {
+        document.addEventListener('orientationchange', function () {
+          setRem();
+        }, false);
+        window.addEventListener('resize', function () {
+          setRem();
+        }, false);
+      }
+      // 横竖屏时重新调整
+      function setRem() {
+        var html = document.querySelector("html");
+        var width = html.getBoundingClientRect().width;
+        html.style.fontSize = width / 16 + "px";
+      }
+      setRem();
+    })();
+  </script>
+</head>
+
+<body style="">
+  <section class="b-top" id="detail">
+    <div class="post">
+      <div class="post-top">
+        <img src="" alt="" id="imga" class="imga">
+        <img src="" class="vname" alt="">
+        <div class="author" id="nickname"></div>
+        <div class="name">
+          <span class="time" id="time"></span>
+          <span id="sends">发布于</span>
+          <span class="circlename" id="circlename"></span>
+
+        </div>
+      </div>
+      <div class="maintitle" id="title"></div>
+      <div class="acrichtext" id="richItem"></div>
+      <!--话题转发-->
+      <div class="inner-topic" id="topic" style="display: none;">
+        <div class="it-left">
+          <img src="default.png" />
+        </div>
+        <div class="it-right">
+          <div class="itr-user"></div>
+          <div class="itr-title"></div>
+          <div class="itr-text oneline"></div>
+          <div class="itr-circle"></div>
+        </div>
+      </div>
+      <div id="votebox"></div>
+    </div>
+  </section>
+
+  <script>
+    window.onerror = function (err) {
+      log(err)
+    }
+
+    function connectWebViewJavascriptBridge(callback) {
+      if (window.WebViewJavascriptBridge) {
+        callback(WebViewJavascriptBridge)
+      } else {
+        document.addEventListener('WebViewJavascriptBridgeReady', function () {
+          callback(WebViewJavascriptBridge)
+        }, false)
+      }
+    }
+
+    var uniqueId = 1;
+    function log(data) {
+
+      /*
+      if(data.isflag == 1 || data.isflag == "1"){
+          $('.vname').show();
+      }else{ $('.vname').hide();}
+      */
+      _VOTE.init(data.object,data.FlagToken,data.FlagURL)
+      if (data.QFlag != "undefined" && data.QFlag != "") {
+        $('.vname').attr("src", data.QFlag);
+        $('.vname').show();
+      } else {
+        $('.vname').hide();
+      }
+
+
+      //alert(data.username);
+
+      if (data.username != "undefined") {
+        if (!data.username) {
+          $("#nickname").html("用户已被删除");
+        } else {
+          $("#nickname").html(data.username);
+        }
+
+        if (data.username == "酒圈官方") {
+          // $("#nickname").removeClass("author");
+          // $("#nickname").addClass("authoroffical");
+
+        }
+        $("#circlename").html(data.circlename);
+        $("#time").html(data.time);
+
+        $("#title").html(data.title);
+        $("#content").html(data.content);
+        $(".content").html(data.content);
+        $("#richItem").html(data.richitem);
+        $(".imga").attr("src", "" + data.imga + "");
+
+
+        if (data.isFromAdmin == 1 || data.isFromAdmin == "1") {
+          //$("#sends").html("");
+
+        }
+
+        //话题
+        if (data.shareIsFrom) {
+          var topicClass = "";
+
+          if (data.shareType == 1) {
+            //图文
+            topicClass = "t-imgtext";
+          } else if (data.shareType == 2) {
+            //直播贴
+            topicClass = "t-live";
+          } else if (data.shareType == 3) {
+            //活动贴
+            topicClass = "t-activity";
+          } else if (data.shareType == 4) {
+            //产品贴
+            topicClass = "t-prod";
+          }
+          $("#topic").addClass(topicClass);
+          if (data.shareImg) {
+            $("#topic .it-left img").attr("src", data.shareImg);
+          }
+          $("#topic .itr-user").html(data.shareName);
+          if (data.shareTitle) {
+            $("#topic .itr-title").html(data.shareTitle);
+            $("#topic .itr-text").addClass("oneline").html(data.shareContent);
+          } else {
+            $("#topic .itr-text").addClass("twoline").html(data.shareContent);
+          }
+          $("#topic .itr-circle").html(data.shareCircle);
+          $("#topic").show();
+          $("#topic").bind("click", function () {
+            objbridge.callHandler('SharePostCallback', {}, function (response) { });
+          });
+        }
+
+
+
+        //alert($(".imga").attr("src"));
+
+        // alert(data.imga);
+        //  $(".imga").attr("src",""+data.imga+"");
+
+        //  alert($(".imga").attr("src"));
+
+
+
+        $("a").bind("click", function () {
+
+
+
+          var link = $(this).attr("link");
+          var title = $(this).html();
+
+          jump(link, title);
+
+        });
+
+        $("#richItem img").bind("click", function () {
+
+
+          var url = $(this).attr("src");
+
+          viewurl(url);
+
+
+        });
+
+
+      }
+
+
+
+    }
+
+    var obj = {      
+username: "123", circlename: "123", time: "123",
+      avatar: "1231231231"
+    }
+
+    //log(obj);
+
+
+    var objbridge;
+
+    function jump(url, title) {
+      //alert(url);
+      //alert(title);
+
+      var obj = { title: title, url: url };
+
+      objbridge.callHandler('jumpurlCallback', obj, function (response) { });
+
+    }
+
+
+    function toast(msg){
+      objbridge.callHandler('voteCallback', {data:msg}, function (response) { });
+    }
+
+    function refresh(){
+      objbridge.callHandler('refreshCallback', {}, function (response) { });
+    }
+
+    function viewurl(url) {
+      //alert(url);
+      //alert(title);
+
+      var obj = { url: url };
+
+      objbridge.callHandler('jumppicCallback', obj, function (response) { });
+
+    }
+
+    connectWebViewJavascriptBridge(function (bridge) {
+      //初始化bridge
+      bridge.init(function (message, responseCallback) { })
+
+
+      objbridge = bridge;
+
+      //注册响应方法
+      bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+        log(data)
+      })
+
+
+
+
+
+      $("#nickname").bind("click", function () {
+        bridge.callHandler('nicknameCallback', "", function (response) { });
+      });
+
+      $(".imga").bind("click", function () {
+        bridge.callHandler('imgnameCallback', "", function (response) { });
+      });
+
+      $("#circlename").bind("click", function () {
+        bridge.callHandler('circlenameCallback', "", function (response) { });
+      });
+
+      var l = document.getElementById("detail").offsetHeight;
+      //alert(l);
+      bridge.callHandler('initCallback', l, function (response) { });
+
+      var x = 0;
+
+      function geth() {
+
+
+
+        var l1 = document.getElementById("detail").offsetHeight;
+
+
+        if (l1 == l) {
+          x++;
+
+          if (x == 3)
+            clearInterval(t1);
+
+          return;
+
+        }
+
+        x = 0;
+
+        l = l1;
+
+
+        //alert(l1);
+        bridge.callHandler('testObjcCallback', l1, function (response) { });
+
+      }
+      var t1 = window.setInterval(geth, 500);
+
+
+
+    })
+
+    function timestampToDate(stamp){
+      stamp = Number(stamp);
+      
+      
+      var date = new Date(stamp);
+      var year  = date.getFullYear();
+      var month = (date.getMonth()+1)>=10?(date.getMonth()+1): "0"+(date.getMonth()+1);
+      var day =  date.getDate() >=10 ? date.getDate() : "0"+date.getDate();
+      return  year + "-" + month + "-"+day;
+    }
+    var _VOTE = {
+
+      //voteUrl: "{{route('m.posts.ac.tprecord')}}",
+      init: function (obj,token,voteurl){
+        var _self = this;
+        _self.voteUrl = voteurl;
+        var _html = _self.makeDom(obj);
+        $("#votebox").html(_html);
+
+
+
+        $("#votebox").on('click', '.barselline .vote-checkbox', function () {
+          if (!$(this).find("input[type='checkbox']").disabled && $(this).find("input[type='checkbox']")[0].checked) {
+            $(this).closest(".vote-option").addClass("selected").siblings(".vote-option").removeClass("selected");
+            $(this).closest(".vote-option").siblings(".vote-option").find("input[type='checkbox']").removeAttr("checked");
+          } else {
+            $(this).closest(".vote-option").removeClass("selected");
+          }
+        });
+        $("#votebox").on('click', '#votesubmit', function () {
+          var isAll = true;
+          $.each($(".voteoption-box"), function (index, item) {
+            if (!$(item).find(".vote-option.selected").length) {
+              isAll = false;
+            }
+          });
+          if (!isAll) {
+            toast('您还有题目仍未选择');
+            return false;
+          } else {
+            _self.vote({
+              token: token,
+              postId: phpdata.postId,
+              selectedId: $(".vote-option.selected").find("input[type='checkbox']").val()
+            });
+          }
+
+        });
+      },
+      makeDom: function(obj){
+				var temp = {
+					status: '',
+					statusText: '',
+					votecount: obj.AllNumber,
+					startDate: timestampToDate(obj.postItem.startDate).replace(/-/g,'.'),
+					endDate: timestampToDate(obj.postItem.endDate).replace(/-/g,'.'),
+					ischecked: obj.checked
+				};
+				if(obj.endstatus == 0){
+					temp.status = "going";
+					temp.statusText = "投票进行中";
+				}else if(obj.endstatus == 1){
+					temp.status = "end";
+					temp.statusText = "投票已结束";
+				}else if(obj.endstatus == 2){
+					temp.status = "notstart";
+					temp.statusText = "投票未开始";
+				}
+				var _html = '';
+				
+				//top
+				_html += '<section class="voteitem-box">';
+				
+				_html += '<div class="vote-topbar">'+
+							'<span class="vote-tbstatus '+temp.status+'">'+temp.statusText+'</span>'+
+							'<span class="vote-tbcounts"><font>'+temp.votecount+'</font>人参与投票</span>'+
+							
+						'</div>';
+				$.each(obj.tpDataAll,function(lindex,litem){
+					_html += '<div class="vote-oneline">'+
+								'<i class="greensidebar"></i>'+
+								'<span>请选择</span>'+
+								'<span class="float-r">'+((litem.isRadio == 1)?'单选':'多选')+'</span>'+
+							'</div>';
+					_html += '<p class="voteoption-title">'+litem.option_title+'</p>';
+					
+					var hasimg = true;
+					var opthtml = '';
+					$.each(litem.option, function(optindex,optitem) {
+						//vote-option  start
+						opthtml += '<div class="vote-option '+((optitem.ischeck==1)?'selected':'')+'">';
+						var _optimg = '';
+						if(optitem.tptype == 2){
+							hasimg = false;
+						}else if(optitem.tptype == 1){
+							_optimg += '<div class="voteopt-left"><img class="vol-simg" src="'+(optitem.img || '{{ asset('weixin/supply/images/placeholder.png') }}')+'"/></div>';
+						}
+						opthtml += _optimg;
+						opthtml += 	'<div class="voteopt-right">'+
+										'<p class="vor-text">'+optitem.tpoice+'</p>'+
+										'<p class="barselline">'+
+											'<span class="precent-bar">'+
+												'<span class="pb-inner" style="width: '+(optitem.Proportion||0)+'%;"></span>'+
+											'</span>'+
+											'<label class="vote-checkbox float-r"  '+((obj.endstatus == 1 || temp.ischecked)?'style="display:none;"':'')+'>'+
+												'<input type="checkbox" value="'+optitem._id+'" '+((optitem.ischeck==1)?'checked="checked"':'')+' '+((obj.endstatus == 2)?'disabled="disabled"':'')+'>'+
+												'<i></i>'+
+											'</label>'+
+										'</p>'+
+										'<p class="optcountline">'+
+											'<span class="precentspan">'+(optitem.Proportion||0)+'%</span>'+
+											'<span>'+optitem.option_num+'票</span>'+
+										'</p>'+
+									'</div>';
+						
+
+						//vote-option  end
+						opthtml += '</div>';
+					});
+					//voteoption-box start
+					_html += '<div class="voteoption-box '+(hasimg?'':'noleftimg')+'">';
+					_html += opthtml;
+					//voteoption-box end
+					
+					//按钮和时间
+					_html += '<button class="votesubmit-btn" id="votesubmit" type="button" '+((obj.endstatus == 2 || obj.endstatus == 1 || temp.ischecked)?'disabled="disabled"':'')+'>'+(temp.ischecked?'已投票':'投票')+'</button>';
+					_html += '<p class="votedate-line">投票时间:<span>'+temp.startDate+'-'+temp.endDate+'</span></p>';
+					
+					_html += '</div>';
+				});
+
+				//end
+				_html += '</section>'
+				
+				return _html;
+			},
+    vote: function(postdata) {
+      var _self = this;
+      $.ajax({
+        type: "post",
+        url: _self.voteUrl,
+        data: postdata,
+        success: function (data) {
+          if (data.code == 0) {
+            //window.location.reload();
+            refresh();
+          } else {
+            toast(data.msg);
+          }
+        }
+      });
+    }
+                }
+
+  </script>
+</body>
+
+</html>

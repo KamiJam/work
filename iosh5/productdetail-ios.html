@@ -112,7 +112,7 @@
 			//上方信息栏
 			$("#pimg").attr("src",data.banner);
 			$("#pname").html(data.title);
-			$("#pbrand").html('品牌&nbsp;·&nbsp;'+data.brand);
+			$("#pbrand").html('品牌&nbsp;·&nbsp;'+(data.brand||'暂无'));
 			$("#pcircle").html('圈子&nbsp;·&nbsp;'+data.circleName);
 			$("#topinfo").fadeIn();
 			//详情区
@@ -138,6 +138,13 @@
 				$(".other-ul").html(listhtml);
 				$(".other-product").fadeIn();
 			}
+            
+            
+            $('img').bind('load',function(){
+                        var l1 = document.getElementById("detail").offsetHeight;
+                        bridge.callHandler('testObjcCallback', l1, function(response) {});
+                        });
+            
 			$("a").bind("click", function() {
 			
 				var link = $(this).attr("link");
@@ -233,7 +240,7 @@
 			})
 	
 	
-			var l = document.getElementById("detail").offsetHeight;
+			var l = document.getElementById("detail").clientHeight;
 			//alert(l);
 			bridge.callHandler('initCallback', l, function(response) {});
 	
@@ -241,12 +248,12 @@
 	
 			function geth() {
 	
-				var l1 = document.getElementById("detail").offsetHeight;
+				var l1 = document.getElementById("detail").clientHeight;
 	
 				if(l1 == l) {
 					x++;
 	
-					if(x == 3)
+					if(x == 10)
 						clearInterval(t1);
 	
 					return;
