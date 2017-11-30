@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>标 题</title>
+    
+    <link rel="stylesheet" href="../css/patch11-29.css">
+    
+    <script type="text/javascript">
+        (function () {
+			// 事件监听
+			if ('addEventListener' in document) {
+				document.addEventListener('orientationchange', function () {
+			    	setRem();
+				}, false);
+			  	window.addEventListener('resize', function () {
+			    	setRem();
+			  	}, false);
+			}
+			// 横竖屏时重新调整
+			function setRem () {
+		   		var html = document.querySelector("html");
+	        	var width = html.getBoundingClientRect().width;
+	       		html.style.fontSize = width / 16 + "px";
+			}
+			setRem();
+	    })();
+    </script>
+</head>
+<body>
+	<div class="main-content">
+		<div class="topdetail">
+			<div class="topd-left">
+				<img class="tdl-himg" src="../images/3.jpg">
+			</div>
+			<div class="topd-middle">
+				<p class="tdm-one">中国酒业论的坛中国酒业论的坛中国酒业论的坛中国酒业论的坛</p>
+				<p class="tdm-two">
+					<span>圈主·名字是</span>
+					<span>人数·123人</span>
+				</p>
+			</div>
+			<div class="topd-right"></div>
+		</div>
+	</div>
+</body>
+</html>
