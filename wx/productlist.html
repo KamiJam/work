@@ -34,7 +34,7 @@
 	    
 	    
 	    var phpdata = {
-        	circleId: 276, 
+        	circleId: 390, 
         	topicId: "", 
         	token: "eyJpdiI6InkyRmNrbmZrZStzem1BWHpuRVwvbVl3PT0iLCJ2YWx1ZSI6ImdkZGJqbjh2ZklYeU1cL05uZ1wvMVVqTzNobXhkNXlERzc0UVdwQ0VXRWlITTVQaXM5QVZNSVNPUWtwMVpCWEh1eFdcL0FKYWhoSzZOcVBRRjl0REZKVmZRPT0iLCJtYWMiOiI1YmRlYzc3MmI0ZmY5MTQ2YThlNzk0NGFjY2FhNTQ3MDg3ZmJlMjU3YTczZmExZWFhNGU3ZTcyMzdiZTQzYWE4In0="
         }
@@ -43,7 +43,76 @@
 </head>
 <body>
 	<div class="main-content">
+		<img class="protop-img" src="images/autumn/bg-ranktop.png" />
+		<section class="proinfo-box">
+			<div class="proinfo-item">
+				<p class="pii-num">1350<font>箱</font></p>
+				<p class="pii-val">总价值13450元</p>
+				<p class="pii-allstock"></p>
+			</div>
+			<i class="pb-splitline"></i>
+			<div class="proinfo-item">
+				<p class="pii-num">50<font>箱</font></p>
+				<p class="pii-val">总价值450元</p>
+				<p class="pii-out"></p>
+			</div>
+		</section>
 		<ul class="pro-list infinitelist">
+			<li class="pro-item" onclick="" data-pid="172">
+				<div class="pi-left">
+					<img class="listimg lazy" src="http://jiuquandata.b0.upaiyun.com/cf41c4bb6a9f7474e8572ceacccf98e1.jpg" data-original="http://jiuquandata.b0.upaiyun.com/cf41c4bb6a9f7474e8572ceacccf98e1.jpg"
+					 style="display: inline;">
+				</div>
+				<div class="pi-center">
+					<div class="c-title">
+						<span class="ct hasmenu">测试分级测试分级测试分级测试分级测试分级测试分级测试分级测试分级</span>
+						<div class="downbtn" onclick="showMenu(this)"></div>
+						<div class="drop-menu" style="">
+							<div class="drop-menu-arrow"></div>
+							<div class="drop-menu-item" data-act="delete">删除</div>
+							<div class="drop-menu-item" data-act="top">置顶</div>
+							<div class="drop-menu-item" data-act="hide" onclick="hideMenu(this)">取消</div>
+						</div>
+					</div>
+					<p class="pic-btminfo">
+						<span class="picb-l">库存12333箱</span>
+						<span class="picb-r">￥50<font>/箱</font></span>
+					</p>
+				</div>
+			</li>
+			<li class="pro-item" onclick="" data-pid="171">
+				<div class="pi-left">
+					<img class="listimg lazy" src="http://jiuquandata.b0.upaiyun.com/f4a223e535405594ab423d6afef9ccf1.jpg" data-original="http://jiuquandata.b0.upaiyun.com/f4a223e535405594ab423d6afef9ccf1.jpg"
+					 style="display: inline;">
+				</div>
+				<div class="pi-center">
+					<div class="c-title">
+						<span class="ct">测试产品123测试产品123测试产品123测试产品123测试产品123测试产品123测试产品123</span>
+					</div>
+					<p class="pic-btminfo">
+						<span class="picb-l">库存充足</span>
+						<span class="picb-r noval">价格面议</span>
+					</p>
+				</div>
+			</li>
+			<li class="pro-item" onclick="" data-pid="170">
+				<div class="pi-left">
+					<img class="listimg lazy" src="http://jiuquandata.b0.upaiyun.com/fbcf193672c2ae71a97f0e164b1bca3e.jpg" data-original="http://jiuquandata.b0.upaiyun.com/fbcf193672c2ae71a97f0e164b1bca3e.jpg"
+					 style="display: inline;">
+				</div>
+				<div class="pi-center">
+					<div class="c-title">
+						<span class="ct">葡萄牙子级1的产品</span>
+					</div>
+					<p class="pic-btminfo">
+						<span class="picb-l">库存充足</span>
+						<span class="picb-r noval">价格面议</span>
+					</p>
+				</div>
+			</li>
+
+
+
 		</ul>
 	</div>
 	<script src="js/jquery-1.9.1.min.js"></script>
@@ -59,76 +128,76 @@
 		    var page = 0;
 			
 			
-		    $('.main-content').dropload({
-		        scrollArea : window,
-		        loadDownFn : function(me){
-		            page++;
-		            // 拼接HTML
-		            var result = '';
-		            $.ajax({
-		                type: 'GET',
-		                url: listUrl,
-		                data:{
-		                	circleId: phpdata.circleId,
-		                	topicId: phpdata.topicId,
-		                	page: page,
-		                	token: phpdata.token
-		                },
-		                dataType: 'json',
-		                success: function(data){
-		                	console.log(data);
-		                	if(data.code == 0){
-		                		if(data.list && data.list.length){
-		                			$.each(data.list, function(listindex,listitem) {
-		                				var tophtml = '';
-		                				if(listitem.istop){
-		                					tophtml = '<span class="top-icon">置顶</span>';
-		                				}
-		                				result +=   '<li class="pro-item" onclick="jumpDetail(this)" data-pid="'+listitem._id+'">'+
-														'<div class="pi-left">'+
-															'<img class="listimg lazy" src="images/placeholder.png" data-original="'+listitem.banner+'" />'+
-														'</div>'+
-														'<div class="pi-center">'+
-															'<div class="c-title">'+
-																tophtml+
-																'<span class="ct">'+listitem.title+'</span>'+
-															'</div>'+
-															'<div class="c-brand">'+
-																'<span class="i-brand">品牌</span>'+
-																listitem.brand+
-															'</div>'+
-															'<div class="c-circle">'+
-																'<span class="i-circle">圈子</span>'+
-																listitem.circleName+
-															'</div>'+
-														'</div>'+
-													'</li>';
-		                			});
-		                		}else{
-		                			//锁定
-		                       		me.lock();
-			                        // 无数据
-			                        me.noData();
-		                		}
-		                	}else{
-//		                		alert("请求数据失败");
-		                	}
-		                    setTimeout(function(){
-		                        // 插入数据到页面，放到最后面
-		                        $('.infinitelist').append(result);
-		                        $("img.lazy").lazyload();
-		                        // 每次数据插入，必须重置
-		                        me.resetload();
-		                    },0);
-		                },
-		                error: function(xhr, type){
-//		                    alert('网络错误!');
-		                    // 即使加载出错，也得重置
-		                    me.resetload();
-		                }
-		            });
-		        }
-		    });
+// 		    $('.main-content').dropload({
+// 		        scrollArea : window,
+// 		        loadDownFn : function(me){
+// 		            page++;
+// 		            // 拼接HTML
+// 		            var result = '';
+// 		            $.ajax({
+// 		                type: 'GET',
+// 		                url: listUrl,
+// 		                data:{
+// 		                	circleId: phpdata.circleId,
+// 		                	topicId: phpdata.topicId,
+// 		                	page: page,
+// 		                	token: phpdata.token
+// 		                },
+// 		                dataType: 'json',
+// 		                success: function(data){
+// 		                	console.log(data);
+// 		                	if(data.code == 0){
+// 		                		if(data.list && data.list.length){
+// 		                			$.each(data.list, function(listindex,listitem) {
+// 		                				var tophtml = '';
+// 		                				if(listitem.istop){
+// 		                					tophtml = '<span class="top-icon">置顶</span>';
+// 		                				}
+// 		                				result +=   '<li class="pro-item" onclick="jumpDetail(this)" data-pid="'+listitem._id+'">'+
+// 														'<div class="pi-left">'+
+// 															'<img class="listimg lazy" src="images/placeholder.png" data-original="'+listitem.banner+'" />'+
+// 														'</div>'+
+// 														'<div class="pi-center">'+
+// 															'<div class="c-title">'+
+// 																tophtml+
+// 																'<span class="ct">'+listitem.title+'</span>'+
+// 															'</div>'+
+// 															'<div class="c-brand">'+
+// 																'<span class="i-brand">品牌</span>'+
+// 																listitem.brand+
+// 															'</div>'+
+// 															'<div class="c-circle">'+
+// 																'<span class="i-circle">圈子</span>'+
+// 																listitem.circleName+
+// 															'</div>'+
+// 														'</div>'+
+// 													'</li>';
+// 		                			});
+// 		                		}else{
+// 		                			//锁定
+// 		                       		me.lock();
+// 			                        // 无数据
+// 			                        me.noData();
+// 		                		}
+// 		                	}else{
+// //		                		alert("请求数据失败");
+// 		                	}
+// 		                    setTimeout(function(){
+// 		                        // 插入数据到页面，放到最后面
+// 		                        $('.infinitelist').append(result);
+// 		                        $("img.lazy").lazyload();
+// 		                        // 每次数据插入，必须重置
+// 		                        me.resetload();
+// 		                    },0);
+// 		                },
+// 		                error: function(xhr, type){
+// //		                    alert('网络错误!');
+// 		                    // 即使加载出错，也得重置
+// 		                    me.resetload();
+// 		                }
+// 		            });
+// 		        }
+// 		    });
 		    
 		    
 		    
@@ -139,6 +208,12 @@
 			if(!isNaN($(th).attr("data-pid"))){
 		    	window.location.href = detailUrl + "?id=" + $(th).attr("data-pid");
 		    }
+		}
+		function showMenu(th){
+			$(th).parent().find(".drop-menu").fadeToggle();
+		}
+		function hideMenu(th){
+			$(th).parent().fadeOut();
 		}
 	</script>
 </body>

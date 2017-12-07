@@ -11,7 +11,7 @@
     padding: prem(30);
     margin: prem(20) 0;
     @include flexbox;
-    align-items: center;
+    // @include alignitems-center;
     background-color: white;
     .pi-left{
         width: prem(200);
@@ -23,14 +23,28 @@
     }
     .pi-center{
         @include flexitem;
-        padding: 0 10px;
+        padding: 0 0 0 10px;
+        width: 0;
         .c-title{
+            position: relative;
             .ct{
+                &.hasmenu{
+                    padding-right:1.8rem;
+                }
+
                 min-height: prem(90);
                 font-size: prem(30);
                 line-height: prem(45);
                 color: #000;
                 @include overflowemp(2); 
+            }
+            .downbtn{
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 1rem; 
+                height: 1rem;
+                background: url(../images/product/more_unfold.png) no-repeat top center/contain;
             }
             
         }
@@ -168,7 +182,7 @@
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
-    align-items: center;
+    @include alignitems-center;
     border-top: 1px solid #eee;
     .onlinechat{
         width: prem(635);
@@ -206,3 +220,174 @@
     margin-right: 5px;
 }
 
+// 3.6.3新增css
+.protop-img{
+    display: block;
+    width: 100%;
+    height: prem(225);
+}
+
+.proinfo-box{
+    @include flexbox;
+    @include alignitems-center;
+    height: prem(200);
+    background-color: #fff;
+    .proinfo-item{
+        @include flexitem;
+        text-align: center
+    }
+    .pb-splitline{
+        height: prem(130);
+        width: 1px;
+        background-color: #ccc;
+    }
+}
+
+.proinfo-item{
+    .pii-num{
+        font-size: prem(36);
+        color: #4d4d4d;
+
+        font{
+            margin-left: prem(10);
+            font-size: prem(22);
+            //color: #4d4d4d;
+        }
+    }
+    .pii-val{
+        font-size: prem(22);
+        color: #999;
+    }
+    .pii-allstock{
+        margin-top: prem(10);
+        display: inline-block;
+        width: prem(120);
+        height: prem(36);
+        background: url(../images/autumn/bg-proallstock.png) no-repeat 0 0/contain;
+    }
+    .pii-out{
+        margin-top: prem(10);
+        display: inline-block;
+        width: prem(120);
+        height: prem(36);
+        background: url(../images/autumn/bg-proout.png) no-repeat 0 0/contain;
+    }
+}
+
+.pro-item.prodetailtop{
+    .pic-btminfo{
+        margin-top: .5rem;
+        @include ellipsis;
+        color: #999;
+    }
+    .c-title{
+        margin-top: 0.846667 / 2 * 1rem;
+    }
+    .ct{
+        font-size: prem(32) !important;
+    }
+}
+.pic-btminfo{
+    margin-top: 1.34667rem;
+
+    line-height: 1rem;
+    
+    .picb-l{
+        font-size: prem(24);
+        color: #999;
+    }
+    .picb-r{
+        float: right;
+        font-size: prem(38);
+        color: #fd7b53;
+        font{
+            font-size: prem(22);
+        }
+        &.noval{
+            font-size: prem(34);
+        }
+    }
+}
+
+.drop-menu {
+    display: none;
+    position: absolute;
+    top: 1.2rem;
+    z-index: 1;
+    right: -0.4rem;
+    background-color: white;
+    box-shadow: 0 0 1px 1px #eee;
+    border-radius: 4px; }
+  
+  .drop-menu-item {
+    display: block;
+    padding: 0.32rem 0.96rem;
+    font-size: 0.64rem;
+    border-bottom: 1px  solid #EEEEEE; }
+    .drop-menu-item:last-child {
+      border-bottom: none; }
+  
+  .drop-menu-arrow {
+    position: absolute;
+    top: -12px;
+    right: 0.6rem;
+    width: 0;
+    height: 0;
+    border-width: 6px;
+    border-color: transparent transparent #eee transparent;
+    border-style: solid; }
+    .drop-menu-arrow:after {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: -5px;
+      width: 0;
+      height: 0;
+      border-width: 6px;
+      border-color: transparent transparent white transparent;
+      border-style: solid; }
+.prodetail-topinfo{
+    position: relative;
+    margin: 0 0.2986666667rem;
+    padding: 0 prem(30);
+    @include ellipsis;
+    line-height: 1.8rem;
+    background-color: #fff;
+    .pdti-l{
+        font-size: prem(24);
+        color: #999;
+    }
+    .pdti-r{
+        float: right;
+        font-size: prem(38);
+        color: #fd7b53;
+        font{
+            font-size: prem(22);
+        }
+        &.noval{
+            font-size: prem(34);
+        }
+    }
+    &::before{
+        position: absolute;
+        left: prem(24);
+        right: prem(24);
+        content: '';
+        height: 1px;
+        background-color: #eeeef3;
+        
+    }
+}
+
+.img-item:first-child {
+    margin-top: 0.42667rem;
+}
+.img-item {
+    margin: 0.512rem 0;
+    padding: 0.42667rem 0.512rem;
+    background-color: white;
+}
+.img-item img {
+    width: 100% !important;
+    height: auto !important;
+}

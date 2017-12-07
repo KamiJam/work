@@ -16,3 +16,5 @@ e
 sass --watch patch11-1.scss:..\..\css\patch11-1.css  --style nested
 cd C:\Users\Administrator\Desktop\zzl\wx\scss\pages
 sass --watch patch11-29.scss:../../css/patch11-29.css  --style nested
+
+sass --watch product.scss:../../css/product.css  --style nested

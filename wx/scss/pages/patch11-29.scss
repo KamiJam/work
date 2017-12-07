@@ -5,7 +5,7 @@
 @import "../mixin";
 
 .topdetail{
-    padding: 0 4px 0 8px;
+    padding: 0 6px 0 15px;
     @include flexbox;
     @include alignitems-center;
     height: 3.4rem;
@@ -21,7 +21,7 @@
     }
 }
 .topd-middle{
-    padding-left: 6px;
+    padding-left: 10px;
     @include flexitem;
     width: 0;
     color: #fff;
@@ -38,4 +38,16 @@
     width: .8rem;  
     height: 100%;
     background: url(../images/autumn/whitemore.png) no-repeat center center/.8rem auto;
+}
+.tdm-cname{
+    vertical-align: bottom;
+    font{
+        display: inline-block;
+        max-width: 7em;
+        vertical-align: bottom;
+        @include ellipsis;
+    }
+}
+.tdm-count{
+    margin-left: 6px;
 }

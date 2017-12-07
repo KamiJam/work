@@ -88,7 +88,7 @@ a {
   -webkit-tap-highlight-color: transparent; }
 
 .topdetail {
-  padding: 0 4px 0 8px;
+  padding: 0 6px 0 15px;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -107,7 +107,7 @@ a {
   border-radius: 999px; }
 
 .topd-middle {
-  padding-left: 6px;
+  padding-left: 10px;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   flex: 1;
@@ -126,5 +126,18 @@ a {
   width: .8rem;
   height: 100%;
   background: url(../images/autumn/whitemore.png) no-repeat center center/0.8rem auto; }
+
+.tdm-cname {
+  vertical-align: bottom; }
+  .tdm-cname font {
+    display: inline-block;
+    max-width: 7em;
+    vertical-align: bottom;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+
+.tdm-count {
+  margin-left: 6px; }
 
 /*# sourceMappingURL=patch11-29.css.map */
